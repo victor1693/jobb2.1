@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="Floating Social Share Buttons" name="description" property="og:description"/>
+        <meta content="https://upload.wikimedia.org/wikipedia/commons/d/d6/Hs-2009-25-e-full_jpg.jpg" property="og:image"/>
+        <title>
+            jQuery Floating Social Share
+        </title>
+        <link href="../jquery.floating-social-share.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+</html>
+<body>
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript">
+    </script>
+    <script src="../jquery.floating-social-share.min.js" type="text/javascript">
+    </script>
+    <script>
+        $("body").floatingSocialShare({
+    buttons: [
+      "facebook", "google-plus", "linkedin", 
+       "twitter", "whatsapp"
+    ],
+    twitter_counter: true,
+    text: "share with: ",
+    url: "http://google.com"
+  });
+    </script>
+</body>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Compatible Tags Input Demos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.1/darkly/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="tagInput.js"></script>
+  <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="tagInput.css">
+  <script>
+  $(document).ready(function(){
+	$('#tags').tagInput({labelClass:"badge badge-success"});
+	$('#tags2').tagInput({labelClass:"badge badge-warning"});
+  });
+  </script>
+  <style>
+  .container { margin: 150px auto;}
+</style>
+</head>
+<body>
+<div id="jquery-script-menu">
+<div class="jquery-script-center">
+  
+<div class="container">
+ 
+  <form>
+    <div class="form-group">
+      <label for="tags">Tags:</label>
+      <div class="form-control tags" id="tags">
+      	<input type="text" class="labelinput">
+        <input type="hidden" value="jQuery,Script,Net" name="result">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tags">Tags 2:</label>
+      <div class="form-control tags" id="tags2">
+      	<input type="text" class="labelinput">
+        <input type="hidden" value="value 4,value 5,value 6" name="result">
+      </div>
+    </div>
+  </form>
+</div> 
+</body>
+</html>
