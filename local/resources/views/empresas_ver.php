@@ -27,6 +27,7 @@ $mi_tokken=csrf_token();
         {
           background-color: #fff;
           border: 1px solid #ddd;
+          height: 300px;
         }
           .filter-offer
           {
@@ -272,10 +273,24 @@ $mi_tokken=csrf_token();
                             </p>
                             
                         </div>
+                        <div class="col-sm-12" style="margin-bottom: 25px;">
+                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- prueba 3 -->
+                            <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-1968505410020323"
+                            data-ad-slot="2357238982"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                            
+                          </div>
                        <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;">
                          <?php 
 
-                                  $pagina=ceil((count($datos)/26));
+                                  $pagina=ceil((count($datos)/25));
                                   if (empty($_GET['pagina']) || $_GET['pagina']=="") {
                                        $_GET['pagina']=1;
                                   }
@@ -290,14 +305,31 @@ $mi_tokken=csrf_token();
                                     $siguiente=$_GET['pagina']+1; 
                                   }
                                   ?>
-
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "style="padding-left: 0px;padding-right: 0px;">
+                              <div class="emply-list box contendor_empresa" style="padding-top: 10px; padding-right: 5px;padding-left: 5px;">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle"
+                                style="display:block"
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-6t+ed+2i-1n-4w"
+                                data-ad-client="ca-pub-1968505410020323"
+                                data-ad-slot="2571530788"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                              </div><!-- Employe List -->
+                            </div> 
                                 <?php
 
                                 $contador=0;
-                                $inicio =($_GET['pagina']*26)-26;
-                                $final =($_GET['pagina']*26);
+                                $inicio =($_GET['pagina']*25)-25;
+                                $final =($_GET['pagina']*25);
+
+
                                 foreach ($datos as $key): ?>
-                                 <?php if ($contador>=$inicio && $contador<=$final): ?>  
+                                 <?php if ($contador>=$inicio && $contador<=$final): ?>
+
+
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "style="padding-left: 0px;padding-right: 0px;">
                               <div class="emply-list box contendor_empresa" style="padding-right: 5px;padding-left: 5px;">
                                 <div class="emply-list-thumb">
@@ -308,6 +340,9 @@ $mi_tokken=csrf_token();
                                   <h3><a href="empresa/detalle/<?= $key->id;?>" title=""><?= validar($key->nombre);?></a></h3>
                                   <span><?= validar($key->actividad_empresa);?></span>
                                   <h6><i class="la la-map-marker"></i> <?= validar($key->provincia.' - '.$key->localidad);?></h6>
+                                </div>
+                                <div>
+                                  <button type="button" class=" btn btn-primary">Ver</button>
                                 </div>
                               </div><!-- Employe List -->
                             </div> 

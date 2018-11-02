@@ -454,9 +454,8 @@ $mi_tokken=csrf_token();
                             </p>
                             
                         </div> 
-                        <div class="job-list-modern">
-                            <div class="job-listings-sec"> 
-                              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <div class="col-sm-12" style="padding: 0px;height: 130px;">
+                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <ins class="adsbygoogle"
                                 style="display:block"
                                 data-ad-format="fluid"
@@ -466,7 +465,9 @@ $mi_tokken=csrf_token();
                                 <script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
-                               
+                        </div>
+                        <div class="job-list-modern">
+                            <div class="job-listings-sec">   
                               <?php 
 
                                   $pagina=ceil((count($datos)/25));

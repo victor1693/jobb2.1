@@ -213,7 +213,14 @@
                                             <i class="icon-profile pink font-large-2 float-xs-left"></i>
                                         </div>
                                         <div class="media-body text-xs-right">
-                                            <h3 class="pink"><?= $ofertas_empresa[0]->cantidad?></h3>
+                                            <h3 class="pink">
+                                                <?php if (count($ofertas_empresa)>0): ?>
+
+                                                    <?= $ofertas_empresa[0]->cantidad?>
+                                                    <?php else: ?>
+                                                        0
+                                                <?php endif ?>  
+                                            </h3>
                                             <span>Mis Ofertas</span>
                                         </div>
                                     </div>
@@ -231,7 +238,14 @@
                                             <i class="icon-users teal font-large-2 float-xs-left"></i>
                                         </div>
                                         <div class="media-body text-xs-right">
-                                            <h3 class="teal"><?= $postulados_empresa[0]->cantidad?></h3>
+                                            <h3 class="teal"> 
+                                                    <?php if (count($postulados_empresa)>0): ?>
+
+                                                    <?= $postulados_empresa[0]->cantidad?>
+                                                    <?php else: ?>
+                                                        0
+                                                <?php endif ?>  
+                                            </h3>
                                             <span>Mis Postulados</span>
                                         </div>
                                     </div>
@@ -249,7 +263,15 @@
                                             <i class="icon-copy cyan font-large-2 float-xs-left"></i>
                                         </div>
                                         <div class="media-body text-xs-right">
-                                            <h3 class="cyan"><?= $oferta_plantillas[0]->cantidad;?></h3>
+                                            <h3 class="cyan">
+
+                                                  <?php if (count($oferta_plantillas)>0): ?>
+
+                                                    <?= $oferta_plantillas[0]->cantidad?>
+                                                    <?php else: ?>
+                                                        0
+                                                <?php endif ?>   
+                                                </h3>
                                             <span>Mis Plantillas</span>
                                         </div>
                                     </div>

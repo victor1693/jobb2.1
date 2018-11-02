@@ -50,7 +50,7 @@ class con_company extends Controller
     		}
 
     	}
-        $sql="INSERT INTO tbl_company (representante,correo,clave,provincia,localidad,direccion,nombre,fecha_registro) 
+        $sql="INSERT INTO tbl_company (representante,correo,clave,provincia,localidad,direccion,nombre,fecha_registro,plan) 
     	VALUES(
     	'".$_POST['representante']."',
     	'".strtolower($_POST['correo']). "',
@@ -59,7 +59,8 @@ class con_company extends Controller
     	'".$_POST['localidad']."',
     	'".$_POST['direccion']."',
     	'".$_POST['empresa']."',
-    	'".$fecha."'
+    	'".$fecha."',
+        'Gratis'
     	)";
     	try {
     		DB::insert($sql); 
@@ -129,7 +130,7 @@ class con_company extends Controller
         ORDER BY id desc";
 
         $sql_ofertas="SELECT * ,DATEDIFF(CURDATE(),fecha_creacion) as dias FROM tbl_company_ofertas 
-        WHERE id_empresa =".$id."
+        WHERE id_empresa =".$id." AND estatus = 1
         ORDER BY id desc
         ";
         $vista->datos =$datos;
@@ -167,12 +168,12 @@ class con_company extends Controller
         $vista = View::make('empresas_ver');
         $sql="
          SELECT  t1.*,count(id_empresa) as cantidad FROM tbl_company t1 
-         LEFT JOIN tbl_company_ofertas t2 ON t2.id_empresa =t1.id
-         WHERE t1.estatus =1 ".$filtros."
+         LEFT JOIN tbl_company_ofertas t2 ON t2.id_empresa =t1.id  AND t2.estatus = 1 
+         WHERE t1.estatus = 1 ".$filtros."
          GROUP BY t1.id
-         ORDER BY t1.nombre ASC
+         ORDER BY count(id_empresa) DESC
          ";
-         //return $sql;
+         
         $datos=DB::select($sql);
         $vista->datos= $datos;
 

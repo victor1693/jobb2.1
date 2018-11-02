@@ -74,10 +74,26 @@
 		<div class="block gray double-gap-top">
 			<div class="container">
 				<div class="row">
+					<div class="col-sm-12" style="margin-bottom: 25px;">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- prueba 3 -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1968505410020323"
+							data-ad-slot="2357238982"
+							data-ad-format="auto"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+							
+						</div>
+
 					<div class="col-lg-12">
 						<div class="heading">
 							<h2>Categorías con más ofertas</h2> 
 						</div><!-- Heading -->
+						
 						<div class="cat-sec style2">
 							<div class="row">
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
@@ -123,6 +139,18 @@
 						<div class="browse-all-cat">
 							<a style="background-color: #ffb203;color: #fff;" href="ofertas" title="" class="style2">Ver más ofertas</a>
 						</div>
+					</div>
+					<div class="col-sm-12" style="margin-top: 25px;">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<ins class="adsbygoogle"
+						style="display:block"
+						data-ad-format="fluid"
+						data-ad-layout-key="-gs-18+5m+32-1f"
+						data-ad-client="ca-pub-1968505410020323"
+						data-ad-slot="2781120636"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
 					</div>
 				</div>
 			</div>
