@@ -238,11 +238,11 @@
                                 $imagen="";
                                 if($parametro!="")
                                 {
-                                  if($parametro=='PPPA')
+                                  if($parametro=='PPPA-Cambio empresa')
                                   {
                                    $imagen="local/resources/views/images/programas/ppp.png";
                                   }
-                                  else if($parametro=='PPP')
+                                  else if($parametro=='PPP-Cambio empresa')
                                   {
                                      $imagen="local/resources/views/images/programas/pppp.png";
                                   }
@@ -251,7 +251,7 @@
                                      $imagen="local/resources/views/images/programas/jovenes.png";
                                   }
 
-                                  else if($parametro=='PILA')
+                                  else if($parametro=='PILA-Cambio empresa')
                                   {
                                      $imagen="local/resources/views/images/programas/pila.png";
                                   }
@@ -259,7 +259,7 @@
                                   {
                                      $imagen="local/resources/views/images/programas/xmi.png";
                                   }
-                                  else if($parametro=='PIP')
+                                  else if($parametro=='PIP-Cambio empresa')
                                   {
                                      $imagen="local/resources/views/images/programas/pip.png";
                                   }

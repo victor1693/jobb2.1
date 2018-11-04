@@ -259,30 +259,30 @@
                                 $imagen="";
                                 if($parametro!="")
                                 {
-                                  if($parametro=='PPPA')
+                                  if($parametro=='PPPA-Cambio empresa')
                                   {
-                                   $imagen="../local/resources/views/images/programas/ppp.png";
+                                   $imagen="local/resources/views/images/programas/ppp.png";
                                   }
-                                  else if($parametro=='PPP')
+                                  else if($parametro=='PPP-Cambio empresa')
                                   {
-                                     $imagen="../local/resources/views/images/programas/pppp.png";
+                                     $imagen="local/resources/views/images/programas/pppp.png";
                                   }
                                   else if($parametro=='MAS Y MEJOR TRABAJO')
                                   {
-                                     $imagen="../local/resources/views/images/programas/jovenes.png";
+                                     $imagen="local/resources/views/images/programas/jovenes.png";
                                   }
 
-                                  else if($parametro=='PILA')
+                                  else if($parametro=='PILA-Cambio empresa')
                                   {
-                                     $imagen="../local/resources/views/images/programas/pila.png";
+                                     $imagen="local/resources/views/images/programas/pila.png";
                                   }
                                   else if($parametro=='XMI')
                                   {
-                                     $imagen="../local/resources/views/images/programas/xmi.png";
+                                     $imagen="local/resources/views/images/programas/xmi.png";
                                   }
-                                  else if($parametro=='PIP')
+                                  else if($parametro=='PIP-Cambio empresa')
                                   {
-                                     $imagen="../local/resources/views/images/programas/pip.png";
+                                     $imagen="local/resources/views/images/programas/pip.png";
                                   }
                                    return '<div><img style="height:30px;width:auto;" alt="" class="img-fluid img-oferta" src="'.$imagen.'">
                                         </img></div>'; 
@@ -296,6 +296,9 @@
                                 <div class="job-list-modern">
                                     <div class="job-listings-sec no-border" >
                                         <?php foreach ($ofertas_similares as $key): ?> 
+                                            <?php if ($id_oferta!=$key->id): ?>
+                                                
+                                          
                                         <div class="job-listing wtabs" style="padding-top: 5px;padding-bottom: 5px;">
                                             <div class="job-title-sec">
                                                 <?php if ($key->img_profile!=""): ?>
@@ -340,6 +343,7 @@
                                                 </i>
                                             </div>
                                         </div>
+                                          <?php endif ?>
                                         <?php endforeach ?>
                                     </div>
                                 </div>
@@ -352,6 +356,9 @@
                                 <div class="job-list-modern">
                                     <div class="job-listings-sec no-border">
                                     	<?php foreach ($ofertas_recientes as $key): ?> 
+                                            <?php if ($key->id != $id_oferta): ?>
+                                                
+                                           
                                         <div class="job-listing wtabs" style="padding-top: 5px;padding-bottom: 5px;">
                                             <div class="job-title-sec">
                                             	<?php if ($key->img_profile!=""): ?>
@@ -396,6 +403,7 @@
                                                 </i>
                                             </div>
                                         </div>
+                                         <?php endif ?>
                                         <?php endforeach ?>
                                     </div>
                                 </div>

@@ -73,7 +73,7 @@ class con_ofertasv2 extends Controller
     	$vista = View::make('ofertasv2');
     	$sql="SELECT  t1.*, t2.img_profile FROM tbl_company_ofertas t1
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa
-		 WHERE t1.estatus =1 ".$filtros." AND plantilla !='SI'
+		 WHERE t1.estatus =1 ".$filtros." AND plantilla <> 'SI'
 		 GROUP BY t1.id
          ORDER BY t1.tmp DESC
 		 ";
@@ -114,6 +114,7 @@ class con_ofertasv2 extends Controller
     	concat(t2.pais,' - ',t2.provincia,' - ',t2.localidad) as emp_direccion 
     	FROM  tbl_company_ofertas t1 
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa 
+        WHERE t1.plantilla <> 'SI'
 	    ORDER BY t1.tmp DESC 
 	    LIMIT 0,5
 		";
@@ -122,7 +123,7 @@ class con_ofertasv2 extends Controller
 		$datos= DB::select($sql);
 		$sql_ofertas="
 		SELECT * FROM tbl_company_ofertas 
-		WHERE id_empresa =".$datos[0]->id_empresa." AND id != ".$id."";
+		WHERE id_empresa =".$datos[0]->id_empresa." AND id <> ".$id."";
          
 		 
 		$habilidades="";
@@ -143,11 +144,11 @@ class con_ofertasv2 extends Controller
     	t2.nombre as nombre_empresa,
     	concat(t2.pais," - ",t2.provincia," - ",t2.localidad) as emp_direccion
 		FROM tbl_company_ofertas t1
-		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa
-		WHERE t1.sector ="'.$datos[0]->sector.'" '.$habilidades.' AND t1.id != '.$datos[0]->id.'
+		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa 
+		WHERE  t1.id <> '.$datos[0]->id.' AND t1.plantilla <> "SI" AND t1.sector ="'.$datos[0]->sector.'" '.$habilidades.'  
 		GROUP BY t1.id
 		ORDER BY t1.tmp DESC
-		LIMIT 0,5
+		LIMIT 0,6
 		';
 		$candidato=0;
 		if(session()->get('cand_id')!="")
@@ -171,6 +172,7 @@ class con_ofertasv2 extends Controller
     	$vista->ofertas=DB::select($sql_ofertas);
     	$vista->ofertas_recientes=DB::select($sql_ofertas_recientes); 
     	$vista->ofertas_similares=DB::select($sql_ofertas_similares);
+        $vista->id_oferta=$id;
     	return $vista;
     }
 }

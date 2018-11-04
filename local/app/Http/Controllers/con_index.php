@@ -12,7 +12,7 @@ class con_index extends Controller
     {
         $vista= View::make("index");
         $sql_postulados="SELECT count(id) as cantidad FROM tbl_company_postulados;";
-        $sql_ofertas="SELECT count(id) as cantidad FROM tbl_company_ofertas WHERE estatus = 1 AND plantilla !='SI';";
+        $sql_ofertas="SELECT count(id) as cantidad FROM tbl_company_ofertas WHERE estatus = 1 AND plantilla <> 'SI';";
         $sql_candidatos="SELECT count(id) as cantidad FROM tbl_usuarios WHERE tipo_usuario = 2;";
         $sql_empresas="SELECT count(id) as cantidad FROM tbl_company;";
         $sql_categorias="SELECT sector,count(id) as cantidad FROM tbl_company_ofertas GROUP BY sector ORDER by count(id) desc LIMIT 0,4";
@@ -31,7 +31,7 @@ class con_index extends Controller
         FROM 
         tbl_company_ofertas t1
         INNER JOIN tbl_company t2 ON t2.id = t1.id_empresa
-        WHERE t1.plantilla !='SI'
+        WHERE t1.plantilla <> 'SI'
         ORDER BY t1.tmp desc
         LIMIT 0,12";
 
