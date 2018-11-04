@@ -29,6 +29,15 @@
                     <i class="icon-profile">
                     </i>
                     <span class="menu-title" data-i18n="nav.form_layouts.form_layout_basic">
+                        Mis Ofertas
+                    </span>
+                </a>
+            </li>
+              <li>
+                <a href="<?php echo Request::root();?>/ofertas">
+                    <i class="icon-profile">
+                    </i>
+                    <span class="menu-title" data-i18n="nav.form_layouts.form_layout_basic">
                         Ofertas
                     </span>
                 </a>

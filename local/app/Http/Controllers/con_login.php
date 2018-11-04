@@ -13,6 +13,7 @@ class con_login extends Controller
     { 
         if(isset($_GET['token']) && isset($_GET['user']) && isset($_GET['secure']) && $_GET['token']!="" && $_GET['user']!="" && $_GET['secure']!="")
         {
+
             $sql="
             SELECT count(id) as total 
             FROM tbl_tokens_social_verification 
@@ -29,6 +30,7 @@ class con_login extends Controller
                  return Redirect("login?error=Clave o correo incorrectos");
             }
         }
+       
        
         $this->limpiarVariablesSession($request); 
         $sql = "

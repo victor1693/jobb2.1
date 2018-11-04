@@ -45,7 +45,7 @@ class con_company_login extends Controller
 	    			$request->session()->set('company_id',$datos[0]->id);
 	    			$request->session()->set('company_img',$datos[0]->img_profile);
 	    			$request->session()->set('company_nombre',$datos[0]->nombre); 
-	    			
+	    			$request->session()->set('tipo_usuario','1'); 
 
 	    			echo "1";
 

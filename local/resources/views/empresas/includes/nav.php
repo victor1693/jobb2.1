@@ -9,7 +9,7 @@
                     </a>
                 </li>
                 <li class="nav-item" >
-                    <a class="navbar-brand nav-link" href="<?=  Request::root();?>/ofertas;?>" style="padding-top: 7px;">
+                    <a class="navbar-brand nav-link" href="<?=  Request::root();?>/ofertas" style="padding-top: 7px;">
                         <img alt="branding logo" class="brand-logo" data-collapse="<?= $ruta;?>app-assets/images/logo/robust-logo-small.png" data-expand="<?= $ruta;?>app-assets/images/logo/robust-logo-light.png" src="<?= $ruta;?>app-assets/images/logo/robust-logo-light.png"/>
                     </a>
                 </li>

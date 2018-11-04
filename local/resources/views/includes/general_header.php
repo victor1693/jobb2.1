@@ -23,10 +23,8 @@ $back="../";
 					 	<?php if(session()->get('tipo_usuario')==2): ?> 
 					 	
 					 		<a href="<?= url('candidashboard') ?>" title="" class="my-panel">Mi panel</a>
-					 	<?php elseif (session()->get('tipo_usuario')==1): ?>
-					 	
-					 		<a href="<?= url('empresa/new_post') ?>" title="" class="my-panel" style="margin-right: 5px" >Publicar oferta</a>
-					 		<a href="<?= url('empresa/ofertas') ?>" title="" class="my-panel">Mi panel</a>
+					 	<?php elseif (session()->get('tipo_usuario')==1): ?> 
+					 		<a href="<?php echo Request::root();?>/empresas/ofertas" title="" class="my-panel">Mi panel</a>
 					 	<?php endif; ?>
 					 	
 					<?php else: ?>

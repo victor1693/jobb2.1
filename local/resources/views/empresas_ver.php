@@ -266,8 +266,8 @@ $mi_tokken=csrf_token();
                           </div>
                         </div> 
                          <div class="col-xs-3" style="padding-left: 0px; text-align: right;padding-right: 0px;">
-                            <button type="button" onclick="location.href='empresas'" title="Limpiar filtros" class="btn btn-success" style="margin-top: 0px;height: 49px;width: 50px;float: right;">
-                              <i class="fa fa-filter" style="font-size: 24px;"></i></button>
+                            <button type="button" onclick="location.href='ofertas'" title="Limpiar filtros" class="btn btn-warning" style="margin-top: 0px;height: 49px;width: 50px;float: right;">
+                              <i class="fa fa-trash" style="font-size: 24px;"></i></button>
                             <p style="font-weight: 600;font-size: 16px;padding-top: 7px;text-align: left;padding-left: 9px;">
                               <?= count($datos);?> Empresas
                             </p>

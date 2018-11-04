@@ -45,7 +45,7 @@ class con_company_ofertas extends Controller
         $sql_plantillas ="SELECT * FROM tbl_company_ofertas WHERE plantilla ='SI' AND  id_empresa=".session()->get('company_id')."";
         $plantillas=DB::select($sql_plantillas);
     	$sql="
-        SELECT t1.*,COUNT(t2.id) as cantidad FROM tbl_company_ofertas t1
+        SELECT t1.*,COUNT(t2.id) as cantidad,lower(t1.titulo) as mi_titulo FROM tbl_company_ofertas t1
         LEFT JOIN tbl_company_postulados t2 ON t2.id_oferta  = t1.id       
         WHERE  t1.id_empresa= ".session()->get('company_id')." AND t1.plantilla !='SI'
         GROUP BY t1.id

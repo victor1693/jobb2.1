@@ -129,7 +129,7 @@
                                      location.href = 'panel';
                                 }else
                                 {
-                                     $.notify("Cuenta no registrada.","info");                                   
+                                     $.notify("Los datos introducidos son incorrectos.","info");                                   
                                 }                               
                             },
                             error: function(error) {

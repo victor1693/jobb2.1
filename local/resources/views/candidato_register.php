@@ -68,7 +68,7 @@
 											<img onclick="location.href='ofertas'" src="https://www.jobbersargentina.net/img/logo_d.png" style="width: 200px;cursor: pointer;">
 										</div>
 
-										<!--
+									 
 										<div class="extra-login" style="margin-top: 0px;">
 											<span>Registrarme con</span>
 										 	<div class="login-social">
@@ -77,7 +77,7 @@
 													<a class="go-login" href="<?= url('redes/google') ?>" title=""><i class="fa fa-google"></i></a>
 											</div>
 										</div> 
-										-->
+									 
 										<span>Gracias por confiar en Jobbers</span> 
 										<form id="formulario" style="padding: 10px;padding-top: 0px;margin-top: 0px;" action="register" method="post">
 											<input name="_token" type="hidden" value="<?php echo csrf_token();?>" id="my_token">
