@@ -8,7 +8,12 @@
 				 					<li>
 				 						<a href="<?= url('administracion/configuracion') ?>" title=""><i class="la la-gear"></i>Cambio de claves</a> 
 				 					</li> 
-				 					<li>
+
+				 						<li>
+				 						<a href="<?= url('administracion/empresas') ?>" title=""><i class="la la-gear"></i>Empresas</a> 
+				 					</li> 
+				 					<!--
+										<li>
 				 						<a href="<?= url('administracion/empresas') ?>" title=""><i class="la la-industry"></i>Empresas</a> 
 				 					</li>
 				 					<li>
@@ -20,6 +25,7 @@
 									 <li>
 				 						<a href="<?= url('administracion/empresas/cursos-aprobar') ?>" title="Aprobar cursos"><i class="la la-university"></i>Empresa - Cursos </a> 
 				 					</li>
+				 					-->
 				 					<li>
 				 						<a href="<?= url('administracion/candidatos') ?>" title=""><i class="la la-users"></i>Candidatos</a> 
 				 					</li>

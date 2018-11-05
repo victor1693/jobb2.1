@@ -10,48 +10,16 @@ class con_administrator_empresas extends Controller
 {
     public function index()
     {
-
-        $condicion = "";
-        $params_cond = [];
-
-        if (isset($_GET['buscador']) && $_GET['buscador'] != "") {
-            $condicion .= " AND e.nombre LIKE ? OR e.razon_social LIKE ? OR u.correo=?";
-            $params_cond = [
-                $_GET['buscador'].'%',
-                $_GET['buscador'].'%',
-                $_GET['buscador']
-            ];
+        $buscar="";
+        if(isset($_GET['buscador']) && $_GET['buscador']!="")
+        {
+            $buscar=$buscar." AND nombre like '%".$_GET['buscador']."%'";
         }
-
-        $sql = " 
-        SELECT
-        u.id AS id_usuario,
-        e.id AS id_empresa,
-        IF(e.nombre IS NULL OR e.nombre='', 'Sin nombre', e.nombre) AS nombre_empresa,
-        IF(e.provincia=0,'Sin ubicación',CONCAT(l.localidad,', ',pv.provincia)) AS ubicacion,
-        DATE_FORMAT(e.tmp, '%d/%m/%Y') AS fecha_registro,
-        p.descripcion AS plan,
-        u.correo,
-        e.estatus
-        FROM tbl_usuarios u
-        INNER JOIN tbl_empresa e ON u.id=e.id_usuario
-        INNER JOIN tbl_empresas_planes ep ON e.id=ep.id_empresa
-        INNER JOIN tbl_planes p ON ep.id_plan=p.id
-        LEFT JOIN tbl_provincias pv ON e.provincia=pv.id
-        LEFT JOIN tbl_localidades l ON e.localidad=l.id
-        WHERE u.tipo_usuario=1 $condicion ORDER BY id_empresa DESC;
-        ";
-
-        $empresas = DB::select($sql, $params_cond);
-
-        $total_empresas = count($empresas);
-
-        $params = [
-            "empresas" => $empresas,
-            "total_empresas" => $total_empresas
-        ];
-
-        return view('administrator_empresas', $params);
+        $vista=View::make("administrator_empresas");
+        $sql="SELECT * FROM tbl_company WHERE estatus = 1 ".$buscar." GROUP BY id ORDER BY nombre ASC";
+       
+        $vista->datos=DB::select($sql);
+        return $vista;
     }
 
     public function create()
@@ -232,7 +200,8 @@ class con_administrator_empresas extends Controller
         DB::beginTransaction();
 
         try {
-            DB::delete("DELETE FROM tbl_usuarios WHERE id=?", [$id]);
+            DB::delete("DELETE FROM tbl_company_ofertas WHERE id_empresa=?", [$id]);
+            DB::delete("DELETE FROM tbl_company WHERE id=?", [$id]);
             DB::commit();
             return redirect('administracion/empresas?r=3');
         } catch (Exception $e) {
