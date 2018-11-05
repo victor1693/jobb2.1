@@ -120,7 +120,8 @@ class con_company_ofertas extends Controller
     public function publicar()
     {
  	//	 
-     
+        date_default_timezone_set('America/Argentina/Cordoba');
+        $hoy = date('Y-m-d H:m:s');
  	     if($_POST['habilidades']=="")
  	     {
  	     	echo '0';
@@ -160,7 +161,9 @@ class con_company_ofertas extends Controller
     	 genero ="'.$_POST['genero'].'",
     	 edad ="'.$_POST['edad'].'",
     	 habilidades ="'.$this->arreglos($_POST['habilidades']).'", 
-    	 idiomas ="'.$this->arreglos($_POST['idiomas']).'"';
+    	 idiomas ="'.$this->arreglos($_POST['idiomas']).'",
+         tmp="'.$hoy.'"
+         ';
     	 $campos='
     	 ( 
          experiencia,

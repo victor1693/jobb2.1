@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class con_administrator_empresas extends Controller
 {
     public function index()
-    {
+    {   
         $buscar="";
         if(isset($_GET['buscador']) && $_GET['buscador']!="")
         {
