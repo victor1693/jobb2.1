@@ -168,12 +168,14 @@ class con_company extends Controller
         $vista = View::make('empresas_ver');
         $sql="
          SELECT  t1.*,count(id_empresa) as cantidad FROM tbl_company t1 
-         LEFT JOIN tbl_company_ofertas t2 ON t2.id_empresa =t1.id  AND t2.estatus = 1 
-         WHERE t1.estatus = 1 ".$filtros."
+         LEFT JOIN tbl_company_ofertas t2 ON t2.id_empresa =t1.id  AND t2.estatus = 1  AND t2.plantilla <> 'SI'
+         WHERE 1=1  ".$filtros."
          GROUP BY t1.id
          ORDER BY count(id_empresa) DESC
          ";
-         
+        $sql_publicidad="SELECT * FROM tbl_publicidad_empresa ORDER BY vistos ASC LIMIT 0,2";
+        $publicidad=DB::select($sql_publicidad);
+        $vista->publicidad=$publicidad;
         $datos=DB::select($sql);
         $vista->datos= $datos;
 

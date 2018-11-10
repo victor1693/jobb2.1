@@ -11,6 +11,8 @@ class con_index extends Controller
     public function index()
     {
         $vista= View::make("index");
+       
+
         $sql_postulados="SELECT count(id) as cantidad FROM tbl_company_postulados;";
         $sql_ofertas="SELECT count(id) as cantidad FROM tbl_company_ofertas WHERE estatus = 1 AND plantilla <> 'SI';";
         $sql_candidatos="SELECT count(id) as cantidad FROM tbl_usuarios WHERE tipo_usuario = 2;";
@@ -31,7 +33,7 @@ class con_index extends Controller
         FROM 
         tbl_company_ofertas t1
         INNER JOIN tbl_company t2 ON t2.id = t1.id_empresa
-        WHERE t1.plantilla <> 'SI'
+        WHERE t1.plantilla <> 'SI' AND t1.estatus = 1
         ORDER BY t1.tmp desc
         LIMIT 0,12";
 
@@ -41,6 +43,9 @@ class con_index extends Controller
         ORDER BY t1.id DESC
         LIMIT 0,12";
 
+        
+        
+
         $vista->postulados=DB::select($sql_postulados);
         $vista->top_empresas=DB::select($sql_top_empresas);
         $vista->ofertas=DB::select($sql_ofertas);
@@ -49,6 +54,7 @@ class con_index extends Controller
         $vista->categorias=DB::select($sql_categorias);
         $vista->ultimas_ofertas=DB::select($sql_ultimas_ofertas);
         $vista->ultimas_noticias=DB::select($sql_ultimas_noticias);
+        
 
         return $vista;
     } 

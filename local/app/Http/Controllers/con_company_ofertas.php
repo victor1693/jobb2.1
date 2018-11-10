@@ -18,7 +18,7 @@ class con_company_ofertas extends Controller
     	$sql_nivel_estudio="SELECT * FROM tbl_nivel_estudio";
     	$sql_idiomas="SELECT * FROM tbl_idiomas ORDER BY descripcion ASC";
     	$sql_habilidades="SELECT * FROM tbl_habilidades ORDER BY descripcion ASC";
-    	$sql_plan_estado="SELECT * FROM tbl_planes_estado";
+    	$sql_plan_estado="SELECT * FROM tbl_planes_estado WHERE plan <> '' AND plan <> 'No aplica'";
     	$sql_genero="SELECT * FROM tbl_generos";
     	$sql_turno="SELECT * FROM tbl_turnos";
         $sql_salarios="SELECT * FROM tbl_rango_salarios";

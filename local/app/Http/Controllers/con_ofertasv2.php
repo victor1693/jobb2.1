@@ -77,9 +77,17 @@ class con_ofertasv2 extends Controller
 		 GROUP BY t1.id
          ORDER BY t1.tmp DESC
 		 ";
-          
+        $sql_publicidad="SELECT * FROM tbl_publicidad_empresa ORDER BY vistos ASC LIMIT 0,2";
+        $publicidad=DB::select($sql_publicidad);
+        
+        
+        foreach ($publicidad as $key) {
+
+            DB::update('UPDATE tbl_publicidad_empresa SET vistos ='.($key->vistos + 1).' WHERE id = '.$key->id.'');
+        }
     	$datos=DB::select($sql);
     	$vista->datos= $datos;
+        $vista->publicidad=$publicidad;
     	//return array_count_values($datos);
     	return $vista;
     }

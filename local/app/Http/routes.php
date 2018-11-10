@@ -13,7 +13,7 @@ Route::post('noticias',  'con_noticias@index');
 Route::get('noticias/{id}', 'con_noticias@noticia');
 Route::get('terminos', function () {return view('terminos');});
 Route::get('fag', 'con_administrator_faq@detalle_preguntas'); 
-//Route::get('ofertas', 'con_ofertas@index');
+
 Route::post('ofertas', 'con_ofertas@index');
 //Route::get('detalleoferta/{id}', 'con_ofertas@detalle');
 Route::get('ofertas', 'con_ofertasv2@index');
@@ -50,6 +50,12 @@ Route::get('redes/{red}', 'con_log_social@redirectToProvider');
 Route::get('callback/{red}', 'con_log_social@callback');
 Route::post('addcallback', 'con_log_social@add_user');
 Route::post('evaluacion', 'con_candidatos@evaluacionJobbers');
+
+/**Publicidad empresas**/
+Route::get('company/detalle/{id}',   'con_company_publicidad@index');
+Route::post('company/recomendar',   'con_company_publicidad@recomendar');
+Route::post('company/valorar',   'con_company_publicidad@valorar');
+
 
 //********************************************************//
 //*                RUTAS NUEVAS EMPRESAS                 *//
@@ -117,6 +123,7 @@ Route::get('panelnoticias/{id}', 'con_noticias_dashboard@editar_noticia');
 Route::post('editpublicacion', 'con_noticias_dashboard@edit_publicacion');
 Route::get('redactoressalir', 'con_noticias_dashboard@salir');  
 });
+
 //********************************************************//
 //*           RUTAS PARA EL PROCESO DE POSTULADOS 		  *//
 //********************************************************//
@@ -237,6 +244,7 @@ Route::get('admincandidelestudios/{id}', 'con_candidato_perfil_publico@del_educa
 Route::get('admincandidelexpe/{id}', 'con_candidato_perfil_publico@del_expe');
  Route::post('adminsetprofilepic', 'con_candidato_perfil_publico@imagen_perfil');
 Route::post('admincandiredescrear', 'con_candidato_redes@crear');
+
 Route::get('administrator', 'con_administrator_login@index');
 Route::get('administracion/candidatos/eliminar', 'con_administrator_candidatos@eliminar_candidato');
 Route::get('administracion/noticias', 'con_administrator_noticias@index');
@@ -258,8 +266,12 @@ Route::get('administracion/empresas/plantilla_info/{id}', 'con_administrator_emp
  
 
 Route::group(['middleware' => 'log_a'], function () {
-
-	Route::get('admsalir', 'con_administrator_login@salir'); 
+/** Publicidad a empresas **/
+Route::get('administracion/publicidad', 'con_company_publicidad@indexEmpresa');   
+Route::get('administracion/eliminar/publicidad/{id}', 'con_company_publicidad@eliminar');   
+Route::post('administracion/addpublicidad', 'con_company_publicidad@add_empresa');
+/****/
+Route::get('admsalir', 'con_administrator_login@salir'); 
 Route::get('administracion/contacto', 'con_administrator_contacto@index');
 Route::get('administracion/contacto/{id}', 'con_administrator_contacto@ver')->where(['id' => '[0-9]+']);
 Route::get('administracion/candidatos', 'con_administrator_candidatos@index');

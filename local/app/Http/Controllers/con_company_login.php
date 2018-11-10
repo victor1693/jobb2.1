@@ -15,7 +15,7 @@ class con_company_login extends Controller
 	    		WHERE correo='".$this->injection(strtolower($_POST['correo']))."' 
 	    		AND clave ='".md5($this->injection(strtolower($_POST['clave'])))."'";
 	    		 $datos=DB::select($sql);
-                
+                return $sql;
                 if($datos[0]->cantidad==1)
 	    		{
                     $sql="
@@ -65,6 +65,7 @@ class con_company_login extends Controller
     	$request->session()->forget('company_img');
     	$request->session()->forget('company_nombre');
     	$request->session()->forget('company_plan');
+        $request->session()->forget('tipo_usuario'); 
     	return Redirect('empresas/entrar'); 
     }
 }

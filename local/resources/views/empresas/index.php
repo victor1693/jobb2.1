@@ -36,6 +36,7 @@
         <?php include('local/resources/views/includes/google_analitycs.php');?>
     </head>
 </html>
+
 <body class="vertical-layout vertical-menu 2-columns fixed-navbar" data-col="2-columns" data-menu="vertical-menu" data-open="click">
     <?php include('includes/nav.php')?>
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">

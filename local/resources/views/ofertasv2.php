@@ -485,19 +485,61 @@ $mi_tokken=csrf_token();
                                     $siguiente=$_GET['pagina']+1; 
                                   }
                                   ?>
+                                <?php if (count($publicidad)>1): ?>
+                                  
+                                
+                                <div class="alert alert-info">
+                                  <span style="font-weight: 600">Jobbers</span> Buscando siempre las mejores oportunidadades de empleo para  tí.
+                                </div>
+                                <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;">
 
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle"
+                                style="display:block"
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-6t+ed+2i-1n-4w"
+                                data-ad-client="ca-pub-1968505410020323"
+                                data-ad-slot="2571530788"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script> 
+                                </div>
+                                <?php foreach ($publicidad as $key): ?>
+                                    <!--Ofertas de empresas -->
+                                 <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;">
+                                 <div style="text-align: center;">
+                                  <a href="company/detalle/<?= $key->id;?>" title="">
+                                    <img style="height: 145px;width: auto;margin: 0 auto;" src="<?= Request::root()?>/img_company_pub/portada/<?= $key->img_portada?>"></a>
+                                    <p style="text-align: left;font-weight: 600;font-size: 
+                                    16px;font-family: 'Calibri';color: #4c4c4c;margin-left: 12px;margin-bottom: 0px;"><a href="company/detalle/<?= $key->id;?>" title=""><?= $key->nombre?></a> </p>
+                                   
+
+                                   <div style="text-align: left;font-weight: 300;font-size: 
+                                    14px;font-family: 'Calibri';color: #919191;padding-left: 15px;">
+                                      <span style=" letter-spacing: -1;"><?= substr($key->titulo_oferta, 0,75)?></span>
+                                   </div>
+                                 </div>
+                                 <div style="padding-top: 15px;padding-bottom: 15px;text-align: right;padding-right: 15px;">
+                                   <a style="border:1px solid #bfbfbf;text-align: center;color: #919191;font-size: 12px;padding: 5px;" href="company/detalle/<?= $key->id;?>" title="">Más información</a>
+                                 </div>
+                                </div>
+                                <!--Fin ofertas empresas-->
+                                <?php endforeach ?>
+
+                                <?php endif ?>
+                                  
                                 <?php
 
                                 $contador=0;
                                 $inicio =($_GET['pagina']*25)-25;
                                 $final =($_GET['pagina']*25);
+
+
                                 foreach ($datos as $key): ?>
                                  <?php if ($contador>=$inicio && $contador<=$final): ?>
                                     
                                 
-                                <!-- Oferta normal -->
-                                <a href="#">
-                                </a>
+                               
                                 <div class="job-listing wtabs">
                                     <a href="#">
                                         <div class="mobile">
