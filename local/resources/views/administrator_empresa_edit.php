@@ -26,7 +26,7 @@
  <section>
 
 
-		<div class="block no-padding mt-75">
+		<div class="block no-padding mt-75 ">
 			<div class="container">
 				 <div class="row no-gape">
 				 	<?php include('includes/administrator_menu_left.php');?> 
