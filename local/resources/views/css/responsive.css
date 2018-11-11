@@ -165,7 +165,11 @@
 }
 
 @media (max-width:1024px) {
-
+    .container-account-btns{
+        text-align: center; 
+        width: 217px;
+        margin: 0 auto;
+    }
     .btn-search-home{
         margin-top: 10px !important;
     }
@@ -1092,6 +1096,11 @@
 }
 
 @media (max-width:520px) {
+    .container-account-btns{
+        text-align: center; 
+        width: 220px;
+        margin: 0 auto;
+    }
     .input-search-home{
         width: 86% !important;
     }

@@ -54,22 +54,24 @@ $back2="../";
             </a>
             <?php endif; ?>
             <?php else: ?>
-            <ul class="account-btns">
-                <li onclick='location.href="<?php echo Request::root()?>/registrar"'>
-                    <a title="">
-                        <i class="la la-key">
-                        </i>
-                        Registrar
-                    </a>
-                </li>
-                <li onclick='location.href="<?php echo Request::root()?>/login"'>
-                    <a title="">
-                        <i class="la la-external-link-square">
-                        </i>
-                        Ingresar
-                    </a>
-                </li>
-            </ul>
+            <div class="container-account-btns">
+                <ul class="account-btns">
+                    <li onclick='location.href="<?php echo Request::root()?>/registrar"'>
+                        <a title="">
+                            <i class="la la-key">
+                            </i>
+                            Registrar
+                        </a>
+                    </li>
+                    <li onclick='location.href="<?php echo Request::root()?>/login"'>
+                        <a title="">
+                            <i class="la la-external-link-square">
+                            </i>
+                            Ingresar
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <?php endif; ?>
         </div>
         <!--Btn Extras -->
