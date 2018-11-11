@@ -29,7 +29,7 @@
 	
 	  <?php include('local/resources/views/includes/general_header.php');?>
 	  <?php include('local/resources/views/includes/general_header_responsive.php');?>
-	<section>
+	<section class="section-home-header">
 		<div class="block no-padding overlape">
 			<div class="container fluid">
 				<div class="row">
