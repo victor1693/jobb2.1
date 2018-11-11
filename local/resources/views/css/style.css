@@ -427,6 +427,7 @@ button {
     margin: 0 40px;
     z-index: 11;
     text-align: center;
+    display: none;
 }
 .slick-prev:hover:before, .slick-prev:focus:before, .slick-next:hover:before, .slick-next:focus:before {
     opacity: 1;
@@ -11428,7 +11429,7 @@ header, .res-openmenu, .res-closemenu, .responsivemenu>ul>li.menu-item-has-child
 }
 /* Empresas */
 
-.text-info-empresa{
+.text-info-empresa {
     /* max-width: 450px; */
     display: block;
     text-align: center;

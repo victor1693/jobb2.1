@@ -28,11 +28,20 @@ class con_log_social extends Controller
 			 $user->avatar_original=$user['pictureUrl'];
 			  
 		}
+
 		$sql="SELECT count(id) as total,correo,token FROM tbl_tokens_social_verification WHERE correo='".$user->email."'";	 
 		$datos=DB::select($sql);
 			if($datos[0]->total==0)
-			{
-				return Redirect('redes_users?token='.$token.'&user='.$user->email.'&name='.$user->name.'&pic='.$user->avatar_original.'&red='.$proveedor); 
+			{   
+				if($this->add_user($user->avatar_original,$user->email,$user->name)){
+				$sql="SELECT count(id) as total,correo,token FROM tbl_tokens_social_verification WHERE correo='".$user->email."'";	 
+				$datos=DB::select($sql);
+				 return Redirect('socialmedia?token='.$datos[0]->token.'&user='.$_POST['email'].'&secure=1');
+				 }
+				 else
+				 {
+				 	return Redirect("inicio?result=Ha ocurrido un error;");
+				 }
 			}
 			else if($datos[0]->total==1)
 			{				 
@@ -41,8 +50,12 @@ class con_log_social extends Controller
 		 
 		} 
 
-	public function add_user()
+	public function add_user($pic,$email,$name)
 	{
+		$_POST['pic']=$pic;
+		$_POST['email']=$email;
+		$_POST['name']=$name;
+		$_POST['tipo_user']="1";
 		$imagen = file_get_contents($_POST['pic']);
 		$archivo=$this->generateRandomString(15).'.jpg';
 
@@ -73,39 +86,13 @@ class con_log_social extends Controller
 				DB::insert($sql);
 				DB::insert($sql_general);
 				$this->pic_name($_POST['email'],$archivo,$_POST['name']);
-				return Redirect('socialmedia?token='.$token.'&user='.$_POST['email'].'&secure=1');
+				return 1;
+				
 			} catch (Exception $e) {
 				
 			}
 			}
-			else if($_POST['tipo_user']=="2")
-			{
-
-				$sql="";
-				$sql="INSERT INTO tbl_usuarios VALUES(
-				null,
-				'".$_POST['email']."',
-				'',
-				'".md5("123654789")."',
-				1,
-				'".$token."',
-				1,
-				'".$this->generateRandomString(40)."',
-				null
-				)";
-
-				try {
-					DB::insert($sql);
-					DB::insert($sql_general);
-					$datos=DB::select("SELECT id FROM tbl_usuarios WHERE correo='".$_POST['email']."'");
-					DB::insert("INSERT INTO tbl_empresa (id,id_usuario) VALUES(".$datos[0]->id.",".$datos[0]->id.")");
-					DB::insert("INSERT INTO tbl_empresas_planes VALUES(null,".$datos[0]->id.",1,null)");
-					$this->pic_name($_POST['correo'],$archivo,$_POST['name']);
-					return Redirect('socialmedia?token='.$token.'&user='.$_POST['email'].'&secure=1');
-				} catch (Exception $e) {
-					
-				}
-			}
+			 
 		}
 		
 	}

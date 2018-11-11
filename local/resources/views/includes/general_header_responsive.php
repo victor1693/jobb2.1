@@ -49,7 +49,7 @@ $back2="../";
             </a>
             <?php elseif (session()->
             get('tipo_usuario')==1): ?>
-            <a class="my-panel" href="<?= url('empresa/ofertas') ?>" style="float: initial" title="">
+            <a class="my-panel" href="<?php echo Request::root();?>/empresas/ofertas" style="float: initial" title="">
                 Mi panel
             </a>
             <?php endif; ?>

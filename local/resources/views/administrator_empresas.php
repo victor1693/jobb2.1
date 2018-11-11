@@ -35,11 +35,11 @@
 					 			<h3>Empresas 
 					 			</h3>
 					 			<div class="extra-job-info" style="margin-bottom: 30px;background-color: #f0f0f0;"> 
-						 			<h3><?= $total_empresas ?> Empresas</h3>
+						 			<h3> <?= count($datos);?> Empresas</h3>
 						 		</div>
 						 	 	
 						 	 <form action="empresas" method="get" id="form_search"> 
-						 	 	<a href="empresas/create" title="" style=""><span style="padding-left: 30px;text-decoration: underline; color: #009804;font-size: 16px;margin-top: -50px;">Nueva Empresa</span></a> | <a href="empresas" title="" style=""><span style="text-decoration: underline; color: #009804;font-size: 16px;margin-top: -50px;"> Limpiar filtro </span></a>
+						 	 	<a href="empresas" title="" style=""><span style="padding-left: 30px;text-decoration: underline; color: #009804;font-size: 16px;margin-top: -50px;">Limpiar filtro</span></a> 
 							 	<div class="pf-field" style="padding-left: 30px;margin-top: 25px;">
 									<input style="margin-bottom: 0px;" id="buscador" value="<?= isset($_GET['buscador']) ? $_GET['buscador'] : '' ?>" name="buscador" type="text" placeholder="Buscador...">
 									<i class="la la-search" style="cursor: pointer;" id="search"></i>
@@ -58,43 +58,38 @@
 						 			</thead>
 						 			
 						 			<tbody>
-						 				<?php foreach ($empresas as $empresa): ?>
+						 				 <?php foreach ($datos as $key): ?>
+						 				 	
+						 				
 						 				<tr>
 						 					<td>
 						 						<div class="table-list-title">
-						 							<h3><a href="../empresa/detalle?e=<?= $empresa->id_empresa ?>" title="" target="_blank"><?= $empresa->nombre_empresa ?></a></h3>
-						 							<span><i class="la la-map-marker"></i> <?= $empresa->ubicacion ?></span>
+						 							<h3><a href=" " title="" target="_blank"><?= $key->nombre?></a></h3> 
+						 						</div>
+						 					</td> 
+						 					<td  style="padding-right: 10px;">
+						 						<div class="table-list-title">
+						 							<h3><?= $key->plan?></h3>
 						 						</div>
 						 					</td> 
 						 					<td>
 						 						<div class="table-list-title">
-						 							<h3><?= $empresa->plan ?></h3>
+						 							<h3><?= $key->correo?></h3>
 						 						</div>
 						 					</td> 
 						 					<td>
 						 						<div class="table-list-title">
-						 							<h3><?= $empresa->correo ?></h3>
-						 						</div>
-						 					</td> 
-						 					<td>
-						 						<div class="table-list-title">
-						 							<h3><?= $empresa->fecha_registro ?></h3>
+						 							<h3><?= $key->fecha_registro?></h3>
 						 						</div>
 						 					</td>  
 						 					<td>
 						 						<ul class="action_job">
-						 							<li><span>Ver</span><a href="../empresa/detalle?e=<?= $empresa->id_empresa ?>" title="" target="_blank"><i class="la la-eye"></i></a></li>
-						 							<li><span>Editar</span><a href="empresas/edit/<?= $empresa->id_empresa ?>" title=""><i class="la la-pencil"></i></a></li>
-						 							<?php if ($empresa->estatus == 1): ?>
-						 							<li><span>Suspender</span><a href="../administracion/empresas/suspender-habilitar/0/<?= $empresa->id_empresa ?>" title=""><i class="la la-power-off"></i></a></li>
-						 							<?php else: ?>
-						 							<li><span>Habilitar</span><a href="../administracion/empresas/suspender-habilitar/1/<?= $empresa->id_empresa ?>" title=""><i class="la la-power-off"></i></a></li>
-						 							<?php endif; ?>
-						 							<li><span>Eliminar</span><a href="../administracion/empresas/delete/<?= $empresa->id_usuario ?>" title=""><i class="la la-trash-o"></i></a></li>
+						 							 
+						 							<li><span>Eliminar</span><a href="empresas/delete/<?= $key->id;?>" title=""><i class="la la-trash-o"></i></a></li>
 						 						</ul>
 						 					</td>
-						 				</tr>
-						 				<?php endforeach; ?> 
+						 				</tr> 
+						 				 <?php endforeach ?>
 						 			</tbody>
 						 		</table>
 					 		</div>
@@ -108,50 +103,6 @@
 <script src="../local/resources/views/js/jquery.min.js" type="text/javascript"></script> 
 <script src="../local/resources/views/js/script.js" type="text/javascript"></script> 
 <script src="../local/resources/views/js/slick.min.js" type="text/javascript"></script>
-<script src="../local/resources/views/plugins/notify.js" type="text/javascript"></script>
-
-<script>
-	$('#search').on('click', function(){
-		if ($('#buscador').val() != "") {
-			$('#form_search').submit();
-		} else {
-			$.notify('No puedes dejar el buscador vacío', {
-			  className:"info",
-			  globalPosition: "bottom right"
-			  });
-		}
-	});
-
-	<?php if (isset($_GET['r']) && $_GET['r'] == 1): ?>
-
-			$.notify("Se ha creado una nueva empresa satisfactoriamente.", {
-			className:"success",
-			globalPosition: "bottom right"
-			});
-
-	<?php elseif (isset($_GET['r']) && $_GET['r'] == 2): ?>
-
-		$.notify("Se ha editado la empresa satisfactoriamente.", {
-		className:"success",
-		globalPosition: "bottom right"
-		});
-
-	<?php elseif (isset($_GET['r']) && $_GET['r'] == 3): ?>
-
-		$.notify("Se ha eliminado la empresa satisfactoriamente.", {
-		className:"success",
-		globalPosition: "bottom right"
-		});
-
-	<?php elseif (isset($_GET['r']) && $_GET['r'] == 4): ?>
-
-		$.notify("Ha ocurrido un error inesperado. Vuelva intentarlo.", {
-		className:"error",
-		globalPosition: "bottom right"
-		});
-
-	<?php endif; ?>
-</script> 
-
+<script src="../local/resources/views/plugins/notify.js" type="text/javascript"></script> 
 </body>
 </html>

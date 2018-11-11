@@ -266,8 +266,8 @@ $mi_tokken=csrf_token();
                           </div>
                         </div> 
                          <div class="col-xs-3" style="padding-left: 0px; text-align: right;padding-right: 0px;">
-                            <button type="button" onclick="location.href='empresas'" title="Limpiar filtros" class="btn btn-success" style="margin-top: 0px;height: 49px;width: 50px;float: right;">
-                              <i class="fa fa-filter" style="font-size: 24px;"></i></button>
+                            <button type="button" onclick="location.href='ofertas'" title="Limpiar filtros" class="btn btn-warning" style="margin-top: 0px;height: 49px;width: 50px;float: right;">
+                              <i class="fa fa-trash" style="font-size: 24px;"></i></button>
                             <p style="font-weight: 600;font-size: 16px;padding-top: 7px;text-align: left;padding-left: 9px;">
                               <?= count($datos);?> Empresas
                             </p>
@@ -290,7 +290,7 @@ $mi_tokken=csrf_token();
                        <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;">
                          <?php 
 
-                                  $pagina=ceil((count($datos)/25));
+                                  $pagina=ceil((count($datos)/26));
                                   if (empty($_GET['pagina']) || $_GET['pagina']=="") {
                                        $_GET['pagina']=1;
                                   }
@@ -305,8 +305,14 @@ $mi_tokken=csrf_token();
                                     $siguiente=$_GET['pagina']+1; 
                                   }
                                   ?>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "style="padding-left: 0px;padding-right: 0px;">
-                              <div class="emply-list box contendor_empresa" style="padding-top: 10px; padding-right: 5px;padding-left: 5px;">
+                                  <?php if (count($publicidad )>1): ?>
+                                    
+                                
+                                <div class="alert alert-info">
+                                  <span style="font-weight: 600">Jobbers</span> Buscando siempre las mejores oportunidadades de empleo para  tí.
+                                </div>
+                                <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;">
+
                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <ins class="adsbygoogle"
                                 style="display:block"
@@ -316,14 +322,38 @@ $mi_tokken=csrf_token();
                                 data-ad-slot="2571530788"></ins>
                                 <script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
-                              </div><!-- Employe List -->
-                            </div> 
+                                </script> 
+                                </div>
+                                <?php foreach ($publicidad as $key): ?>
+                                    <!--Ofertas de empresas -->
+                                 <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;">
+                                 <div style="text-align: center;">
+                                  <a href="company/detalle/<?= $key->id;?>" title="">
+                                    <img style="height: 145px;width: auto;margin: 0 auto;" src="<?= Request::root()?>/img_company_pub/portada/<?= $key->img_portada?>"></a>
+                                    <p style="text-align: left;font-weight: 600;font-size: 
+                                    16px;font-family: 'Calibri';color: #4c4c4c;margin-left: 12px;margin-bottom: 0px;"><a href="company/detalle/<?= $key->id;?>" title=""><?= $key->nombre?></a> </p>
+                                   
+
+                                   <div style="text-align: left;font-weight: 300;font-size: 
+                                    14px;font-family: 'Calibri';color: #919191;padding-left: 15px;">
+                                      <span style=" letter-spacing: -1;"><?= substr($key->titulo_oferta, 0,75)?></span>
+                                   </div>
+                                 </div>
+                                 <div style="padding-top: 15px;padding-bottom: 15px;text-align: right;padding-right: 15px;">
+                                   <a style="border:1px solid #bfbfbf;text-align: center;color: #919191;font-size: 12px;padding: 5px;" href="company/detalle/<?= $key->id;?>" title="">Más información</a>
+                                 </div>
+                                </div>
+                                <!--Fin ofertas empresas-->
+                                <?php endforeach ?>
+
+                                <?php endif ?>
+                                  
+                             
                                 <?php
 
                                 $contador=0;
-                                $inicio =($_GET['pagina']*25)-25;
-                                $final =($_GET['pagina']*25);
+                                $inicio =($_GET['pagina']*26)-26;
+                                $final =($_GET['pagina']*26);
 
 
                                 foreach ($datos as $key): ?>
@@ -342,7 +372,7 @@ $mi_tokken=csrf_token();
                                   <h6><i class="la la-map-marker"></i> <?= validar($key->provincia.' - '.$key->localidad);?></h6>
                                 </div>
                                 <div>
-                                  <button type="button" class=" btn btn-primary">Ver</button>
+                                  <button onclick="location.href='empresa/detalle/<?= $key->id;?>'" type="button" class=" btn btn-primary">Ver</button>
                                 </div>
                               </div><!-- Employe List -->
                             </div> 

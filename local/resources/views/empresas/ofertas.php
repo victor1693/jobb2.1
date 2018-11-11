@@ -51,6 +51,7 @@ function select_options($habilidades_json){
                 background-color: #e9ebee;
                 cursor: pointer; 
             }
+        
             #informacion_general ul li{margin-bottom:-8px;}
             {
 
@@ -111,6 +112,31 @@ function select_options($habilidades_json){
               </div>
               <div class="modal-footer">
                 <button onclick="publicar(1)" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="modal_social" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Link para compartir</h4>
+              </div>
+              <div class="modal-body">
+                 <div class="row">
+                   <div class="col-sm-12">
+                     <label for="">Copie el link</label>
+                     <input id="link_compartir" type="text" class="form-control" name="">
+                   </div>
+                 </div>
+              </div>
+              <div class="modal-footer">
+                <button  type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
               </div>
             </div>
 
@@ -384,6 +410,7 @@ function select_options($habilidades_json){
                                                                         <th style="padding: 0px;width: 100px;border: 0px;font-weight: 600;">Vistas</th>
                                                                         <th style="padding: 0px;width: 100px;border: 0px;font-weight: 600;">Estatus</th>
                                                                         <th style="padding: 0px;width: 100px;border: 0px;font-weight: 600;">Opciones</th>
+                                                                         <th style="padding: 0px;width: 100px;border: 0px;font-weight: 600;text-align: center;">Compartir</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="tabla-resumen"> 
@@ -1074,12 +1101,17 @@ function select_options($habilidades_json){
                      }); 
                      $("#cbn_plantilla").html(c_plantillas);
                      jQuery.each(JSONArray.ofertas, function(index, dato) { 
-                       var titulo = dato.titulo;
+                       var titulo = dato.mi_titulo;
                         if(titulo.length > 40)
                         {
-                           var titulo = dato.titulo.substr(0,40);
+                           var titulo = dato.mi_titulo.substr(0,40); 
                            titulo = titulo + "...";
                         }
+                        else
+                        {
+
+                        }
+                        
                        
                         contador++;
                         if(plan!="Gratis")
@@ -1106,7 +1138,7 @@ function select_options($habilidades_json){
                         
                          $("#select_ofertas").append('<option value="'+dato.id+'">'+alias+'</option>');
 
-                        contenido=contenido+'<tr class="sp"> <td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+alias+'</a></td><td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+titulo+'</a></td><td class="text-truncate sp" style="padding:2px;"><span onclick="get_postulados('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;">'+dato.cantidad+'</span> </td><td class="valign-middle" style="padding:2px;"> '+dato.vistas+' </td><td class="text-truncate sp" style="padding:2px;">'+estatus+'</td><td class="text-truncate sp" style="padding:2px;">'+boton+' '+editar+' '+eliminar+'</td></tr>';
+                        contenido=contenido+'<tr class="sp"> <td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+alias+'</a></td><td class="text-truncate sp " style="padding:2px;"><a href="#" style="color:#282828; class=""">'+ucwords(titulo)+'</a></td><td class="text-truncate sp" style="padding:2px;"><span onclick="get_postulados('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;">'+dato.cantidad+'</span> </td><td class="valign-middle" style="padding:2px;"> '+dato.vistas+' </td><td class="text-truncate sp" style="padding:2px;">'+estatus+'</td><td class="text-truncate sp" style="padding:2px;">'+boton+' '+editar+' '+eliminar+'</td><td class="text-truncate sp" style="padding:2px;width:35px;text-align:center;"><span onclick="modal_social('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;"><i class="icon icon-share-alt"></i></span> </td></tr>';
                     });
                      $("#total").text(contador);
                      $("#tabla-resumen").append(contenido);
@@ -1166,7 +1198,11 @@ function select_options($habilidades_json){
 
    <script> 
        
-       
+       function ucwords(oracion){
+    return oracion.replace(/^([a-z\u00E0-\u00FC])|\s+([a-z\u00E0-\u00FC])/g, function($1){
+       return $1.toUpperCase(); 
+    });
+}
       function publicar(theme_par = 0) 
        {
            
@@ -1253,6 +1289,12 @@ function select_options($habilidades_json){
       $( document ).ajaxComplete(function() {
             $("#modal_loader").modal("hide");
       });
+
+      function modal_social(dato)
+      {
+        $("#link_compartir").val('https://www.jobbersargentina.net/detalleoferta/'+dato);
+        $("#modal_social").modal("show");
+      }
    </script>
   <style type="text/css">
        .note-view,.note-insert,.note-table,.note-color,.note-fontname,.note-style,.note-fontsize,.note-para > .note-btn-group

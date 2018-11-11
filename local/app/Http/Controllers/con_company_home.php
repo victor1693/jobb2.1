@@ -32,6 +32,8 @@ class con_company_home extends Controller
         $sql_promos="SELECT t2.id_promocion,t2.fecha_ven FROM tbl_promociones t1
         LEFT JOIN tbl_company_promociones t2 ON t2.id_promocion = t1.id
          WHERE t1.estatus = 1 AND t2.id_empresa =".session()->get('company_id')."";
+
+        $sql="SELECT venc_plan,CURDATE() as hoy,modal_venc as modal FROM tbl_company WHERE id = ".session()->get('company_id')."";
       
         $vista->promos = DB::select($sql_promos);        
     	$vista->oferta_total = DB::select($sql_ofertas_jobbers);
@@ -40,6 +42,7 @@ class con_company_home extends Controller
     	$vista->empresas = DB::select($sql_company);
     	$vista->ofertas_empresa = DB::select($sql_ofertas_empresa);
     	$vista->postulados_empresa = DB::select($sql_postulados_empresa);
+        $vista->empresa = DB::select($sql);
         $vista->recomendados = $this->recomendacion(); 
     	return $vista;
       

@@ -123,6 +123,20 @@
                                      </div> 
                                 </div> 
                             </div>
+                        <div class="job-details" > 
+                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- prueba 3 -->
+                            <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-1968505410020323"
+                            data-ad-slot="2357238982"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                            
+                          </div>
                             <!-- Job Head -->
                             <div class="job-details" style="text-align: justify;">
                             	 <h3 style="font-size: 24px;">
@@ -431,7 +445,7 @@
                         </button>
                         <?php endif ?>
                       </div> 
-                        <div class="recent-jobs" style="margin-top: 12px;">  
+                        <div class="recent-jobs" style="margin-top: 12px;max-height: 450px;overflow-y: scroll;">  
                         	<?php 
                         	$contador=0;
                         	if (count($ofertas)!=0): ?> 
@@ -469,6 +483,18 @@
                                 </div>
                                 <?php endif ?>
                             </div>
+                              <div class="emply-list box contendor_empresa" style="margin-top: 10px; padding-right: 5px;padding-left: 5px;">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle"
+                                style="display:block"
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-6t+ed+2i-1n-4w"
+                                data-ad-client="ca-pub-1968505410020323"
+                                data-ad-slot="2571530788"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                              </div><!-- Employe List -->
 
                             <div style="background-color: #fff;text-align: center;">
                                 <div id="fb-root" style="text-align: center;margin: 0 auto;"></div>

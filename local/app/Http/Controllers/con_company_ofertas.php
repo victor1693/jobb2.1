@@ -18,7 +18,7 @@ class con_company_ofertas extends Controller
     	$sql_nivel_estudio="SELECT * FROM tbl_nivel_estudio";
     	$sql_idiomas="SELECT * FROM tbl_idiomas ORDER BY descripcion ASC";
     	$sql_habilidades="SELECT * FROM tbl_habilidades ORDER BY descripcion ASC";
-    	$sql_plan_estado="SELECT * FROM tbl_planes_estado";
+    	$sql_plan_estado="SELECT * FROM tbl_planes_estado WHERE plan <> '' AND plan <> 'No aplica'";
     	$sql_genero="SELECT * FROM tbl_generos";
     	$sql_turno="SELECT * FROM tbl_turnos";
         $sql_salarios="SELECT * FROM tbl_rango_salarios";
@@ -45,7 +45,7 @@ class con_company_ofertas extends Controller
         $sql_plantillas ="SELECT * FROM tbl_company_ofertas WHERE plantilla ='SI' AND  id_empresa=".session()->get('company_id')."";
         $plantillas=DB::select($sql_plantillas);
     	$sql="
-        SELECT t1.*,COUNT(t2.id) as cantidad FROM tbl_company_ofertas t1
+        SELECT t1.*,COUNT(t2.id) as cantidad,lower(t1.titulo) as mi_titulo FROM tbl_company_ofertas t1
         LEFT JOIN tbl_company_postulados t2 ON t2.id_oferta  = t1.id       
         WHERE  t1.id_empresa= ".session()->get('company_id')." AND t1.plantilla !='SI'
         GROUP BY t1.id
@@ -120,7 +120,8 @@ class con_company_ofertas extends Controller
     public function publicar()
     {
  	//	 
-     
+        date_default_timezone_set('America/Argentina/Cordoba');
+        $hoy = date('Y-m-d H:m:s');
  	     if($_POST['habilidades']=="")
  	     {
  	     	echo '0';
@@ -160,7 +161,9 @@ class con_company_ofertas extends Controller
     	 genero ="'.$_POST['genero'].'",
     	 edad ="'.$_POST['edad'].'",
     	 habilidades ="'.$this->arreglos($_POST['habilidades']).'", 
-    	 idiomas ="'.$this->arreglos($_POST['idiomas']).'"';
+    	 idiomas ="'.$this->arreglos($_POST['idiomas']).'",
+         tmp="'.$hoy.'"
+         ';
     	 $campos='
     	 ( 
          experiencia,
