@@ -153,6 +153,9 @@
 }
 
 @media (min-width: 1024px) {
+    .input-search-home{
+        width: 94% !important;
+    }
     .blogpost.style2 {
         max-width: 100%;
     }
@@ -162,6 +165,10 @@
 }
 
 @media (max-width:1024px) {
+
+    .btn-search-home{
+        margin-top: 10px !important;
+    }
     .section-home-header{
         margin-top: 121px;
     }
@@ -522,6 +529,9 @@
 }
 
 @media (max-width:768px) {
+    .input-search-home{
+        width: 93% !important;
+    }
     .section-home-header{
         margin-top: 114px;
     }
@@ -1082,6 +1092,9 @@
 }
 
 @media (max-width:520px) {
+    .input-search-home{
+        width: 86% !important;
+    }
     .section-home-header{
         margin-top: 110px;
     }

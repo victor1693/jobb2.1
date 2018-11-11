@@ -46,17 +46,17 @@
 										<h3 style="font-weight: 300; font-size: 42px;margin-top: 50px;padding-bottom: 0px;"><span style="font-size: 24px;"> Hoy somos </span><?= $candidatos[0]->cantidad;?><span style="font-size: 24px;"> candidatos</span></h3> 
 									</div>
 
-									<div class="search-job2 style2" style="border: 2px solid #d4d4d4;border-radius: 4px;">	
+									<div class="search-job2 style2" style="border: 2px solid #d4d4d4;border-radius: 4px; text-align: center">	
 										<form method="get" action="ofertas">
 											<div class="row no-gape" style="margin-top: 0px; background-image: url(local/resources/views/empresas/app-assets/images/logo/bg-3.jpg)">
-												<div class="col-lg-10 col-md-8 col-sm-8 col-xs-12">
+												<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
 													<div class="job-field">
-														<label style="margin-top: 10px;font-weight: 600;font-size: 16px;padding-left: 25px;">Buscador de ofertas</label>
-														<input autocomplete="false" name="buscar" style="border: 1px solid #ddd;padding: 3px;height: 40px; border-radius: 4px;margin-left: 25px;margin-right: 25px;width: 90%" type="text" placeholder="Programador, Consultor, Analísta" />
+														<label style="margin-top: 10px;font-weight: 600;font-size: 16px;padding-left: 0px;">Buscador de ofertas</label>
+														<input autocomplete="false" name="buscar" class="input-search-home" style="border: 1px solid #ddd;padding: 3px;height: 40px; border-radius: 4px;margin-left: 25px;margin-right: 25px; text-align: center" type="text" placeholder="Programador, Consultor, Analísta" />
 													</div>
 												</div> 
 												<div class="col-lg-2 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
-													<button style="background-color: #2e3192;" type="submit"><i class="la la-search"></i>BUSCAR</button>
+													<button style="background-color: #2e3192;" type="submit" class="btn-search-home"><i class="la la-search"></i>BUSCAR</button>
 												</div>
 											</div>
 										</form>
