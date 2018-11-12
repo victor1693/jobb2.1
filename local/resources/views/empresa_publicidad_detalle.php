@@ -98,6 +98,21 @@
                         </div>
                       </div>
                        
+                       <div class="col-sm-12" style="height: 120px;padding: 0px;">
+                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- prueba 3 -->
+                            <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-1968505410020323"
+                            data-ad-slot="2357238982"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                            
+                           
+                        </div>
 
                         <div class="col-xs-12" style="text-align: justify; padding-top: 20px;"> 
                             <p><?= $detalle[0]->descripcion;?></p> 
@@ -146,8 +161,21 @@
                      </div>
                     
                      <div class="row" style="background-color: #f7f7f7;margin-top: 25px;">
+                      <div class="col-sm-12 " style="height: 120px;padding: 0px;">
+                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle"
+                                style="display:block"
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-fb+5w+4e-db+86"
+                                data-ad-client="ca-pub-1968505410020323"
+                                data-ad-slot="2781120636"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                        </div>
+
                         <div class="col-lg-12" style="padding-top: 25px;"> 
-                           <h5 style="text-align: center;">Las <strong>Grandes Empresas</strong> con Jobbers</h5>
+                           <h5 style="text-align: center;"><strong>Jobbers </strong> te muestra las mejores empresas.</h5>
                           <hr>
                           <div class="top-company-sec">
                             <div class="row" id="companies-carousel">
@@ -157,7 +185,7 @@
                                       <img style="height: 100px;width: 100px;" src="../../img_company_pub/logo/<?= $key->logo?>" alt="" />
                                       <h3><a href="#" title=""><?= $key->nombre?></a></h3>
                                       <span><?= $key->sector?></span>
-                                      <a href="<?= $key->id?>" title="">Ver</a>
+                                      <a href="<?= $key->id?>" title="">Postularme</a>
                                     </div><!-- Top Company -->
                                   </div> 
                                <?php endforeach ?> 
