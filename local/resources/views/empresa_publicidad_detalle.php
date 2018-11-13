@@ -109,9 +109,7 @@
                             data-full-width-responsive="true"></ins>
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                            
-                           
+                            </script> 
                         </div>
 
                         <div class="col-xs-12" style="text-align: justify; padding-top: 20px;"> 

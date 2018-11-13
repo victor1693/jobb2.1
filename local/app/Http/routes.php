@@ -268,8 +268,11 @@ Route::get('administracion/empresas/plantilla_info/{id}', 'con_administrator_emp
 Route::group(['middleware' => 'log_a'], function () {
 /** Publicidad a empresas **/
 Route::get('administracion/publicidad', 'con_company_publicidad@indexEmpresa');   
-Route::get('administracion/eliminar/publicidad/{id}', 'con_company_publicidad@eliminar');   
+Route::get('administracion/eliminar/publicidad/{id}', 'con_company_publicidad@eliminar');
+Route::get('administracion/eliminar/recomendada/{id}', 'con_company_publicidad@eliminar_sugerida'); 
+Route::get('administracion/editar/publicidad/{id}', 'con_company_publicidad@editar_index');   
 Route::post('administracion/addpublicidad', 'con_company_publicidad@add_empresa');
+Route::post('administracion/editpublicidad', 'con_company_publicidad@edit_empresa');
 /****/
 Route::get('admsalir', 'con_administrator_login@salir'); 
 Route::get('administracion/contacto', 'con_administrator_contacto@index');
