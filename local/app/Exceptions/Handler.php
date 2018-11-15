@@ -46,15 +46,35 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
   
+public function render($request, Exception $e)
+{
+    if ($this->isHttpException($e)) {
+       
+       return \Response::view('errors.404',array(),404);
+       die();
+        switch ($e->getStatusCode()) {
 
-   public function render($request, Exception $e)
-    { 
+            // not authorized
+            case '403':
+                return \Response::view('errors.403',array(),403);
+                break;
 
-        if ($e instanceof TokenMismatchException){
-            // Catch it here and do what you want. For example...
-            return redirect()->back()->withInput()->with('error', 'Intentelo de nuevo');
+            // not found
+            case '404':
+                return \Response::view('errors.404',array(),404);
+                break;
+
+            // internal error
+            case '500':
+                return \Response::view('errors.500',array(),500);
+                break;
+
+            default:
+                return $this->renderHttpException($e);
+                break;
         }
+    } else {
         return parent::render($request, $e);
-        //return view('errors.error');
     }
+}
 }

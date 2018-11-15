@@ -1,6 +1,8 @@
 <?php
 //Sistema
-Route::get('token', function(){ echo csrf_token();}); 
+Route::get('token', function(){ echo csrf_token();});
+ 
+Route::get('error', function () {return view('errors.500');}); 
 //********************************************************//
 //*            RUTAS GENERALES DEL SISTEMA               *//
 //********************************************************//

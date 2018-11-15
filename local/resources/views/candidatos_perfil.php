@@ -58,7 +58,22 @@ $mi_tokken = csrf_token();
                             <div class="col-lg-9 column">
                            
 
-                         
+                            <div class="manage-jobs-sec">
+
+                                        <h3>Mi panel</h3>
+                                        <div class="manage-jobs-sec">
+                                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- prueba 3 -->
+                                        <ins class="adsbygoogle"
+                                        style="display:block"
+                                        data-ad-client="ca-pub-1968505410020323"
+                                        data-ad-slot="2357238982"
+                                        data-ad-format="auto"
+                                        data-full-width-responsive="true"></ins>
+                                        <script>
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                        </script> 
+                                    </div>
                                 <div class="padding-left">
                                     <div class="manage-jobs-sec addscroll">
                                          <h3>Perfil</h3> 

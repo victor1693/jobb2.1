@@ -42,7 +42,7 @@ class con_company_publicidad extends Controller
         $vista->recomendadas=DB::select($sql_recomendadas);
         if(isset($_GET['editar']))
         {
-              $sql_editar="SELECT *,count(id) as cantidad FROM tbl_publicidad_empresa ORDER BY ".$_GET['editar']."";
+              $sql_editar="SELECT *,count(id) as cantidad FROM tbl_publicidad_empresa WHERE id = ".$_GET['editar']."";
               $vista->editar=DB::select($sql_editar);
         } 
     	return $vista;

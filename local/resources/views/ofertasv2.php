@@ -465,9 +465,7 @@ $mi_tokken=csrf_token();
                             data-full-width-responsive="true"></ins>
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                            
-                          
+                            </script> 
                         </div>
                         <div class="job-list-modern">
                             <div class="job-listings-sec">   
