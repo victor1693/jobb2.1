@@ -57,7 +57,7 @@
 													 	 	<a href="noticiaestado/<?php echo $key->id;?>/<?php echo $estado;?>" style="float: left;padding: 0px;padding: 3px;font-size: 10px;padding-right: 5px;padding-left: 5px;" class="btn btn-xs btn-primary"><?php echo $texto;?></a>
 													 	 </form>
 													 </td>
-														<td style="text-align:right;width: 20%;"><ul class="action_job"><li><span>Ver</span><a href="noticias/<?php echo $key->id;?>" title=""><i class="la la-eye"></i><!-- a--></a></li><li></li><li><span>Editar</span><a data-toggle="modal" data-target="#modal_alias" href="panelnoticias/<?php echo $key->id;?>" title=""><i class="la la-pencil" onclick="set_id(36)"></i></a></li> <li><span>Eliminar</span><a href="noticiadel/<?php echo $key->id;?>" title=""><i class="la la-trash-o"></i></a></li></ul></td>
+														<td style="text-align:right;width: 20%;"><ul class="action_job"><li><span>Ver</span><a href="noticias/<?php echo $key->id;?>" title=""><i class="la la-eye"></i><!-- a--></a></li><li></li><li><span>Editar</span><a data-toggle="modal" data-target="#modal_alias" href="panelnoticias/<?php echo $key->id;?>" title=""><i class="la la-pencil" onclick="set_id(36)"></i></a></li> <!--<li><span>Eliminar</span><a href="noticiadel/<?php echo $key->id;?>" title=""><i class="la la-trash-o"></i></a></li>--></ul></td>
 													 
 												</tr>
 												<?php endforeach ?>

@@ -709,6 +709,7 @@ function select_options($habilidades_json){
 
         $(document).ready(function() { 
           
+           
 
           $('.summernote').summernote({
             height: 300,
@@ -1224,7 +1225,7 @@ function select_options($habilidades_json){
             else if(!validar_r('edad')){}
                else if(!validar_r('experiencia')){}
             else if(!validar_r('salarios')){} 
-           else if(!validar_r('habilidades')){}
+           //else if(!validar_r('habilidades')){}
            else if(!validar_r('idiomas')){} 
            else{    
                      
@@ -1267,11 +1268,7 @@ function select_options($habilidades_json){
                             data:datos,  
                             success: function(response) { 
 
-                                    if(response=='0')
-                                    {
-                                        $.notify('Debe agregar alguna habilidad',"info");
-                                        return 0;
-                                    } 
+                                    
                                      $.notify(response,"success");
                                      $("select, input, textarea").val('');
                                      $("#pais").val('Argentina');
@@ -1295,6 +1292,7 @@ function select_options($habilidades_json){
         $("#link_compartir").val('https://www.jobbersargentina.net/detalleoferta/'+dato);
         $("#modal_social").modal("show");
       }
+
    </script>
   <style type="text/css">
        .note-view,.note-insert,.note-table,.note-color,.note-fontname,.note-style,.note-fontsize,.note-para > .note-btn-group

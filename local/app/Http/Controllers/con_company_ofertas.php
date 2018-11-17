@@ -122,11 +122,14 @@ class con_company_ofertas extends Controller
  	//	 
         date_default_timezone_set('America/Argentina/Cordoba');
         $hoy = date('Y-m-d H:m:s');
+        $las_habilidades="";
  	     if($_POST['habilidades']=="")
  	     {
- 	     	echo '0';
- 	     	die();
- 	     }
+ 	     	$las_habilidades="";
+ 	     }else
+         {
+            $las_habilidades=$this->arreglos($_POST['habilidades']);
+         }
  	      if($_POST['idiomas']=="")
  	     {
  	     	$_POST['idiomas']=array('0'=>'Español'); 
@@ -160,7 +163,7 @@ class con_company_ofertas extends Controller
     	 turno ="'.$_POST['turno'].'",
     	 genero ="'.$_POST['genero'].'",
     	 edad ="'.$_POST['edad'].'",
-    	 habilidades ="'.$this->arreglos($_POST['habilidades']).'", 
+    	 habilidades ="'.$las_habilidades.'", 
     	 idiomas ="'.$this->arreglos($_POST['idiomas']).'",
          tmp="'.$hoy.'"
          ';
@@ -218,7 +221,7 @@ class con_company_ofertas extends Controller
     	 '".$_POST['turno']."',
     	 '".$_POST['genero']."',
     	 '".$_POST['edad']."',
-    	 '".$this->arreglos($_POST['habilidades'])."',
+    	 '".$las_habilidades."',
     	 '".$this->arreglos($_POST['idiomas'])."',
     	 1,
     	 0,
