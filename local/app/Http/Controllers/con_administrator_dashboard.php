@@ -18,7 +18,12 @@ class con_administrator_dashboard extends Controller
         $sql_noticias="SELECT count(*) as cantidad FROM tbl_noticias";
         $sql_postulaciones="SELECT count(*) as cantidad FROM tbl_postulaciones";
         $sql_recomendaciones="SELECT count(*) as cantidad FROM tbl_recomendaciones";
+        $sql_estadisticas= "
+        SELECT count(evaluacion) as cantidad,evaluacion 
+        FROM tbl_evaluacion_jobbers 
+        GROUP BY evaluacion order by evaluacion desc;";
 
+        $vista->estadisticas=DB::select($sql_estadisticas);
         $vista->datos_usuario=DB::select($sql_usuarios);
         $vista->datos_publicaciones=DB::select($sql_publicaciones);
         $vista->datos_noticias=DB::select($sql_noticias);
