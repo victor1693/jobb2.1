@@ -31,6 +31,18 @@
 					 		<div class="manage-jobs-sec">
 					 			<h3>Panel</h3>
 					 			<div class="extra-job-info">
+					 				<h5 style="text-align: center;">Reputación de la página</h5>
+					 				<?php
+					 				$total= $estadisticas[1]->cantidad+$estadisticas[2]->cantidad+$estadisticas[0]->cantidad;
+					 				$excelente = ($estadisticas[1]->cantidad*100)/$total;
+					 				$bueno = ($estadisticas[0]->cantidad*100)/$total;
+					 				$mejorar = ($estadisticas[2]->cantidad*100)/$total;
+					 				?>
+						 			<span><i class="la la-industry"></i><strong><?= round($excelente);?> %</strong>Excelente</span>
+						 			<span><i class="la la-industry"></i><strong><?= round($bueno);?> %</strong>Muy bueno</span>
+						 			<span><i class="la la-industry"></i><strong><?= round($mejorar);?> %</strong>Debe mejorar</span>
+						 		</div>
+					 			<div class="extra-job-info">
 						 			<span><i class="la la-industry"></i><strong><?= $datos_usuario[0]->cantidad;?></strong>Empresas</span>
 						 			<span><i class="la la-users"></i><strong><?= $datos_usuario[1]->cantidad;?></strong>Candidatos</span>
 						 			<span><i class="la la-newspaper-o"></i><strong><?= $datos_noticias[0]->cantidad;?></strong>Noticias</span> 

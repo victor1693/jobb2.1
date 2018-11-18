@@ -456,15 +456,16 @@ $mi_tokken=csrf_token();
                         </div> 
                         <div class="col-sm-12" style="padding: 0px;height: 130px;">
                           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                                <ins class="adsbygoogle"
-                                style="display:block"
-                                data-ad-format="fluid"
-                                data-ad-layout-key="-fb+5w+4e-db+86"
-                                data-ad-client="ca-pub-1968505410020323"
-                                data-ad-slot="2781120636"></ins>
-                                <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
+                            <!-- prueba 3 -->
+                            <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-1968505410020323"
+                            data-ad-slot="2357238982"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script> 
                         </div>
                         <div class="job-list-modern">
                             <div class="job-listings-sec">   
@@ -491,11 +492,11 @@ $mi_tokken=csrf_token();
                                 <div class="alert alert-info">
                                   <span style="font-weight: 600">Jobbers</span> Buscando siempre las mejores oportunidadades de empleo para  tí.
                                 </div>
-                                <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;">
+                                <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;min-height: 300px;">
 
                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <ins class="adsbygoogle"
-                                style="display:block"
+                                style="display:block;height: 120px;"
                                 data-ad-format="fluid"
                                 data-ad-layout-key="-6t+ed+2i-1n-4w"
                                 data-ad-client="ca-pub-1968505410020323"
@@ -506,10 +507,10 @@ $mi_tokken=csrf_token();
                                 </div>
                                 <?php foreach ($publicidad as $key): ?>
                                     <!--Ofertas de empresas -->
-                                 <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;">
+                                 <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;min-height: 300px;">
                                  <div style="text-align: center;">
                                   <a href="company/detalle/<?= $key->id;?>" title="">
-                                    <img style="height: 145px;width: auto;margin: 0 auto;" src="<?= Request::root()?>/img_company_pub/portada/<?= $key->img_portada?>"></a>
+                                    <img style="height: 145px;max-width: 280px;margin: 0 auto;" src="<?= Request::root()?>/img_company_pub/portada/<?= $key->img_portada?>"></a>
                                     <p style="text-align: left;font-weight: 600;font-size: 
                                     16px;font-family: 'Calibri';color: #4c4c4c;margin-left: 12px;margin-bottom: 0px;"><a href="company/detalle/<?= $key->id;?>" title=""><?= $key->nombre?></a> </p>
                                    

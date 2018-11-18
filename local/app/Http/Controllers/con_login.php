@@ -11,6 +11,7 @@ class con_login extends Controller
 {
     public function log(Request $request)
     { 
+        $banderaSocial=0;
         if(isset($_GET['token']) && isset($_GET['user']) && isset($_GET['secure']) && $_GET['token']!="" && $_GET['user']!="" && $_GET['secure']!="")
         {
 
@@ -22,8 +23,9 @@ class con_login extends Controller
             $datos=DB::select($sql);
             if($datos[0]->total==1)
             {
-                $_POST['pass']="123654789";
+               
                 $_POST['correo']=$_GET['user'];
+                 $banderaSocial=1;
             } 
             else
             {
@@ -32,90 +34,40 @@ class con_login extends Controller
         }
        
        
-        $this->limpiarVariablesSession($request); 
+        $this->limpiarVariablesSession($request);
+        $sql="";
+        $datos="";
+        if($banderaSocial==1)
+        {  
+
         $sql = "
         SELECT t1.*,count(t1.id) as cantidad,t3.nombre_aleatorio as imagen,t1.token FROM tbl_usuarios t1
         LEFT JOIN tbl_usuarios_foto_perfil t2 ON t1.id = t2.id_usuario
+        LEFT JOIN tbl_archivos t3 ON t3.id = t2.id_foto WHERE t1.correo='".$_POST['correo']."'";
+         $datos = DB::select($sql);
+         } 
+         else
+         {
+              $sql = "
+        SELECT t1.*,count(t1.id) as cantidad,t3.nombre_aleatorio as imagen,t1.token FROM tbl_usuarios t1
+        LEFT JOIN tbl_usuarios_foto_perfil t2 ON t1.id = t2.id_usuario
         LEFT JOIN tbl_archivos t3 ON t3.id = t2.id_foto WHERE t1.correo=? AND t1.clave=?";
-         
+
         $correo = isset($_POST['correo']) ? strtolower($_POST['correo']) : false;
         $pass = isset($_POST['pass']) ? md5($_POST['pass']) : false;
+         $datos = DB::select($sql, [$correo, $pass]);
+         } 
+       
 
         try {
 
-            $datos = DB::select($sql, [$correo, $pass]);
+           
             if ($datos[0]->cantidad) {
                 $prefijo = "";
                 $sufijo  = "";
                 $ruta    = "";
-                if ($datos[0]->tipo_usuario == 1) {
-                    $prefijo = "empresa";
-                    $sufijo  = "emp_";
-                    $ruta    = "empresa/ofertas"; //Ruta del panel de arministracion de empresas
-
-                    $sql="
-                    SELECT t1.id as id_empresa,
-                    t1.nombre as nombre_empresa,
-                    t3.nombre_aleatorio as imagen,
-                    t4.id_plan 
-                    FROM tbl_empresa t1
-                    LEFT JOIN tbl_usuarios_foto_perfil t2 ON t2.id_usuario = t1.id_usuario
-                    LEFT JOIN tbl_archivos t3 ON t3.id = t2.id_foto
-                    LEFT JOIN tbl_empresas_planes t4 ON t4.id_empresa = t1.id_usuario
-                    WHERE t1.id_usuario=?
-                    GROUP BY t1.id_usuario";
-
-                    $datos_emp = DB::select($sql, [$datos[0]->id]);
-
-                    if ($datos_emp) {
-                        /** VARIABLES DE SESSION ESPECIFICAS PARA EMPRESA **/
-
-                        $request->session()->set($prefijo, $datos[0]->correo);
-                        $request->session()->set($sufijo . 'ide', $datos_emp[0]->id_empresa);
-                        $request->session()->set($sufijo . 'imagen', $datos_emp[0]->imagen);
-                        $request->session()->set($sufijo . 'nombre_empresa', $datos_emp[0]->nombre_empresa);
-
-                        $plan = DB::select("SELECT tbl_empresas_planes.*, tbl_planes.descripcion AS nombre FROM tbl_empresas_planes INNER JOIN tbl_planes ON tbl_planes.id=tbl_empresas_planes.id_plan WHERE tbl_empresas_planes.id_empresa=?", [$datos_emp[0]->id_empresa]);
-
-                        if ($plan) {
-                            switch ($plan[0]->id_plan) {
-                                case 2:
-                                    $timestamp_today = strtotime(date("Y-m-d H:i:s"));
-                                    $timestamp_vencimiento = strtotime("+35 day", strtotime($plan[0]->tmp));
-                                    $fecha_venc = date('d/m/Y', $timestamp_vencimiento);
-
-                                    if ($timestamp_today >= $timestamp_vencimiento) {
-                                        DB::update("UPDATE tbl_empresas_planes SET id_plan=1, tmp='".date("Y-m-d H:i:s")."' WHERE id_empresa=".$datos_emp[0]->id_empresa);
-                                        $plan = DB::select("SELECT tbl_empresas_planes.*, tbl_planes.descripcion AS nombre FROM tbl_empresas_planes INNER JOIN tbl_planes ON tbl_planes.id=tbl_empresas_planes.id_plan WHERE tbl_empresas_planes.id_empresa=".$datos_emp[0]->id_empresa);
-                                        $request->session()->set($sufijo . 'plan', $plan);
-                                        $timestamp_vencimiento = strtotime("+15 day", strtotime($plan[0]->tmp));
-                                        $fecha_venc = date('d/m/Y', $timestamp_vencimiento);
-                                        $request->session()->set($sufijo . 'plan_venc', $fecha_venc);
-                                    } else {
-                                        $request->session()->set($sufijo . 'plan', $plan);
-                                        $request->session()->set($sufijo . 'plan_venc', $fecha_venc);
-                                    }
-                                    break;
-                                
-                                default:
-
-                                    $request->session()->set($sufijo . 'plan', $plan);
-
-                                    $timestamp_vencimiento = strtotime("+15 day", strtotime($plan[0]->tmp));
-                                    $fecha_venc = date('d/m/Y', $timestamp_vencimiento);
-                                    $request->session()->set($sufijo . 'plan_venc', $fecha_venc);
-
-                                    break;
-                            }
-                        } else {
-                            return Redirect("login?error=Ha ocurrido un error inesperado, intentelo de nuevo por favor");
-                        }
-
-                    } else {
-                        return Redirect("login?error=Ha ocurrido un error inesperado, intentelo de nuevo por favor");
-                    }
-
-                } else if ($datos[0]->tipo_usuario == 2) {
+                
+                if ($datos[0]->tipo_usuario == 2) {
                     $prefijo = "candidato";
                     $sufijo  = "cand_";
                     $ruta    = "candidashboard";

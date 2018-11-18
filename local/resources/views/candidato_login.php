@@ -20,7 +20,7 @@
 		<style type="text/css">
 			body,html
 			{
-				overflow: hidden;
+				overflow-x: hidden;
 			}
 		</style>
 	</head>
@@ -31,7 +31,8 @@
 				<div class="block remove-bottom" style="padding: 5px;">
 					<div class="container">
 						<div class="row">
-							<div class="col-lg-12">
+					
+							<div class="col-lg-5">
 								<div class="account-popup-area signin-popup-box static" style="padding: 5px;">
 									<div class="account-popup" style="border: 1px solid #ddd;">
 										<div class="text-center">
@@ -84,6 +85,21 @@
 									</div>
 									</div><!-- LOGIN POPUP -->
 								</div>
+										<div class="col-lg-7" style="padding-top: 8px;">
+
+								<video style="width: 100%;height: auto;margin-bottom: 15px;" src="http://jobbersargentina.net/local/videos_jobbers/video.mp4" autobuffer autoloop loop controls poster="http://jobbersargentina.net/local/videos_jobbers/frame.png"></video>
+							  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- prueba 3 -->
+                            <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-1968505410020323"
+                            data-ad-slot="2357238982"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script> 
+							</div>
 							</div>
 						</div>
 					</div>

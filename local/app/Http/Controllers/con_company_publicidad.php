@@ -14,6 +14,7 @@ class con_company_publicidad extends Controller
     public function index($id)
     {	
     	$sql="SELECT titulo,id FROM tbl_company_ofertas WHERE plantilla <> 'SI' AND estatus =1 ORDER BY id DESC  limit 0,15";
+
     	$sql_destacadas="SELECT nombre,img_profile as logo,sector,id FROM tbl_publicidad_empresa  ORDER BY id DESC LIMIT 0,25";
     	$sql_detalle="SELECT *,count(id) as cantidad FROM tbl_publicidad_empresa WHERE id =".$id."";
 
@@ -36,7 +37,14 @@ class con_company_publicidad extends Controller
     {
     	$vista=View::make("administrator_empresa_publicidad");
     	$sql="SELECT * FROM tbl_publicidad_empresa ORDER BY nombre ASC";
+        $sql_recomendadas="SELECT * FROM tbl_empresas_recomendadas ORDER BY id DESC";
     	$vista->datos=DB::select($sql);
+        $vista->recomendadas=DB::select($sql_recomendadas);
+        if(isset($_GET['editar']))
+        {
+              $sql_editar="SELECT *,count(id) as cantidad FROM tbl_publicidad_empresa WHERE id = ".$_GET['editar']."";
+              $vista->editar=DB::select($sql_editar);
+        } 
     	return $vista;
     }
 
@@ -47,6 +55,16 @@ class con_company_publicidad extends Controller
     	DB::delete($sql);
     	return Redirect('administracion/publicidad?result=Empresa eliminada con éxito.');
     }
+
+     public function eliminar_sugerida($id)
+    {
+         
+        $sql="DELETE FROM tbl_empresas_recomendadas WHERE id = ".$id."";
+        DB::delete($sql);
+        return Redirect('administracion/publicidad?result=Registro eliminado con éxito.');
+    }
+
+   
 
     public function recomendar()
     {
@@ -76,12 +94,7 @@ class con_company_publicidad extends Controller
     }
 
     public function add_empresa(Request $request)
-    {	
- 		 
-
-
-
-
+    {	 
     	if($_POST['nombre']==""){return Redirect('administracion/publicidad?result=Debe agregar el nombre de la empresa');}
     	else if($_POST['sector']==""){return Redirect('administracion/publicidad?result=Debe agregar el sector de la empresa');}
     	else if($_FILES['img_perfil']["name"]=="")
@@ -104,27 +117,58 @@ class con_company_publicidad extends Controller
     	else
     	{
     		$ofertas="";
-    		if(isset($_POST['o1']) && isset($_POST['l1']) && $_POST['o1']!="" && $_POST['l1']!="")
-    		{$ofertas=$ofertas."#$#".$_POST['o1']."**$**".$_POST['l1'];}
-
-    		if(isset($_POST['o2']) && isset($_POST['l2']) && $_POST['o2']!="" && $_POST['l2']!="")
-    		{$ofertas=$ofertas."#$#".$_POST['o2']."**$**".$_POST['l2'];}
-
-    		if(isset($_POST['o3']) && isset($_POST['l3']) && $_POST['o3']!="" && $_POST['l3']!="")
-    		{$ofertas=$ofertas."#$#".$_POST['o3']."**$**".$_POST['l3'];}
-
-    		if(isset($_POST['o4']) && isset($_POST['l4']) && $_POST['o4']!="" && $_POST['l4']!="")
-    		{$ofertas=$ofertas."#$#".$_POST['o4']."**$**".$_POST['l4'];}
-
-    		$sql="INSERT INTO tbl_publicidad_empresa
-    		(nombre,sector,img_profile,img_portada,descripcion,video,titulo_oferta,descripcion_oferta,ofertas,link_oferta)
-    		VALUES('".$_POST['nombre']."','".$_POST['sector']."','".$logo."','".$portada."','".$_POST['descripcion']."',
-    		'".$_POST['video']."','".$_POST['titulo_oferta']."','".$_POST['descripcion_oferta']."','".$ofertas."','".$_POST['link']."')
-    		";
+            for($i=1;$i<=10;$i++)
+            { 
+    		if(isset($_POST['o'.$i.'']) && isset($_POST['l'.$i.'']) && $_POST['o'.$i.'']!="" && $_POST['l'.$i.'']!="")
+    		{$ofertas=$ofertas."#$#".$_POST['o'.$i.'']."**$**".$_POST['l'.$i.''];}
+            }
+            $sql_max="SELECT max(vistos) as maximo FROM tbl_publicidad_empresa";
+            $maximo=DB::select($sql_max);
+    		if($_POST['operacion']=="0")
+            {
+                $sql="INSERT INTO tbl_publicidad_empresa
+                (nombre,sector,img_profile,img_portada,descripcion,video,titulo_oferta,descripcion_oferta,ofertas,link_oferta,vistos)
+                VALUES('".$_POST['nombre']."','".$_POST['sector']."','".$logo."','".$portada."','".$_POST['descripcion']."',
+                '".$_POST['video']."','".$_POST['titulo_oferta']."','".$_POST['descripcion_oferta']."','".$ofertas."','".$_POST['link']."',".$maximo[0]->maximo.")
+                ";
+                DB::insert($sql);
+                return Redirect('administracion/publicidad?result=Empresa agredada con éxito.');
+            }
+            else
+            {
+                $sql_empresa="SELECT img_profile,img_portada FROM tbl_publicidad_empresa WHERE id = ".$_POST['operacion']."";
+                $datos_empresa=DB::select($sql_empresa); 
+                $sql="UPDATE tbl_publicidad_empresa SET 
+                nombre='".$_POST['nombre']."',
+                sector='".$_POST['sector']."',
+                img_profile='".$logo."',
+                img_portada='".$portada."',
+                descripcion='".$_POST['descripcion']."',
+                video='".$_POST['video']."',
+                titulo_oferta='".$_POST['titulo_oferta']."',
+                descripcion_oferta='".$_POST['descripcion_oferta']."',
+                ofertas='".$ofertas."',
+                link_oferta='".$_POST['link']."'
+                WHERE id = '".$_POST['operacion']."'
+                ";
+                try {
+                     DB::update($sql); 
+                    if(file_exists('img_company_pub/logo/'.$datos_empresa[0]->img_profile))
+                    {     unlink('img_company_pub/logo/'.$datos_empresa[0]->img_profile);
+                          
+                    }
+                     if(file_exists('img_company_pub/portada'.$datos_empresa[0]->img_portada))
+                    {     unlink('img_company_pub/portada'.$datos_empresa[0]->img_portada);
+                          
+                    }
+                } catch (Exception $e) {
+                    
+                } 
+                return Redirect('administracion/publicidad?result=Empresa actualizada con éxito.');
+            }
 
     		try {
-    			DB::insert($sql);
-    			return Redirect('administracion/publicidad?result=Empresa agredada con éxito.');
+    			
     		} catch (Exception $e) {
     			
     		}
