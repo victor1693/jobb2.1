@@ -43,7 +43,7 @@
 									<div style="color: #fff;text-align: center;margin-bottom: -120px;">
 									<h3 style="font-size: 42px;">Si lo puedes imaginar lo puedes lograr.</h3>
 									<span>Jobbers y sus empresas aliadas te ayudan a lograr esos sueños que siempre quisiste.</span> 
-										<h3 style="font-weight: 300; font-size: 42px;margin-top: 50px;padding-bottom: 0px;"><span style="font-size: 24px;"> Hoy somos </span><?= $candidatos[0]->cantidad;?><span style="font-size: 24px;"> candidatos</span></h3> 
+										<h3 class="members-count"><span style="font-size: 24px;"> Hoy somos </span><?= $candidatos[0]->cantidad;?><span style="font-size: 24px;"> candidatos</span></h3> 
 									</div>
 
 									<div class="search-job2 style2" style="border: 2px solid #d4d4d4;border-radius: 4px; text-align: center">	
@@ -298,7 +298,7 @@
 													<div class="job-lctn"><?= ucfirst(mb_strtolower($key->vistas))?> visitas</div>
 												</div>
 												<div class="job-style-bx" style="margin-top: 0px;">
-													<button onclick="location.href='detalleoferta/<?= $key->id;?>'" style="font-size: 14px;" class="btn btn-primary" type="button">Ver oferta</button> 
+													<button onclick="location.href='detalleoferta/<?= $key->id;?>'" style="font-size: 14px; float: none" class="btn btn-primary" type="button">Ver oferta</button> 
 												</div>
 											</div><!-- Job --> 
 										</div> 
@@ -325,7 +325,7 @@
 													 
 												</div>
 												<div class="job-style-bx" style="margin-top: 0px;">
-													<button onclick="location.href='noticias/<?= $key->id;?>'" style="font-size: 14px;" class="btn btn-primary" type="button">Ver noticia</button> 
+													<button onclick="location.href='noticias/<?= $key->id;?>'" style="font-size: 14px; float: none" class="btn btn-primary" type="button">Ver noticia</button> 
 												</div>
 											</div><!-- Job --> 
 										</div> 
