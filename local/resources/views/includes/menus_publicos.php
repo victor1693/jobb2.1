@@ -24,6 +24,9 @@
 <ul class="mobile-1024 mobile">
 	<!-- <li class="li-nav"> -->
 	<li class="">
+		<a style="color:#fff;font-weight: 600;" href="<?= Request::root()?>/empresas/entrar" title="">&nbsp;&nbsp;&nbsp;Soy empresa</a>
+	</li>
+	<li class="">
 		<a href="<?= url('inicio') ?>" title="">Inicio</a>
 		<!-- <a href="<?//= url('inicio') ?>" class="a-nav" title="">Inicio</a> -->
 	</li>

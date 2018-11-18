@@ -453,20 +453,23 @@ $mi_tokken=csrf_token();
                               <?= count($datos);?> Ofertas
                             </p>
                             
-                        </div> 
-                        <div class="col-sm-12" style="padding: 0px;height: 130px;">
-                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                            <!-- prueba 3 -->
-                            <ins class="adsbygoogle"
-                            style="display:block"
-                            data-ad-client="ca-pub-1968505410020323"
-                            data-ad-slot="2357238982"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                            <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script> 
                         </div>
+
+                         <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; ">
+
+                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle"
+                                style="display:block;height: 120px;"
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-6t+ed+2i-1n-4w"
+                                data-ad-client="ca-pub-1968505410020323"
+                                data-ad-slot="2571530788"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script> 
+                                
+                                </div> 
+                         
                         <div class="job-list-modern">
                             <div class="job-listings-sec">   
                               <?php 
