@@ -433,20 +433,20 @@ $mi_tokken=csrf_token();
                         </form>
                     </aside>
                     <div class="col-lg-9 column" id="offers" style="padding-top: 64px;">
-                        <div class="col-xs-7" style="text-align: center;padding: 0px;">
+                        <div class="col-xs-9 col-sm-7" style="text-align: center;padding: 0px;">
                           
                            <div class="pf-field">
                                     <input value="<?php if(isset($_GET['buscar'])){echo $_GET['buscar'];}?>" style="border: 1px solid #c4c4c4;" id="buscador_1"  type="text" placeholder="Buscar... Consultor, programador, analísta...">
                             </div>
                         </div> 
 
-                        <div class="col-xs-2" style="padding-left: 0px;">
+                        <div class="col-xs-3 col-sm-2">
                           <div class="pf-field" >
                             <button onclick="buscar()" class="btn btn-primary" style="margin-top: 0px;height: 49px;width: 80px;float: left;">Buscar</button>
 
                           </div>
                         </div> 
-                         <div class="col-xs-3" style="padding-left: 0px; text-align: right;padding-right: 0px;">
+                         <div class="col-xs-12 col-sm-3" style="padding-left: 0px; text-align: right;padding-right: 0px;">
                             <button type="button" onclick="location.href='ofertas'" title="Limpiar filtros" class="btn btn-warning" style="margin-top: 0px;height: 49px;width: 50px;float: right;">
                               <i class="fa fa-trash" style="font-size: 24px;"></i></button>
                             <p style="font-weight: 600;font-size: 16px;padding-top: 7px;text-align: left;padding-left: 9px;">
