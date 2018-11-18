@@ -27,7 +27,7 @@ $mi_tokken=csrf_token();
         {
           background-color: #fff;
           border: 1px solid #ddd;
-          height: 300px;
+          height: 100%;
         }
           .filter-offer
           {
@@ -370,9 +370,7 @@ $mi_tokken=csrf_token();
                                   <h3><a href="empresa/detalle/<?= $key->id;?>" title=""><?= validar($key->nombre);?></a></h3>
                                   <span><?= validar($key->actividad_empresa);?></span>
                                   <h6><i class="la la-map-marker"></i> <?= validar($key->provincia.' - '.$key->localidad);?></h6>
-                                </div>
-                                <div>
-                                  <button onclick="location.href='empresa/detalle/<?= $key->id;?>'" type="button" class=" btn btn-primary">Ver</button>
+                                  <button onclick="location.href='empresa/detalle/<?= $key->id;?>'" type="button" class=" btn btn-primary" style="float: none">Ver</button>
                                 </div>
                               </div><!-- Employe List -->
                             </div> 
