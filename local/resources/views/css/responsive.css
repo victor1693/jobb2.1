@@ -1103,6 +1103,12 @@
 }
 
 @media (max-width:520px) {
+    .tags-up{
+        margin-top: 5px;
+    }
+    .tags-down{
+        float:none !important;
+    }
     .members-count{
         margin-top: 20px;
     }
