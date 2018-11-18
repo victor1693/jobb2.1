@@ -27,7 +27,7 @@ $mi_tokken=csrf_token();
         {
           background-color: #fff;
           border: 1px solid #ddd;
-          height: 300px;
+          height: 100%;
         }
           .filter-offer
           {
@@ -100,6 +100,10 @@ $mi_tokken=csrf_token();
         <div class="block no-padding back-offers">
             <div class="container">
                 <div class="row no-gape">
+
+                <div class="btn-showfilter">
+                    <button class="btn btn-primary" id="showFilters">Mostrar filtros <i class="fa fa-filter"></i></button>
+                </div>
                   
                     <aside class="col-lg-3 column border-right" id="side-offers" style="padding-left: 0px;padding-right: 15px;">
                         
@@ -370,9 +374,7 @@ $mi_tokken=csrf_token();
                                   <h3><a href="empresa/detalle/<?= $key->id;?>" title=""><?= validar($key->nombre);?></a></h3>
                                   <span><?= validar($key->actividad_empresa);?></span>
                                   <h6><i class="la la-map-marker"></i> <?= validar($key->provincia.' - '.$key->localidad);?></h6>
-                                </div>
-                                <div>
-                                  <button onclick="location.href='empresa/detalle/<?= $key->id;?>'" type="button" class=" btn btn-primary">Ver</button>
+                                  <button onclick="location.href='empresa/detalle/<?= $key->id;?>'" type="button" class=" btn btn-primary" style="float: none">Ver</button>
                                 </div>
                               </div><!-- Employe List -->
                             </div> 
@@ -418,6 +420,26 @@ $mi_tokken=csrf_token();
     <script src="local/resources/views/js/modernizr.js" type="text/javascript">
     </script>
     <script src="local/resources/views/js/script.js" type="text/javascript">
+    </script>
+    <script>
+        var clicks = 1;
+        $('#showFilters').click(function(e) {
+
+        // Show or hide filters
+        if (clicks % 2 == 1) {
+            $('#side-offers').fadeIn();
+            $('#showFilters').html('Ocultar filtros <i class="fa fa-ban"></i>');
+            // Scroll Up
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop : $('html, body').offset().top
+            }, 500);
+        } else {
+            $('#side-offers').fadeOut();
+            $('#showFilters').html('Mostrar filtros <i class="fa fa-filter"></i>');
+        }
+        clicks++;
+        });
     </script>
     <script type="text/javascript">
       function paginar(parametro)

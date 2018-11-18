@@ -112,13 +112,13 @@
                                     </p> 
                                     <div class="col-xs-12"> 
                                     <?php if ($datos[0]->emp_direccion!=""): ?>
-                                     		<span class="tag" style="padding-top: 3px;padding-bottom: 3px; width: auto;color: #fff;"><?= $datos[0]->emp_direccion;?></span> 
+                                     		<span class="tag" style="padding-top: 3px;padding-bottom: 3px; width: auto;color: #fff; margin-bottom: 5px"><?= $datos[0]->emp_direccion;?></span>
                                      <?php endif ?> 
                                       <?php if ($datos[0]->sector!=""): ?>
-                                     		<span class="tag" style="padding-top: 3px;padding-bottom: 3px;width: auto;color: #fff;">Empresa de <?= $datos[0]->sector;?></span> 
+                                     		<span class="tag tags-down" style="padding-top: 3px;padding-bottom: 3px;width: auto;color: #fff; margin-bottom: 5px;">Empresa de <?= $datos[0]->sector;?></span></br>
                                      <?php endif ?> 
                                       <?php if ($datos[0]->ofertas!=0): ?>
-                                     		<span class="tag" style="padding-top: 3px;padding-bottom: 3px;width: auto;color: #fff;"><?= $datos[0]->ofertas;?> Ofertas</span> 
+                                     		<span class="tag tags-up" style="padding-top: 3px;padding-bottom: 3px;width: auto;color: #fff;"><?= $datos[0]->ofertas;?> Ofertas</span> 
                                      <?php endif ?> 
                                      </div> 
                                 </div> 

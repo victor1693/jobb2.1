@@ -969,6 +969,7 @@
         padding: 0;
         margin-top: 9px;
         position: static;
+        margin-bottom: 20px;
     }
     .form-location-sec h3 {
         font-size: 30px;
@@ -1102,6 +1103,12 @@
 }
 
 @media (max-width:520px) {
+    .tags-up{
+        margin-top: 5px;
+    }
+    .tags-down{
+        float:none !important;
+    }
     .members-count{
         margin-top: 20px;
     }
@@ -1431,6 +1438,7 @@
         text-align: center;
         margin: 0;
         padding: 0;
+        margin-bottom: 30px;
     }
     /* .job-list-modern .job-listing.wtabs .job-style-bx>span {
         float: none;

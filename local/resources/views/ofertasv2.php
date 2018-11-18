@@ -102,6 +102,10 @@ $mi_tokken=csrf_token();
         <div class="block no-padding back-offers">
             <div class="container">
                 <div class="row no-gape">
+
+                <div class="btn-showfilter">
+                    <button class="btn btn-primary" id="showFilters">Mostrar filtros <i class="fa fa-filter"></i></button>
+                </div>
                   
                     <aside class="col-lg-3 column border-right" id="side-offers" style="padding-left: 0px;padding-right: 15px;">
                         
@@ -662,6 +666,26 @@ $mi_tokken=csrf_token();
     <script src="local/resources/views/js/modernizr.js" type="text/javascript">
     </script>
     <script src="local/resources/views/js/script.js" type="text/javascript">
+    </script>
+    <script>
+        var clicks = 1;
+        $('#showFilters').click(function(e) {
+
+        // Show or hide filters
+        if (clicks % 2 == 1) {
+            $('#side-offers').fadeIn();
+            $('#showFilters').html('Ocultar filtros <i class="fa fa-ban"></i>');
+            // Scroll Up
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop : $('html, body').offset().top
+            }, 500);
+        } else {
+            $('#side-offers').fadeOut();
+            $('#showFilters').html('Mostrar filtros <i class="fa fa-filter"></i>');
+        }
+        clicks++;
+        });
     </script>
     <script type="text/javascript">
       function paginar(parametro)
