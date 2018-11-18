@@ -424,7 +424,7 @@
         margin: 0;
     }
     .search-job2.style2 {
-        margin-top: 30px;
+        margin-top: 70px;
     }
     .search-job2.style2 form .job-field::before {
         height: 0px;
@@ -813,7 +813,7 @@
         top: 50%;
     }
     .job-listing {
-        padding-right: 0;
+        padding-right: 15px;
         text-align: center;
         display: inline-block;
     }
@@ -1096,6 +1096,9 @@
 }
 
 @media (max-width:520px) {
+    .members-count{
+        margin-top: 20px;
+    }
     .container-account-btns{
         text-align: center; 
         width: 220px;
@@ -1456,11 +1459,6 @@
         opacity: 0.9;
         margin: 0;
     }
-    .main-featured-sec {
-        background-image: url('../images/fondo_home.jpg');
-        background-size: cover;
-        background-position: center;
-    }
     .job-search-sec .job-search>h3 {
         line-height: 30px;
     }
@@ -1526,5 +1524,12 @@
     .res-logo {
         padding-left: 15px !important;
         padding-right: 15px !important;
+    }
+}
+@media (min-width: 320px){
+    .main-featured-sec {
+        background-image: url('../images/fondo_home_overlay.jpg');
+        background-size: cover;
+        background-position: center;
     }
 }

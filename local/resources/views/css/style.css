@@ -1543,7 +1543,7 @@ label::before, label::after {
     width: 100%;
     display: table;
     margin-bottom: 10px;
-    padding: 20px 10px;
+    padding: 15px;
     background: #ffffff;
     border: 1px solid #cccbcb;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.192);
@@ -11127,6 +11127,13 @@ header, .res-openmenu, .res-closemenu, .responsivemenu>ul>li.menu-item-has-child
 }
 .jump {
     display: none;
+}
+/* Home */
+.members-count{
+    font-weight: 300; 
+    font-size: 42px;
+    margin-top: 50px;
+    padding-bottom: 0px;
 }
 /* Navbar */
 
