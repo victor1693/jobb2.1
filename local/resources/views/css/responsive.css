@@ -184,6 +184,9 @@
     .theme-layout {
         padding-top: 0px;
     }
+    .pt-offer{
+        padding-top: 110px;
+    }
     #carousel-news {
         margin-top: 53px;
     }
@@ -285,6 +288,9 @@
     .tags-jobs>li {
         margin-right: 15px;
         margin-bottom: 15px;
+    }
+        .mt-md-0{
+        margin-top: 0px;
     }
     .job-single-head.style2 a {
         float: none;

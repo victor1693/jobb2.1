@@ -82,7 +82,7 @@
     <?php include('local/resources/views/includes/general_header.php');?>
     <?php include('local/resources/views/includes/general_header_responsive.php');?>
 
-<div class="theme-layout" id="scrollup">
+<div class="theme-layout pt-offer" id="scrollup">
     <section style="background-color: #eeeeee;margin-top: -25px;">
         <div class="block">
             <div class="container">
