@@ -86,8 +86,9 @@
 									</div><!-- LOGIN POPUP -->
 								</div>
 										<div class="col-lg-7" style="padding-top: 8px;">
+								<iframe style="width: 100%;height: auto;min-height: 400px;margin-bottom: 15px;" src="https://www.youtube.com/embed/rRV6KSDNOwM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-								<video style="width: 100%;height: auto;margin-bottom: 15px;" src="http://jobbersargentina.net/local/videos_jobbers/video.mp4" autobuffer autoloop loop controls poster="http://jobbersargentina.net/local/videos_jobbers/frame.png"></video>
+								 
 							  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- prueba 3 -->
                             <ins class="adsbygoogle"

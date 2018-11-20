@@ -24,7 +24,7 @@
 			<?php include('local/resources/views/includes/header_responsive_admin.php');?> 
  <section>
 
-
+  
 		<div class="block no-padding mt-75">
 			<div class="container">
 				 <div class="row no-gape">
@@ -85,7 +85,9 @@
 						 					<td>
 						 						<ul class="action_job">
 						 							 
-						 							<li><span>Eliminar</span><a href="empresas/delete/<?= $key->id;?>" title=""><i class="la la-trash-o"></i></a></li>
+						 							<li><span>Eliminar</span><a href="empresas/delete/<?= $key->id;?>" title=""><i class="la la-trash-o"></i></a>
+						 								<span>Actualizar plan</span><a  href="#" title=""><i class="la la-arrow-up"></i></a>
+						 							</li>
 						 						</ul>
 						 					</td>
 						 				</tr> 

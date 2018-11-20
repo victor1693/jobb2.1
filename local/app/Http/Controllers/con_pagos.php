@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use MP;
-
 use View;
-
 use DB;
-
 use Illuminate\Http\Request;
-
 
 class con_pagos extends Controller
 {
