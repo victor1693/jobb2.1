@@ -292,7 +292,7 @@
 													<div class="c-logo"> <img style="width: 100px;height: 100px;margin-right: 15px;" src="uploads/min/<?=$key->img_profile?>" alt="" /> 
 														 <?php echo  programa($key->plan_estado);?>
 													</div>
-													<h3><a href="detalleoferta/<?= $key->id;?>" title="" style="font-size: 16px;font-weight: 600;"><?= ucfirst(mb_strtolower($key->titulo))?></a></h3>
+													<h3><a href="detalleoferta/<?= $key->id;?>" title="" style="font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><?= ucfirst(mb_strtolower($key->titulo))?></a></h3>
 													 
 													<div class="job-lctn"><a class="success" href="#"><?= ucfirst(mb_strtolower($key->nombre))?></a></div><br>
 													<div class="job-lctn"><?= ucfirst(mb_strtolower($key->vistas))?> visitas</div>
@@ -319,7 +319,7 @@
 											<div class="job-listing wtabs">
 												<div class="job-title-sec">
 													<div class="c-logo"> <img style="width: 100px;height: 100px;margin-right: 15px;" src="imagenes_noticias/<?=$key->foto?>" alt="" /> </div>
-													<h3><a href="noticias/<?= $key->id;?>" title="" style="font-size: 16px;font-weight: 600;"><?= ucfirst(mb_strtolower($key->titulo))?></a></h3>
+													<h3><a href="noticias/<?= $key->id;?>" title="" style="font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><?= ucfirst(mb_strtolower($key->titulo))?></a></h3>
 													 
 													<div class="job-lctn"><a class="success" href="#"><?= ucfirst(mb_strtolower($key->descripcion))?></a></div> 
 													 
