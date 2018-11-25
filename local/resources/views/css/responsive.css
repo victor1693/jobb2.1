@@ -1113,6 +1113,9 @@
 }
 
 @media (max-width:520px) {
+    .slick-dots{
+        display:none !important;
+    }
     .tags-up{
         margin-top: 5px;
     }

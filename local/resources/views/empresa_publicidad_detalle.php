@@ -74,6 +74,9 @@
              {
               display: none;
              }
+             .account-btns{
+               margin-left: 0px;
+             }
         </style>
         <?php include('local/resources/views/includes/google_analitycs.php');?>
     </head>
