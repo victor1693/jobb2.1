@@ -74,6 +74,9 @@
              {
               display: none;
              }
+             .account-btns{
+               margin-left: 0px;
+             }
         </style>
         <?php include('local/resources/views/includes/google_analitycs.php');?>
     </head>
@@ -87,8 +90,8 @@
         <div class="block">
             <div class="container">
                 <div class="row">
-                     <div class="col-sm-9 " style="background-color: #fff;padding-top: 15px;border:2px solid #ffaf03;border-radius: 5px;">
-                      <div class="col-sm-12" style="  min-height: 215px; padding: 0px;padding-top: 40px; background-image: url(../../img_company_pub/portada/<?= $detalle[0]->img_portada;?>);background-color: #000;">
+                     <div class="col-sm-9 mt-75 company-mb-90" style="background-color: #fff;padding-top: 15px;border:2px solid #ffaf03;border-radius: 5px;">
+                      <div class="col-sm-12 mb-30" style="  min-height: 215px; padding: 0px;padding-top: 40px; background-image: url(../../img_company_pub/portada/<?= $detalle[0]->img_portada;?>);background-color: #000;">
                          <div class="col-sm-2  vcenter" >
                            <img class="fondo_portada" style="  border:3px solid #fff;border-radius: 50%;height: 120px;width: 120px;" src="../../img_company_pub/logo/<?= $detalle[0]->img_profile;?>">
                         </div> 
@@ -193,9 +196,9 @@
                       </div>
                 </div>
                 
-                <div class="col-sm-3">
-                    <div class="row" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-left: 5px;">
-                      <form id="form_empresa" action="../../company/recomendar" method="POST" >
+                <div class="col-sm-3 company-margins">
+                    <div class="row ml-5-company" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;">
+                      <form id="form_empresa" action="../../company/recomendar" method="POST" style="width: 100%">
                         <input type="hidden" name="_token" value="<?= $token;?>">
                         <input type="hidden" name="identificador" value="<?= $identificador;?>">
                        <div class="col-lg-12">
@@ -207,7 +210,7 @@
                        </div> 
                     </div> 
                   </form>
-                    <div class="row" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-left: 5px;margin-top: 25px;">
+                    <div class="row ml-5-company" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-top: 25px;">
                        <div class="col-lg-12">
 
                           <h5 class="pf-title" style="text-align: center;font-size: 16px;font-weight: 500;">¿Qué opinas de Jobbers?</h5>
@@ -230,7 +233,7 @@
                        </div> 
                     </div> 
         
-                    <div class="row" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-left: 5px;margin-top: 25px;">
+                    <div class="row ml-5-company" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-top: 25px;">
                        <div class="col-lg-12">
 
                           <h5 class="pf-title" style="text-align: center;font-size: 16px;font-weight: 500;">Ofertas en Jobbers</h5>
