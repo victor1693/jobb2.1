@@ -1539,6 +1539,15 @@
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
+    .job-single-head{
+        display: grid;
+    }
+    .job-thumb{
+        margin: 0 auto;
+    }
+    .job-head-info{
+        padding-left: 0px;
+    }
 }
 @media (min-width: 320px){
     .main-featured-sec {
