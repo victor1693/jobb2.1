@@ -542,6 +542,9 @@
     .text-info-empresa{
         float: left;
     }
+    .ml-5-company{
+        margin-left: 5px;
+    }
 }
 
 @media (max-width:768px) {

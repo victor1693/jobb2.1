@@ -194,7 +194,7 @@
                 </div>
                 
                 <div class="col-sm-3 company-margins">
-                    <div class="row" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-left: 5px;">
+                    <div class="row ml-5-company" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;">
                       <form id="form_empresa" action="../../company/recomendar" method="POST" style="width: 100%">
                         <input type="hidden" name="_token" value="<?= $token;?>">
                         <input type="hidden" name="identificador" value="<?= $identificador;?>">
@@ -207,7 +207,7 @@
                        </div> 
                     </div> 
                   </form>
-                    <div class="row" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-left: 5px;margin-top: 25px;">
+                    <div class="row ml-5-company" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-top: 25px;">
                        <div class="col-lg-12">
 
                           <h5 class="pf-title" style="text-align: center;font-size: 16px;font-weight: 500;">¿Qué opinas de Jobbers?</h5>
@@ -230,7 +230,7 @@
                        </div> 
                     </div> 
         
-                    <div class="row" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-left: 5px;margin-top: 25px;">
+                    <div class="row ml-5-company" style="background-color: #fff;border-radius: 5px;border:2px solid #ffaf03;margin-top: 25px;">
                        <div class="col-lg-12">
 
                           <h5 class="pf-title" style="text-align: center;font-size: 16px;font-weight: 500;">Ofertas en Jobbers</h5>
