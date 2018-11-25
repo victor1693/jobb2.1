@@ -78,7 +78,8 @@ class con_login extends Controller
                 $request->session()->set($sufijo . 'img', $datos[0]->imagen);
                 $request->session()->set($sufijo . 'token', $datos[0]->token);
                 $request->session()->set('tipo_usuario', $datos[0]->tipo_usuario);
-
+                $sql_contador="INSERT INTO tbl_contador_sesion (id_usuario) VALUES(".$datos[0]->tipo_usuario.")";
+                DB::insert($sql_contador);
                 if (isset($request->return_url) && isset($request->id_pub)) { // Postulación cuando no tiene iniciada la sesion.
                     $postulado = $this->postular_candidato($datos[0]->id, $request->id_pub);
 
