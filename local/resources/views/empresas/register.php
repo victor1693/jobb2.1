@@ -245,8 +245,8 @@
                                     $("input").val("");
                                     $("select").val("");
                                     setTimeout(function() {
-                                      window.location.href = "entrar";
-                                      }, 2000);
+                                      window.location.href = "panel";
+                                      }, 500);
                                 }
                                
                             },

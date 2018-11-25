@@ -14,7 +14,14 @@ function select_options($habilidades_json){
     <head>
        <?php include('includes/referencias-top.php');?>
         <link rel="stylesheet" href="<?= $ruta?>plugins/summernote-master/dist/summernote-lite.css">
-       <style type="text/css" media="screen">
+       <style>
+
+            .marcar-error
+            { 
+            color: #ff0000;
+            font-weight: 600;
+            text-decoration: underline;
+            }
            .sp{
             padding: 0px;
            }
@@ -81,6 +88,7 @@ function select_options($habilidades_json){
             ::-webkit-scrollbar-thumb {
                 background: #bababa
             }​
+
        </style>
       <link href="<?= $ruta?>plugins/tag/tokenize2.css" rel="stylesheet" /> 
     </head>
@@ -442,25 +450,25 @@ function select_options($habilidades_json){
                                                 <div class="row">
                                                     <div class="col-md-4" > 
                                                         <div class="form-group">
-                                                            <label>Alias</label>
+                                                            <label id="titulo_alias">Alias</label>
                                                             <textarea id="tipo_oferta" name="" style="height: 35px;resize: none;overflow-y: hidden;display: none;" class="form-control"></textarea>
                                                             <textarea id="publicacion" name="" style="height: 35px;resize: none;overflow-y: hidden;display: none;" class="form-control">0</textarea>
                                                             <textarea id="plantilla" name="" style="height: 35px;resize: none;overflow-y: hidden;display: none;" class="form-control">0</textarea>
                                                        
-                                                            <textarea id="alias" placeholder="Ejemplo: Secretaria para Daniel" name="" style="height: 35px;resize: none;overflow-y: hidden;" class="form-control"></textarea>
+                                                            <textarea id="alias" placeholder="Ejemplo: Secretaria para Daniel" name="" style="height: 35px;resize: none;overflow-y: hidden;" class=" form-control"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4" > 
                                                         <div class="form-group">
-                                                            <label>Título</label>
+                                                            <label id="titulo_titulo">Título</label>
                                                             <textarea id="titulo"  placeholder="Ejemplo: Se solicita secretaria" name="" style="height: 35px;resize: none;overflow-y: hidden;" class="form-control"></textarea>
                                                          </div>
                                                     </div>
                                                     <div class="col-md-4" > 
                                                       <?php if (session()->get('company_plan')=="Premium"): ?>
                                                          <div class="form-group">
-                                                            <label>Mis plantillas</label>
-                                                            <select id="cbn_plantilla" onchange="oferta(this.value,1)" class="form-control"> 
+                                                            <label id="titulo_cbn_plantilla">Mis plantillas</label>
+                                                            <select id="cbn_plantilla" onchange="oferta(this.value,1)" class="form-control "> 
                                                             </select>
                                                          </div>
                                                       <?php endif ?> 
@@ -468,7 +476,7 @@ function select_options($habilidades_json){
                                                         </div> 
                                                      <div class="col-md-12" style="padding: 0px;"> 
                                                         <div class="form-group">   
-                                                            <label>Descripción</label>
+                                                            <label id="titulo_descripcion">Descripción</label>
                                                             <div id="descripcion"  class="summernote"></div>
                                                         </div> 
                                                 </div> 
@@ -476,7 +484,7 @@ function select_options($habilidades_json){
                                                 <div class="row">
                                                     <div class="col-md-2">    
                                                         <div class="form-group">
-                                                            <label>País</label>
+                                                            <label id="titulo_pais">País</label>
                                                             <select  id="pais"  class="form-control">
                                                                 <option value="Argentina">Argentina</option>
                                                             </select>
@@ -484,8 +492,7 @@ function select_options($habilidades_json){
                                                     </div> 
                                                     <div class="col-md-3">    
                                                         <div class="form-group">
-                                                            <label>Provincia</label>
-
+                                                            <label id="titulo_provincia">Provincia</label> 
                                                             <select  id="provincia"  class="form-control">
 
                                                                 <option value="">Seleccionar</option>
@@ -497,7 +504,7 @@ function select_options($habilidades_json){
                                                     </div> 
                                                     <div class="col-md-3">    
                                                         <div class="form-group">
-                                                            <label>Localidad</label>
+                                                            <label id="titulo_localidad">Localidad</label>
                                                             <select id="localidad"  class="form-control">
                                                                 <option value="">Seleccionar</option>
                                                             </select>
@@ -505,7 +512,7 @@ function select_options($habilidades_json){
                                                     </div> 
                                                     <div class="col-md-4">    
                                                         <div class="form-group">
-                                                            <label>Dirección</label>
+                                                            <label id="titulo_direccion">Dirección</label>
                                                               <textarea id="direccion"  placeholder="Ejemplo: Calle 12 con AV 3" name="" style="height: 33px;resize: none;overflow-y: hidden;" class="form-control"></textarea>
                                                         </div>
                                                     </div>  
@@ -515,7 +522,7 @@ function select_options($habilidades_json){
                                                 <div class="row">
                                                     <div class="col-md-2">    
                                                         <div class="form-group">
-                                                            <label>Modalidad</label>
+                                                            <label id="titulo_disponibilidad">Modalidad</label>
                                                             <select id="disponibilidad"  class="form-control">
                                                                <option value="">Seleccionar</option>
                                                                 <?php foreach ($disponibilidad as $key): ?>
@@ -526,7 +533,7 @@ function select_options($habilidades_json){
                                                     </div> 
                                                     <div class="col-md-3">    
                                                         <div class="form-group">
-                                                            <label>Área</label>
+                                                            <label id="titulo_sector">Área</label>
                                                             <select  id="sector"  class="form-control">
                                                                 <option value="">Seleccionar</option>
                                                                 <?php foreach ($area as $key): ?>
@@ -538,7 +545,7 @@ function select_options($habilidades_json){
                                                     
                                                     <div class="col-md-3">    
                                                         <div class="form-group">
-                                                            <label>Nivel de estudio</label>
+                                                            <label id="titulo_nivel_estudio">Nivel de estudio</label>
                                                             <select id="nivel_estudio" class="form-control">
                                                                 <option value="">Seleccionar</option>
                                                                 <option value="Cualquiera">Sin Definir</option>
@@ -550,13 +557,13 @@ function select_options($habilidades_json){
                                                     </div> 
                                                      <div class="col-md-2">    
                                                         <div class="form-group">
-                                                            <label>Nº de vancantes</label>
+                                                            <label id="titulo_vacantes">Nº de vancantes</label>
                                                               <input type="number" id="vacantes"  placeholder="Ejemplo: 5" name="" style="height: 33px;resize: none;overflow-y: hidden;" class="form-control"></input>
                                                         </div>
                                                     </div>
                                                      <div class="col-md-2">    
                                                         <div class="form-group">
-                                                            <label>Plan estado</label>
+                                                            <label id="titulo_plan_estado">Plan estado</label>
                                                             <select id="plan_estado"  class="form-control">
                                                                    <option value="">Seleccionar</option>
                                                                    <option value="No aplica">No aplica</option>
@@ -571,7 +578,7 @@ function select_options($habilidades_json){
                                                 <div class="row">
                                                     <div class="col-md-2">    
                                                         <div class="form-group">
-                                                            <label>Oferta confidencial</label>
+                                                            <label id="titulo_confidencial">Oferta confidencial</label>
                                                             <select id="confidencial"  class="form-control">
                                                                 <option value="">Seleccionar</option>
                                                                 <option value="1">SI</option>
@@ -581,7 +588,7 @@ function select_options($habilidades_json){
                                                     </div> 
                                                     <div class="col-md-3">    
                                                         <div class="form-group">
-                                                            <label>Apta para discapacidad</label>
+                                                            <label id="titulo_discapacidad">Apta para discapacidad</label>
                                                             <select id="discapacidad" class="form-control">
                                                                 <option value="">Seleccionar</option>
                                                                 <option value="1">SI</option>
@@ -591,7 +598,7 @@ function select_options($habilidades_json){
                                                     </div>  
                                                     <div class="col-md-3">    
                                                         <div class="form-group">
-                                                            <label>Turno</label>
+                                                            <label id="titulo_turno">Turno</label>
                                                             <select id="turno"  class="form-control">
                                                                   <option value="">Seleccionar</option>
                                                                   <option value="Sin Defini">Sin Definir</option>
@@ -603,7 +610,7 @@ function select_options($habilidades_json){
                                                     </div>  
                                                     <div class="col-md-2">    
                                                         <div class="form-group">
-                                                            <label>Género</label>
+                                                            <label id="titulo_genero">Género</label>
                                                             <select id="genero"  class="form-control">
                                                                    <option value="">Seleccionar</option>
                                                                    <option value="Cualquiera">Ambos</option>
@@ -615,7 +622,7 @@ function select_options($habilidades_json){
                                                     </div>
                                                     <div class="col-md-2">    
                                                         <div class="form-group">
-                                                            <label>Edad</label>
+                                                            <label id="titulo_edad">Edad</label>
                                                             <select  id="edad" class="form-control">
                                                                 <option value="">Seleccionar</option>
                                                                 <option value="Cualquiera">Sin Definir</option>
@@ -630,7 +637,7 @@ function select_options($habilidades_json){
                                                 <div class="row">
                                                   <div class="col-md-2">    
                                                         <div class="form-group">
-                                                            <label>Experiencia</label>
+                                                            <label id="titulo_experiencia">Experiencia</label>
                                                             <select id="experiencia"  class="form-control">
                                                                 <option value="">Seleccionar</option>
                                                                 <option value="SI">SI</option>
@@ -640,7 +647,7 @@ function select_options($habilidades_json){
                                                     </div> 
                                                     <div class="col-md-3">    
                                                         <div class="form-group">
-                                                            <label>Salario</label>
+                                                            <label id="titulo_salarios">Salario</label>
                                                             <select id="salarios" class="form-control">
                                                                 <option value="">Seleccionar</option>
                                                                 <?php foreach ($salarios as $key): ?>
@@ -653,7 +660,7 @@ function select_options($habilidades_json){
                                                 <div class="row">
                                                      <div class="col-md-6">
                                                          <div class="form-group">
-                                                         <label>Habilidades</label>
+                                                         <label id="titulo_habilidades">Habilidades</label>
                                                          <div class="panel-body">
                                                            <select id="habilidades" class="tokenize-sample-demo1" multiple>
                                                                 <?php echo select_options($habilidades_json)?>
@@ -663,7 +670,7 @@ function select_options($habilidades_json){
 
                                                      <div class="col-md-6">
                                                          <div class="form-group">
-                                                         <label>Idiomas</label>
+                                                         <label id="titulo_idiomas">Idiomas</label>
                                                          <div class="panel-body">
                                                            <select id="idiomas" class="tokenize-sample-demo2" multiple>
                                                                 <?php echo select_options($idiomas_json)?>
@@ -707,9 +714,7 @@ function select_options($habilidades_json){
       <script type="text/javascript">
       
 
-        $(document).ready(function() { 
-          
-           
+        $(document).ready(function() {  
 
           $('.summernote').summernote({
             height: 300,

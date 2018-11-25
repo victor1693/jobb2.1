@@ -4,7 +4,10 @@
 		if($("#"+par).val()=="")
 		{
 			$.notify("Debe completar el campo", "info");
-			$("#"+par).focus();
+             $("label").removeClass('marcar-error');
+			$("#titulo_"+par).addClass('marcar-error');
+
+            $("#"+par).focus();
 			return false;
 		}
 		else

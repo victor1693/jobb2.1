@@ -24,7 +24,7 @@ class con_company extends Controller
 
 	}
 
-    public function registrar()
+    public function registrar(Request $request)
     { 	
     	date_default_timezone_set('America/Argentina/Cordoba');
     	$fecha=date('Y-m-d'); 
@@ -63,7 +63,16 @@ class con_company extends Controller
         'Gratis'
     	)";
     	try {
-    		DB::insert($sql); 
+    		DB::insert($sql);
+            $sql_emp='SELECT * FROM tbl_company 
+            WHERE correo="'.strtolower($_POST['correo']).'" 
+            AND clave="'.md5(strtolower($_POST['clave'])).'"';
+            $datos=DB::select($sql_emp);
+            $request->session()->set('company_id',$datos[0]->id);
+            $request->session()->set('company_img',$datos[0]->img_profile);
+            $request->session()->set('company_nombre',$datos[0]->nombre); 
+            $request->session()->set('tipo_usuario','1');
+             
     	} catch (\Illuminate\Database\QueryException $ex) {
     		 $this->auditar('registrar',str_replace("'", "",$ex->getMessage()),'');
     		 abort(500); 

@@ -72,9 +72,7 @@
                      {
                         display: block;
                      }
-               }
-            
-              
+               } 
             </style>
     </head>
 </html>
@@ -310,7 +308,7 @@
                                 <div class="job-list-modern">
                                     <div class="job-listings-sec no-border" >
                                         <?php foreach ($ofertas_similares as $key): ?> 
-                                            <?php if ($id_oferta!=$key->id): ?>
+                                            <?php if ($id_oferta!=$key->id && $key->plantilla !="SI"): ?>
                                                 
                                           
                                         <div class="job-listing wtabs" style="padding-top: 5px;padding-bottom: 5px;">
@@ -370,7 +368,7 @@
                                 <div class="job-list-modern">
                                     <div class="job-listings-sec no-border">
                                     	<?php foreach ($ofertas_recientes as $key): ?> 
-                                            <?php if ($key->id != $id_oferta): ?>
+                                            <?php if ($key->id != $id_oferta && $key->plantilla !="SI"): ?>
                                                 
                                            
                                         <div class="job-listing wtabs" style="padding-top: 5px;padding-bottom: 5px;">

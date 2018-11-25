@@ -14,7 +14,7 @@ class con_company_ofertas extends Controller
     	$vista=View::make("empresas.ofertas");
     	$sql_provincias="SELECT * FROM tbl_provincias";
     	$sql_disponibilidad="SELECT * FROM tbl_disponibilidad";
-    	$sql_area="SELECT * FROM tbl_areas_sectores";
+    	$sql_area="SELECT * FROM tbl_areas_sectores ORDER BY nombre ASC";
     	$sql_nivel_estudio="SELECT * FROM tbl_nivel_estudio";
     	$sql_idiomas="SELECT * FROM tbl_idiomas ORDER BY descripcion ASC";
     	$sql_habilidades="SELECT * FROM tbl_habilidades ORDER BY descripcion ASC";

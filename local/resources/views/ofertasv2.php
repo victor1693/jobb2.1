@@ -459,6 +459,24 @@ $mi_tokken=csrf_token();
                             
                         </div>
 
+                        <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;">
+                            <div class="col-sm-12 col-md-8" style="background-image: url(https://i.pinimg.com/originals/40/39/e0/4039e0f1ef08b7b965bacb4641a7af49.jpg);min-height: 130px;color:#fff;">
+                               
+                               <h4 style="text-align: center;padding-top: 15px;">  <img src="local/resources/views/images/ws.png" style="width: 40px;height: 40px;margin-bottom: 5px;margin-bottom: -12px;"> ¿Quieres recibir las últimas ofertas laborales<br> en tu <span style="font-weight: 500;margin-top: 0px;">WhatsApp</span>?</h4>
+                            </div>
+                              <div class="col-sm-12 col-md-4" style="background-image: url(https://i.pinimg.com/originals/0f/05/27/0f05274b1bdc8feed70822513cd7a903.jpg);min-height: 130px;">
+                               
+                               <form id="form_ws" action="ws" method="POST">
+                                <input type="hidden" name="_token" value="<?= $mi_tokken;?>">
+                                <div class="pf-field" style="margin: 0px;padding-top: 15px;">
+                                 <span style="font-weight: 600;">Mi número de Telf.</span> 
+                                    <input id="ws" name="numero" maxlength="25" style="border-radius: 0px;padding: 5px;margin-bottom: 15px;margin-top: 5px;" value="" type="number" placeholder="Mi teléfono">
+                                    <button onclick="validar_ws()" type="button" class="form-control btn-sm btn-success" style="margin: 0px;">Enviar número</button>
+                                </div>
+                               </form>
+                            </div>
+                        </div> 
+
                          <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; ">
 
                                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -688,6 +706,18 @@ $mi_tokken=csrf_token();
         });
     </script>
     <script type="text/javascript">
+      function validar_ws()
+      {
+        if($("#ws").val()=='')
+        {
+          alert("Debe colocar un número de teléfono.");
+          $("#ws").focus();
+        }
+        else
+        {
+          $("#form_ws").submit();
+        }
+      }
       function paginar(parametro)
       {
           $("#pagina").val(parametro);

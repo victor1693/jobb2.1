@@ -19,6 +19,7 @@ Route::get('fag', 'con_administrator_faq@detalle_preguntas');
 Route::post('ofertas', 'con_ofertas@index');
 //Route::get('detalleoferta/{id}', 'con_ofertas@detalle');
 Route::get('ofertas', 'con_ofertasv2@index');
+Route::post('ws', 'con_ofertasv2@ws');
 Route::get('detalleoferta/{id}', 'con_ofertasv2@detalle_oferta');
 
 Route::post('loguear', 'con_login@log');

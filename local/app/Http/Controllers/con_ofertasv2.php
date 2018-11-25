@@ -9,6 +9,12 @@ use View;
 use DB;
 class con_ofertasv2 extends Controller
 {
+    public function ws()
+    { 
+        $sql="INSERT INTO tbl_whatsapp (numero) VALUES('".$_POST['numero']."')";
+        DB::insert($sql);
+        return redirect('ofertas');
+    }
     public function index()
     {
     	$filtros=""; 
@@ -153,10 +159,10 @@ class con_ofertasv2 extends Controller
     	concat(t2.pais," - ",t2.provincia," - ",t2.localidad) as emp_direccion
 		FROM tbl_company_ofertas t1
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa 
-		WHERE  t1.id <> '.$datos[0]->id.' AND t1.plantilla <> "SI" AND t1.sector ="'.$datos[0]->sector.'" '.$habilidades.'  
+		WHERE  t1.id != '.$datos[0]->id.' AND t1.plantilla != "SI" AND t1.sector ="'.$datos[0]->sector.'" '.$habilidades.'  
 		GROUP BY t1.id
 		ORDER BY t1.tmp DESC
-		LIMIT 0,6
+		LIMIT 0,10
 		';
 		$candidato=0;
 		if(session()->get('cand_id')!="")
