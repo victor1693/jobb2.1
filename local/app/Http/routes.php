@@ -21,7 +21,8 @@ Route::post('ofertas', 'con_ofertas@index');
 Route::get('ofertas', 'con_ofertasv2@index');
 Route::post('ws', 'con_ofertasv2@ws');
 Route::get('detalleoferta/{id}', 'con_ofertasv2@detalle_oferta');
-
+Route::get('bolsa', 'con_scrapping@index');
+Route::get('bolsa/{url}', 'con_scrapping@detalle');
 Route::post('loguear', 'con_login@log');
 Route::get('socialmedia', 'con_login@log');
 Route::get('descargar/{id}', 'con_candidato_cv@descargar');
