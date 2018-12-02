@@ -25,8 +25,7 @@
 	<?php include('local/resources/views/includes/google_analitycs.php');?>
 </head>
 <body> 
-<div class="theme-layout" id="scrollup">
-	
+<div class="theme-layout" id="scrollup"> 
 	  <?php include('local/resources/views/includes/general_header.php');?>
 	  <?php include('local/resources/views/includes/general_header_responsive.php');?>
 	<section class="section-home-header">
@@ -68,8 +67,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
-
+	</section> 
 	<section>
 		<div class="block gray double-gap-top">
 			<div class="container">

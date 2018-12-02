@@ -459,7 +459,7 @@ $mi_tokken=csrf_token();
                             
                         </div>
 
-                        <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;">
+                      <!--  <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;">
                             <div class="col-sm-12 col-md-8" style="background-image: url(https://i.pinimg.com/originals/40/39/e0/4039e0f1ef08b7b965bacb4641a7af49.jpg);min-height: 130px;color:#fff;">
                                
                                <h4 style="text-align: center;padding-top: 15px;">  <img src="local/resources/views/images/ws.png" style="width: 40px;height: 40px;margin-bottom: 5px;margin-bottom: -12px;"> ¿Quieres recibir las últimas ofertas laborales<br> en tu <span style="font-weight: 500;margin-top: 0px;">WhatsApp</span>?</h4>
@@ -475,8 +475,10 @@ $mi_tokken=csrf_token();
                                 </div>
                                </form>
                             </div>
-                        </div> 
-
+                        </div> -->
+                        <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;">
+                         <a href="bolsa" title=""> <img src="local/resources/views/images/bolsa.jpg" style="height: auto;width: 100%;">
+</a>                        </div>
                          <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; ">
 
                                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -511,6 +513,7 @@ $mi_tokken=csrf_token();
                                     $siguiente=$_GET['pagina']+1; 
                                   }
                                   ?>
+                                  
                                 <?php if (count($publicidad)>1): ?>
                                   
                                 

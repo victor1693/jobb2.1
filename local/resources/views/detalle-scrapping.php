@@ -41,7 +41,7 @@ $mi_tokken=csrf_token();
                     <div class="job-listings-tabs">
                   <div class="row" style="padding-top: 50px;"> 
                     <div class="col-lg-12">
-                      <form>
+                      <form action="../bolsa" method="get">
                         <h1 style="font-size: 28px;text-align: center;">Seguir Buscando 
                         </h1> 
                        <div class="row">
@@ -49,11 +49,11 @@ $mi_tokken=csrf_token();
                         </div>
                           <div class="col-sm-5"  style="padding: 0px;">
                             <div class="pf-field" style="text-align: center;">
-                                    <input value="" style="border: 1px solid #c4c4c4;" id="buscador_1" type="text" placeholder="Buscar... Consultor, programador, analísta..."> 
+                                    <input name="buscar" value="" style="border: 1px solid #c4c4c4;" id="buscador_1" type="text" placeholder="Buscar... Consultor, programador, analísta..."> 
                             </div>
                          </div>
                          <div class="col-sm-1"  style="padding: 0px;">
-                            <button type="" class="btn btn-lg btn-warning" style="margin-top: 0px;height: 49px;">Buscar</button>
+                            <button type="submit" class="btn btn-lg btn-warning" style="margin-top: 0px;height: 49px;">Buscar</button>
                          </div>
                           <div class="col-lg-2 col-md-2 col-sm-0"> 
                         </div>
@@ -69,82 +69,104 @@ $mi_tokken=csrf_token();
                               
                             </div>
                             <div class="col-lg-12" style="text-align: center;margin-top: -60px;"> 
-                              <img style="border:3px solid #fff; border-radius: 50%; width: 100px;height: 100px;margin-right: 15px;margin-top: 10px;" src="../uploads/min/4722.jpg" alt="">
+                              <img style="border:3px solid #fff; border-radius: 50%; width: 100px;height: 100px;margin-right: 15px;margin-top: 10px;" src="<?= $datos[0]->img;?>" alt="">
                              <div style="margin-left: -10px;">
-                                <span>Cocacola</span>
+                                <span><?= utf8_decode($datos[0]->empresa);?></span>
                               </div> 
                              </div>
-                          <div class="ofertas-externas" style="padding: 15px;">  
-                             <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="#" title="">Profesionales en comercialización pip - córdoba</a></h1>
-                              <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500">Córdoba > Córdoba</h3>       
-                             <h2 style="font-size: 14px;text-align: justify;">Reconocida multinacional en investigación de mercados requiere personal femenino con experiencia en levantamiento de información y realización de encuestas de vivienda u hogar para ocupar cargo de Encuestador en la ciudad de Medellín.
-                              Indispensable haber realizado manejo de cartografía y paquete Office; experiencia en realización de encuestas en campo. Importante persona que viva en Medellín, Itagüí, Bello, o Envigado.
-                              Se firma contrato fijo por cuatro meses directo con la compañía. 
-                              Se le brindara un salario de $781.242 + bonificaciones individual y grupales + auxilio por desplazamiento + otros recargos adicionales. La vacante incluyen incentivos. 
-                              Horario de lunes a domingo de 8:00 am a 5:30 pm, con 4 descansos rotativos al mes, entre semana o domingos. 
-                              INDISPENSABLE:
-                              - tener experiencia en el sector de la realización de encuestas masivas y manejo de cartografía, si no la tiene ABSTÉNGASE DE APLICAR. 
-                              - Vivir en Medellín, Itagüí, Bello, Envigado.</h2> 
+                          <div class="ofertas-externas" style="padding: 15px;"> 
+                            <div class="col-sm-12" style="margin-bottom: 25px;margin-top: 25px;">
+                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- prueba 3 -->
+                            <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-1968505410020323"
+                            data-ad-slot="2357238982"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                            
+                          </div>       
+                             <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="#" title=""><?= utf8_decode($datos[0]->titulo);?></a></h1>
+                              <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= utf8_decode($datos[0]->provincia);?> > <?= utf8_decode($datos[0]->localidad);?></h3> 
+                            
+                             <h2 style="font-size: 14px;text-align: justify;"><?= utf8_decode($datos[0]->descripcion);?></h2> 
                           </div> 
                          <div style="text-align: center;padding-bottom: 25px;">
-                            <a class="btn btn-success" onclick="location.href='detalleoferta/551'" style="font-size: 14px;margin: 0 auto;" type="button">Postularme ahora</a> 
+                            <a class="btn btn-success" href="<?= $datos[0]->url;?>" style="font-size: 14px;margin: 0 auto;" type="button">Postularme ahora</a> 
                          </div>
  
                          <div class="row">
                             <div class="col-lg-12">
-                       <h3 style="text-align: center;margin-top: 15px;margin-bottom: 20px;font-weight: 600;">
-                         Más ofertas de Coca Cola
-                       </h3>
-
-                       <div class="col-lg-12">
-                       <div class="job-listing wtabs ">
-                          <div class="ofertas-externas">
-                             <div class="c-logo"> <img style="width: 100px;height: 100px;margin-right: 15px;" src="../uploads/min/4722.jpg" alt="">
-                             <div>
-                                <span>Cocacola</span>
-                              </div> 
-                             </div>
-                             <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="#" title="">Profesionales en comercialización pip - córdoba</a></h1>
-                              <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500">Córdoba > Córdoba</h3>       
-                             <h2 style="font-size: 14px;">Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion</h2>
-
-                          <div class="job-style-bx" style="margin-top: 0px;">
-                             <button onclick="location.href='detalleoferta/551'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
+                              <?php if (count($ofertas)>0): ?>
+                                  <h3 style="text-align: center;margin-top: 15px;margin-bottom: 20px;font-weight: 600;">
+                                     Más ofertas de <?= utf8_decode($datos[0]->empresa);?>
+                                   </h3>
+                                   <div class="col-sm-12" style="margin-bottom: 25px;margin-top: 25px;">
+                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- prueba 3 -->
+                            <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-1968505410020323"
+                            data-ad-slot="2357238982"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                            
                           </div>
+                                <?php foreach ($ofertas as $key): ?>
+                                    <div class="col-lg-12">
+                                     <div class="job-listing wtabs ">
+                                        <div class="ofertas-externas">
+                                           <div class="c-logo"> <img style="width: 100px;height: 100px;margin-right: 15px;" src="<?= utf8_decode($key->img);?>" alt="">
+                                           <div>
+                                              <span style="font-weight: 600;font-size: 14px;"><?= utf8_decode($key->empresa);?></span>
+                                            </div> 
+                                           </div>
+                                           <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="<?= ($key->amigable);?>" title=""><?= utf8_decode($key->titulo);?></a></h1>
+                                            <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= utf8_decode($key->provincia);?> > localidad</h3>       
+                                           <h2 style="font-size: 14px;"> 
+                                            <?php
+                                              $descripcion= substr($key->descripcion,0,150);
+                                              echo  strip_tags(utf8_decode($descripcion)) .'...';
+                                              ?>    
+                                            </h2>
 
-                          </div> 
-                       </div>
-                       <!-- Job --> 
-                    </div>
-                    <div class="col-lg-12">
-                       <div class="job-listing wtabs ">
-                          <div class="ofertas-externas">
-                             <div class="c-logo"> <img style="width: 100px;height: 100px;margin-right: 15px;" src="../uploads/min/4722.jpg" alt="">
-                             <div>
-                                <span>Cocacola</span>
-                              </div> 
-                             </div>
-                             <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="#" title="">Profesionales en comercialización pip - córdoba</a></h1>
-                              <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500">Córdoba > Córdoba</h3>       
-                             <h2 style="font-size: 14px;">Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion Esta seria la descripcion</h2>
+                                        <div class="job-style-bx" style="margin-top: 0px;">
+                                           <button onclick="location.href='<?= utf8_decode($key->amigable);?>'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
+                                        </div>
 
-                          <div class="job-style-bx" style="margin-top: 0px;">
-                             <button onclick="location.href='detalleoferta/551'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
-                          </div>
-
-                          </div> 
-                       </div>
-                       <!-- Job --> 
-                    </div>
+                                        </div> 
+                                     </div>
+                                     <!-- Job --> 
+                                  </div>
+                                <?php endforeach ?>
+                              <?php endif ?> 
+                  
                     </div>
                          </div>
                        </div>
                     </div>
                     <div class="col-lg-3" style="padding:0px;">
-                       <div class="job-listing wtabs " style="text-align: center;padding: 10px;">
-                       <img src="../local/resources/views/images/descarga-cv-2.jpg"> 
+                       <div class="col-sm-12" style="margin-top: 30px;padding: 0px;">
+                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle"
+                                style="display:block;height: 120px;"
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-6t+ed+2i-1n-4w"
+                                data-ad-client="ca-pub-1968505410020323"
+                                data-ad-slot="2571530788"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script> 
                        </div>
-                       <!-- Job --> 
+                       <div class="job-listing wtabs " style="text-align: center;padding: 10px;margin-top: -15px;">
+                       <a href="../registrar" title=""><img src="../local/resources/views/images/descarga-cv-2.jpg"> </a>
+                       </div> 
                     </div> 
  
                   </div>
