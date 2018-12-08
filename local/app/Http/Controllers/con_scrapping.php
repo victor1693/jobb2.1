@@ -28,7 +28,7 @@ class con_scrapping extends Controller
     		$filtro=$filtro.'AND empresa = "'.$_GET['empresa'].'"';
     	}
     	$vista=View::make("scrapping");
-    	$sql="SELECT  * FROM tbl_scrapping ".$filtro."";
+    	$sql="SELECT  * FROM tbl_scrapping ".$filtro." GROUP BY amigable ORDER BY id DESC";
 
     	$ofertas_jobbers="SELECT  t1.*,t2.img_profile,t2.nombre as empresa FROM tbl_company_ofertas t1
     	INNER JOIN tbl_company t2 ON t2.id = t1.id_empresa
@@ -37,8 +37,16 @@ class con_scrapping extends Controller
     	LIMIT 0,4";
 
     	$provincias="SELECT provincia FROM tbl_scrapping  GROUP BY provincia ORDER BY provincia ASC";
-    	$localidad="SELECT localidad FROM tbl_scrapping  GROUP BY localidad ORDER BY localidad ASC";
-    	$empresa="SELECT empresa FROM tbl_scrapping  GROUP BY empresa ORDER BY empresa ASC";
+    	$filtro_provincia="";
+        if(isset($_GET['provincia']) && $_GET['provincia'] !="")
+        {
+            $filtro_provincia=$filtro_provincia."  AND provincia = '".$_GET['provincia']."'";
+        }
+        $localidad="SELECT localidad FROM tbl_scrapping  
+        WHERE 1 = 1 ".$filtro_provincia."
+        GROUP BY localidad ORDER BY localidad ASC";
+     
+        $empresa="SELECT empresa FROM tbl_scrapping  GROUP BY empresa ORDER BY empresa ASC";
     	$sql_publicidad="SELECT * FROM tbl_publicidad_empresa ORDER BY vistos ASC LIMIT 0,3";
         $publicidad=DB::select($sql_publicidad); 
         foreach ($publicidad as $key) {
@@ -60,10 +68,11 @@ class con_scrapping extends Controller
     {
     	$vista=View::make("detalle-scrapping");
     	$sql="SELECT  * FROM tbl_scrapping WHERE amigable='".$url."'";
-
+        
     	$datos=DB::select($sql);
     	$sql_mas_ofertas="SELECT * FROM tbl_scrapping WHERE empresa = '".$datos[0]->empresa."' AND amigable <> '".$url."'";
-    	$vista->ofertas = DB::select($sql_mas_ofertas);
+     
+        $vista->ofertas = DB::select($sql_mas_ofertas);
     	$vista->datos=$datos;
     	return $vista;
     }

@@ -198,7 +198,7 @@
                                           <?php
                                           
                                           ?>
-                                          <?php for ($i = 1; $i<=10; $i++): ?>
+                                          <?php for ($i = 1; $i<=50; $i++): ?>
                                             <?php
                                             $titulo="";
                                             $link="";
@@ -253,7 +253,7 @@
 		else if($("#img_perfil").val()==""){$.notify("Debe subir una imagen de perfil","info");$("#img_perfil").focus();}
 		else if($("#img_portada").val()==""){$.notify("Debe subir una imagen de portada","info");$("#img_portada").focus();}
 		else if($("#descripcion_empresa").val()==""){$.notify("Debe completar el campo descripcion de empresa","info");$("#descripcion_empresa").focus();}
-		else if($("#video").val()==""){$.notify("Debe completar el campo video","info");$("#video").focus();}
+ 
 
 		else if($("#titulo_oferta").val()==""){$.notify("Debe completar el titulo de la oferta","info");$("#titulo_oferta").focus();}
 		else if($("#link_oferta").val()==""){$.notify("Debe completar el link de la oferta","info");$("#link_oferta").focus();}

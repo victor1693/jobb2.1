@@ -31,7 +31,25 @@
 				<div class="block remove-bottom" style="padding: 5px;">
 					<div class="container">
 						<div class="row">
-					
+					<div class="col-lg-7" style="margin-top: 6px;background-color: #fff;max-height: 500px;border-radius: 5px;"> 
+							 	<div style="text-align: center;padding-top:15px;">
+							 		<img src="local/resources/views/images/bolsa_2.jpg">
+							 	</div>
+								 <h1 style="font-size: 28px;text-align: center;">Bolsa de empleos <strong></strong></h1>
+								 <h2 style="font-size: 20px;text-align: center;">Con el propósito de ayudarte a potenciar tu búsqueda de trabajo, Jobbers te invita a su nueva  "Bolsa de empleo" . BUSCAMOS TODAS LAS OFERTAS EN  INTERNET y las colocamos en un solo lugar. Así solo deberás buscar trabajo en un solo portal web.     Hoy tenemos más de 8000 nuevas ofertas que esperan por VOS.<br><br>
+<strong><a style="text-decoration: underline !important;color: #002274;" href="bolsa" title=""> Ver Bolsa de empleo</a></strong></h2>
+							  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- prueba 3 -->
+                            <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-1968505410020323"
+                            data-ad-slot="2357238982"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script> 
+							</div>
 							<div class="col-lg-5">
 								<div class="account-popup-area signin-popup-box static" style="padding: 5px;">
 									<div class="account-popup" style="border: 1px solid #ddd;">
@@ -85,22 +103,7 @@
 									</div>
 									</div><!-- LOGIN POPUP -->
 								</div>
-										<div class="col-lg-7" style="padding-top: 8px;">
-								<iframe style="width: 100%;height: auto;min-height: 400px;margin-bottom: 15px;" src="https://www.youtube.com/embed/rRV6KSDNOwM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-								 
-							  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                            <!-- prueba 3 -->
-                            <ins class="adsbygoogle"
-                            style="display:block"
-                            data-ad-client="ca-pub-1968505410020323"
-                            data-ad-slot="2357238982"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                            <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script> 
-							</div>
+							 
 							</div>
 						</div>
 					</div>

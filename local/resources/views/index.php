@@ -354,10 +354,10 @@
 								<?php foreach ($top_empresas as $key): ?> 
 								<div class="col-lg-3">
 									<div class="top-compnay style2">
-										<img style="height: 200px;width: auto;" src="uploads/min/<?= $key->img_profile;?>" alt="" />
-										<h3><a href="#" title=""><?= $key->nombre?></a></h3>
+										<a href="empresa/detalle/<?= $key->id_empresa;?>" title=""><img style="height: 200px;width: auto;" src="uploads/min/<?= $key->img_profile;?>" alt="" /></a>
+										<h3><a href="empresa/detalle/<?= $key->id_empresa;?>" title=""><?= $key->nombre?></a></h3>
 										<span><?= $key->direccion?></span>
-										<a href="#" title=""><?= $key->cantidad?> Ofertas</a>
+										<a href="empresa/detalle/<?= $key->id_empresa;?>" title=""><?= $key->cantidad?> Ofertas</a>
 									</div><!-- Top Company -->
 								</div> 
 							<?php endforeach ?>

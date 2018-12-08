@@ -18,7 +18,7 @@ class con_index extends Controller
         $sql_candidatos="SELECT count(id) as cantidad FROM tbl_usuarios WHERE tipo_usuario = 2;";
         $sql_empresas="SELECT count(id) as cantidad FROM tbl_company;";
         $sql_categorias="SELECT sector,count(id) as cantidad FROM tbl_company_ofertas GROUP BY sector ORDER by count(id) desc LIMIT 0,4";
-        $sql_top_empresas= "SELECT 
+        $sql_top_empresas= "SELECT t2.id as id_empresa,
         t2.img_profile,
         t2.nombre,
         concat(t2.provincia,' ',t2.localidad) as direccion,

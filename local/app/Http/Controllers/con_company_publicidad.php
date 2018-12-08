@@ -103,8 +103,7 @@ class con_company_publicidad extends Controller
  		{return Redirect('administracion/publicidad?result=Debe agregar la imagen de portada de la empresa');} 
 
     	else if($_POST['descripcion']==""){return Redirect('administracion/publicidad?result=Debe agregar la descripción de la empresa');}
-    	else if($_POST['video']==""){return Redirect('administracion/publicidad?result=Debe agregar un video de la empresa');}
-    	else if($_POST['titulo_oferta']==""){return Redirect('administracion/publicidad?result=Debe agregar el título dela oferta');}
+     else if($_POST['titulo_oferta']==""){return Redirect('administracion/publicidad?result=Debe agregar el título dela oferta');}
     	else if($_POST['link']==""){return Redirect('administracion/publicidad?result=Debe agregar el link de la oferta');}
     	else if($_POST['descripcion_oferta']==""){return Redirect('administracion/publicidad?result=Debe la descripción de la oferta');}
 

@@ -86,6 +86,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 column" style="background-color: #fff;padding-top: 15px;border: 1px solid #ddd;">
+                         <a href="../bolsa" title=""> <img src="../local/resources/views/images/bolsa_1.jpg" style="height: auto;width: 100%;"></a>              
                         <div class="job-single-sec">
                             <div class="job-single-head degradado" style="border: 1px dashed #b2b2b2;padding: 4px;">
                                 <div class="job-thumb" style="padding-top: 35px;">

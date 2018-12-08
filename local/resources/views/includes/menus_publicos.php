@@ -1,6 +1,7 @@
 
 <ul class="desk-1024">
 	<!-- <li class="li-nav"> -->
+	
 	<li class="">
 		<a href="<?= url('inicio') ?>" title="">Inicio&nbsp;&nbsp;&nbsp;|</a>
 		<!-- <a href="<?//= url('inicio') ?>" class="a-nav" title="">Inicio</a> -->
@@ -23,6 +24,9 @@
 </ul>
 <ul class="mobile-1024 mobile">
 	<!-- <li class="li-nav"> -->
+		<li class="">
+		<a style="color:#fff;font-weight: 600;" href="<?= Request::root()?>/bolsa" title="">&nbsp;&nbsp;&nbsp;Bolsa de empleo</a>
+	</li>
 	<li class="">
 		<a style="color:#fff;font-weight: 600;" href="<?= Request::root()?>/empresas/entrar" title="">&nbsp;&nbsp;&nbsp;Soy empresa</a>
 	</li>
@@ -31,7 +35,7 @@
 		<!-- <a href="<?//= url('inicio') ?>" class="a-nav" title="">Inicio</a> -->
 	</li>
 	<li class="">
-		<a href="<?= url('ofertas') ?>" title="">Empleos</a>
+		<a href="<?= url('ofertas') ?>" title="">Empleos Jobbers</a>
 	</li>
 	<li class="">
 		<a href="<?= url('empresas') ?>" title="">Empresas</a>

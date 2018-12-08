@@ -386,6 +386,9 @@ $mi_tokken = csrf_token();
                                             </div>
                                     </form>
                                     <div class="social-edit">
+                                        <div class="col-sm-12">
+                                            <a href="<?= Request::root()?>/bolsa" title=""> <img src="<?= Request::root()?>/local/resources/views/images/bolsa_1.jpg" style="height: auto;width: 100%;"></a>  
+                                        </div>
                                         <h3>Preferencias laborales</h3>
                                         <form id="form_preferencias_lab" method="POST" action="candipreflab">
                                             <input type="hidden" name="_token" value="<?php echo $mi_tokken;?>">

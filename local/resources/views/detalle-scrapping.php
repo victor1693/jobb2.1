@@ -137,7 +137,7 @@ $mi_tokken=csrf_token();
                                             </h2>
 
                                         <div class="job-style-bx" style="margin-top: 0px;">
-                                           <button onclick="location.href='<?= utf8_decode($key->amigable);?>'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
+                                           <button onclick="location.href='<?= ($key->amigable);?>'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
                                         </div>
 
                                         </div> 

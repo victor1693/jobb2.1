@@ -454,7 +454,7 @@ $mi_tokken=csrf_token();
                             <button type="button" onclick="location.href='ofertas'" title="Limpiar filtros" class="btn btn-warning" style="margin-top: 0px;height: 49px;width: 50px;float: right;">
                               <i class="fa fa-trash" style="font-size: 24px;"></i></button>
                             <p style="font-weight: 600;font-size: 16px;padding-top: 7px;text-align: left;padding-left: 9px;">
-                              <?= count($datos);?> Ofertas
+                             
                             </p>
                             
                         </div>
@@ -477,7 +477,7 @@ $mi_tokken=csrf_token();
                             </div>
                         </div> -->
                         <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;">
-                         <a href="bolsa" title=""> <img src="local/resources/views/images/bolsa.jpg" style="height: auto;width: 100%;">
+                         <a href="bolsa" title=""> <img src="local/resources/views/images/bolsa_1.jpg" style="height: auto;width: 100%;">
 </a>                        </div>
                          <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; ">
 
@@ -518,7 +518,7 @@ $mi_tokken=csrf_token();
                                   
                                 
                                 <div class="alert alert-info">
-                                  <span style="font-weight: 600">Jobbers</span> Buscando siempre las mejores oportunidadades de empleo para  tí.
+                                  <span style="font-weight: 600">Jobbers</span> Buscando siempre las mejores oportunidades de empleo para  tí.
                                 </div>
                                 <div class="col-lg-4 col-md-4  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; border:1px solid #ddd;border:1px solid #ddd; border-radius: 5px;border-top: 5px solid #4caf50;min-height: 300px;">
 

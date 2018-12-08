@@ -119,10 +119,21 @@
                             <p><?= $detalle[0]->descripcion;?></p> 
                         </div>
                         <div class="row">
+                          <?php if ($detalle[0]->video!=""): ?>
                             <div class="col-sm-7" style="padding: 15px; background-color: #f7f7f7;">
-                       <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $detalle[0]->video;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+
+                       <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $detalle[0]->video;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <?php
+                          $contador_video=5;
+                          ?>
                         </div>
-                        <div class="col-sm-5" style="padding: 0px; text-align: center;background-color: #f7f7f7;padding-top: 15px;"> 
+                        <?php else: ?>
+                          <?php
+                          $contador_video=12;
+                          ?>
+                          <?php endif ?>
+                            
+                        <div class="col-sm-<?= $contador_video;?>" style="padding: 0px; text-align: center;background-color: #f7f7f7;padding-top: 15px;"> 
                             <img style="width: 75px;height: 75px;" src="../../img_company_pub/logo/<?= $detalle[0]->img_profile;?>" alt=""> 
                             <p><a href="<?= $detalle[0]->id?>" title=""><?= $detalle[0]->nombre?></a></p>
                             <p style="text-align: justify;padding: 10px;"> 
@@ -132,6 +143,7 @@
                         </div>
                         </div>
                         
+                         <a href="../../bolsa" title=""> <img src="../../local/resources/views/images/bolsa_1.jpg" style="height: auto;width: 100%;"></a>  
                          <div class="col-sm-12 " style="padding: 0px; padding-top: 25px;">
                           <h5 style="text-align: center;">Más ofertas de <strong><?= $detalle[0]->nombre?></strong></h5>
                           <hr>

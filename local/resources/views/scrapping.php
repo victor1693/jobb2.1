@@ -54,7 +54,7 @@ $mi_tokken=csrf_token();
                         </div>  
                           <div class="col-sm-3"  style="padding: 0px;">
                           <div class="pf-field">
-                             <select onchange="$('#formulario').submit()" name="provincia" data-placeholder="Provincia" class="chosen">
+                             <select id="provincia" onchange="$('#formulario').submit()" name="provincia" data-placeholder="Provincia" class="chosen">
                               <option value="">Provincia</option>
                               <?php foreach ($provincia as $key): ?>
                               <option value="<?= $key->provincia;?>"><?= utf8_decode($key->provincia);?></option>    
@@ -65,7 +65,7 @@ $mi_tokken=csrf_token();
                           </div>
                           <div class="col-sm-3"  style="padding: 0px;">
                           <div class="pf-field">
-                           <select onchange="$('#formulario').submit()"  name="localidad" data-placeholder="Localidad" class="chosen">
+                           <select onchange="$('#formulario').submit()" id="localidad" name="localidad" data-placeholder="Localidad" class="chosen">
                             <option value="">Localidad</option>
                             option
                               <?php foreach ($localidad as $key): ?>
@@ -76,7 +76,7 @@ $mi_tokken=csrf_token();
                           </div>
                           <div class="col-sm-4"  style="padding: 0px;">
                           <div class="pf-field">
-                           <select onchange="$('#formulario').submit()" name="empresa" data-placeholder="Empresa" class="chosen">
+                           <select onchange="$('#formulario').submit()" id="empresa" name="empresa" data-placeholder="Empresa" class="chosen">
                             <option value="">Empresa</option>
                               <?php foreach ($empresas as $key): ?>
                               <option value="<?= $key->empresa;?>"><?= utf8_decode($key->empresa);?></option>    
@@ -103,6 +103,7 @@ $mi_tokken=csrf_token();
                        </div>
                       </form>
                     </div>
+                    
                      <div class="col-sm-12" style="margin-bottom: 25px;">
                           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- prueba 3 -->
@@ -117,6 +118,18 @@ $mi_tokken=csrf_token();
                             </script>
                             
                           </div>
+                          <div class="col-sm-12">
+                      <?php if (isset($_GET['provincia'])&& $_GET['provincia']!=""): ?>
+                        <h1 style="font-weight: 600;font-size: 18px;margin-bottom: -30px;padding: 0px;"> <?= count($datos).' Trabajos en '.utf8_decode($_GET['provincia']);?></h1> 
+                      <?php else: ?>
+                        <h1 style="font-weight: 600;font-size: 18px;margin-bottom: -30px;padding: 0px;"> <?= count($datos).' Trabajos en Argentina';?></h1> 
+                      <?php endif ?>
+                      
+
+
+                     <button type="button" onclick="location.href='bolsa'" title="Limpiar filtros" class="btn btn-warning" style="margin-top: 0px;height: 49px;width: 50px;float: right;">
+                              <i class="fa fa-trash" style="font-size: 24px;"></i></button>
+                    </div>
                        <?php 
 
                                   $pagina=ceil((count($datos)/25));
@@ -140,6 +153,7 @@ $mi_tokken=csrf_token();
                     $contador_de_pagina=0;
                      $inicio =($_GET['pagina']*25)-25;
                      $final =($_GET['pagina']*25);
+
                     foreach ($datos as $key): ?> 
                     <?php if ($contador_de_pagina>=$inicio && $contador_de_pagina<=$final): ?>
                     <div class="col-lg-6">
@@ -147,10 +161,10 @@ $mi_tokken=csrf_token();
                           <div class="ofertas-externas">
                              <div class="c-logo"> <a href="bolsa/<?= $key->amigable;?>" title=""><img style="width: 100px;height: 100px;margin-right: 15px;margin-top: 10px;" src="<?= utf8_decode($key->img)?>" alt=""></a> 
                              <div>
-                                <span style="font-weight: 600;font-size: 14px;"><?= utf8_decode($key->empresa);?></span>
+                                <span style="font-weight: 600;font-size: 14px;"><?php echo substr(utf8_decode($key->empresa),0,13) ;?></span>
                               </div> 
                              </div>
-                             <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="bolsa/<?= $key->amigable;?>" title=""><?= utf8_decode($key->titulo);?></a></h1>
+                             <h1 style="margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="bolsa/<?= $key->amigable;?>" title=""><?= utf8_decode($key->titulo);?></a></h1>
                               <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= utf8_decode($key->provincia);?> > <?= utf8_decode($key->localidad);?></h3>       
                              <h2 style="font-size: 14px;">
                               <?php
@@ -332,4 +346,20 @@ $mi_tokken=csrf_token();
           $("#formulario").submit();
       }
     </script>
+    <script> 
+<?php if (isset($_GET['provincia'])): ?>
+  $("#provincia").val('<?= $_GET['provincia']?>');
+  $("#provincia").trigger('chosen:updated'); 
+<?php endif ?>
+
+<?php if (isset($_GET['localidad'])): ?>
+  $("#localidad").val('<?= $_GET['localidad']?>');
+  $("#localidad").trigger('chosen:updated'); 
+<?php endif ?>
+
+<?php if (isset($_GET['empresa'])): ?>
+  $("#empresa").val('<?= $_GET['empresa']?>');
+  $("#empresa").trigger('chosen:updated'); 
+<?php endif ?>
+</script>
 </body>
