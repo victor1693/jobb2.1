@@ -71,7 +71,7 @@ $mi_tokken=csrf_token();
                             <div class="col-lg-12" style="text-align: center;margin-top: -60px;"> 
                               <img style="border:3px solid #fff; border-radius: 50%; width: 100px;height: 100px;margin-right: 15px;margin-top: 10px;" src="<?= $datos[0]->img;?>" alt="">
                              <div style="margin-left: -10px;">
-                                <span><?= utf8_decode($datos[0]->empresa);?></span>
+                                <span><?= ($datos[0]->empresa);?></span>
                               </div> 
                              </div>
                           <div class="ofertas-externas" style="padding: 15px;"> 
@@ -89,10 +89,10 @@ $mi_tokken=csrf_token();
                             </script>
                             
                           </div>       
-                             <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="#" title=""><?= utf8_decode($datos[0]->titulo);?></a></h1>
-                              <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= utf8_decode($datos[0]->provincia);?> > <?= utf8_decode($datos[0]->localidad);?></h3> 
+                             <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="#" title=""><?= ($datos[0]->titulo);?></a></h1>
+                              <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= ($datos[0]->provincia);?> > <?= ($datos[0]->localidad);?></h3> 
                             
-                             <h2 style="font-size: 14px;text-align: justify;"><?= utf8_decode($datos[0]->descripcion);?></h2> 
+                             <h2 style="font-size: 14px;text-align: justify;"><?= ($datos[0]->descripcion);?></h2> 
                           </div> 
                          <div style="text-align: center;padding-bottom: 25px;">
                             <a class="btn btn-success" href="<?= $datos[0]->url;?>" style="font-size: 14px;margin: 0 auto;" type="button">Postularme ahora</a> 
@@ -102,7 +102,7 @@ $mi_tokken=csrf_token();
                             <div class="col-lg-12">
                               <?php if (count($ofertas)>0): ?>
                                   <h3 style="text-align: center;margin-top: 15px;margin-bottom: 20px;font-weight: 600;">
-                                     Más ofertas de <?= utf8_decode($datos[0]->empresa);?>
+                                     Más ofertas de <?= ($datos[0]->empresa);?>
                                    </h3>
                                    <div class="col-sm-12" style="margin-bottom: 25px;margin-top: 25px;">
                           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -122,22 +122,22 @@ $mi_tokken=csrf_token();
                                     <div class="col-lg-12">
                                      <div class="job-listing wtabs ">
                                         <div class="ofertas-externas">
-                                           <div class="c-logo"> <img style="width: 100px;height: 100px;margin-right: 15px;" src="<?= utf8_decode($key->img);?>" alt="">
+                                           <div class="c-logo"> <img style="width: 100px;height: 100px;margin-right: 15px;" src="<?= ($key->img);?>" alt="">
                                            <div>
-                                              <span style="font-weight: 600;font-size: 14px;"><?= utf8_decode($key->empresa);?></span>
+                                              <span style="font-weight: 600;font-size: 14px;"><?= ($key->empresa);?></span>
                                             </div> 
                                            </div>
-                                           <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="<?= ($key->amigable);?>" title=""><?= utf8_decode($key->titulo);?></a></h1>
-                                            <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= utf8_decode($key->provincia);?> > localidad</h3>       
+                                           <h1 style="font-weight: 600;margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="<?= (utf8_decode($key->amigable));?>" title=""><?= ($key->titulo);?></a></h1>
+                                            <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= ($key->provincia);?> > localidad</h3>       
                                            <h2 style="font-size: 14px;"> 
                                             <?php
                                               $descripcion= substr($key->descripcion,0,150);
-                                              echo  strip_tags(utf8_decode($descripcion)) .'...';
+                                              echo  strip_tags(($descripcion)) .'...';
                                               ?>    
                                             </h2>
 
                                         <div class="job-style-bx" style="margin-top: 0px;">
-                                           <button onclick="location.href='<?= ($key->amigable);?>'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
+                                           <button onclick="location.href='<?= (utf8_decode($key->amigable));?>'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
                                         </div>
 
                                         </div> 

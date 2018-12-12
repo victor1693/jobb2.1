@@ -21,8 +21,15 @@ Route::post('ofertas', 'con_ofertas@index');
 Route::get('ofertas', 'con_ofertasv2@index');
 Route::post('ws', 'con_ofertasv2@ws');
 Route::get('detalleoferta/{id}', 'con_ofertasv2@detalle_oferta');
+
+/*Scraping*/
 Route::get('bolsa', 'con_scrapping@index');
+//Route::get('bolsaespacios', 'con_scrapping@quitar_espacios');
+//Route::get('bolsa', function () {return Redirect('ofertas');});
+
 Route::get('bolsa/{url}', 'con_scrapping@detalle');
+
+
 Route::post('loguear', 'con_login@log');
 Route::get('socialmedia', 'con_login@log');
 Route::get('descargar/{id}', 'con_candidato_cv@descargar');
@@ -271,7 +278,12 @@ Route::get('administracion/empresas/plantilla_info/{id}', 'con_administrator_emp
 
 Route::group(['middleware' => 'log_a'], function () {
 /** Publicidad a empresas **/
-Route::get('administracion/publicidad', 'con_company_publicidad@indexEmpresa');   
+
+Route::get('scrapping/computrabajo', 'con_scrapping@computrabajo');
+Route::get('scrapping/bumeran', 'con_scrapping@bumeran');
+Route::get('administracion/publicidad', 'con_company_publicidad@indexEmpresa');
+Route::get('administracion/scrapping', function () {return view('administrator_scrapping');});
+
 Route::get('administracion/eliminar/publicidad/{id}', 'con_company_publicidad@eliminar');
 Route::get('administracion/eliminar/recomendada/{id}', 'con_company_publicidad@eliminar_sugerida'); 
 Route::get('administracion/editar/publicidad/{id}', 'con_company_publicidad@editar_index');   

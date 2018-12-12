@@ -116,7 +116,7 @@ class con_company_publicidad extends Controller
     	else
     	{
     		$ofertas="";
-            for($i=1;$i<=10;$i++)
+            for($i=1;$i<=50;$i++)
             { 
     		if(isset($_POST['o'.$i.'']) && isset($_POST['l'.$i.'']) && $_POST['o'.$i.'']!="" && $_POST['l'.$i.'']!="")
     		{$ofertas=$ofertas."#$#".$_POST['o'.$i.'']."**$**".$_POST['l'.$i.''];}

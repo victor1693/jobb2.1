@@ -50,14 +50,13 @@ $mi_tokken=csrf_token();
                           <span style="font-size: 16px;">Jobbers hace una búsqueda en todo internet para poner a tu disposición los mejores empleos del momento.</span>
                         </h1>
                        <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-0"> 
-                        </div>  
+                      
                           <div class="col-sm-3"  style="padding: 0px;">
                           <div class="pf-field">
                              <select id="provincia" onchange="$('#formulario').submit()" name="provincia" data-placeholder="Provincia" class="chosen">
                               <option value="">Provincia</option>
                               <?php foreach ($provincia as $key): ?>
-                              <option value="<?= $key->provincia;?>"><?= utf8_decode($key->provincia);?></option>    
+                              <option value="<?= $key->provincia;?>"><?= ($key->provincia);?></option>    
                               <?php endforeach ?>
                                                           
                               </select>
@@ -69,24 +68,28 @@ $mi_tokken=csrf_token();
                             <option value="">Localidad</option>
                             option
                               <?php foreach ($localidad as $key): ?>
-                              <option value="<?= $key->localidad;?>"><?= utf8_decode($key->localidad);?></option>    
+                              <option value="<?= $key->localidad;?>"><?= ($key->localidad);?></option>    
                               <?php endforeach ?>                             
                               </select>
                             </div>
                           </div>
-                          <div class="col-sm-4"  style="padding: 0px;">
+                          <div class="col-sm-3"  style="padding: 0px;">
                           <div class="pf-field">
                            <select onchange="$('#formulario').submit()" id="empresa" name="empresa" data-placeholder="Empresa" class="chosen">
                             <option value="">Empresa</option>
                               <?php foreach ($empresas as $key): ?>
-                              <option value="<?= $key->empresa;?>"><?= utf8_decode($key->empresa);?></option>    
+                              <option value="<?= $key->empresa;?>"><?= ($key->empresa);?></option>    
                               <?php endforeach ?>                             
                               </select>
                             </div>
                           </div>
-                           <div class="col-lg-2 col-md-2 col-sm-0"> 
-                        </div>
+                              <div class="col-sm-3"  style="padding: 0px;">
+                                 <button type="button" onclick="location.href='bolsa'" title="Limpiar filtros" class="btn btn-warning form-control" style="margin-top: 0px;height: 48px;margin-top: 2px;">
+                            Quitar filtros</button>
+                              </div>
                        </div> 
+
+
                        <div class="row" style="padding-top: 25px;">
                         <div class="col-lg-3 col-md-3 col-sm-0"> 
                         </div>
@@ -96,7 +99,7 @@ $mi_tokken=csrf_token();
                             </div>
                          </div>
                          <div class="col-sm-1"  style="padding: 0px;">
-                            <button type="submit" class="btn btn-lg btn-warning" style="margin-top: 0px;height: 49px;">Buscar</button>
+                            <button type="submit" class="btn btn-lg btn-success" style="margin-top: 0px;height: 49px;">Buscar</button>
                          </div>
                           <div class="col-lg-2 col-md-2 col-sm-0"> 
                         </div>
@@ -120,15 +123,10 @@ $mi_tokken=csrf_token();
                           </div>
                           <div class="col-sm-12">
                       <?php if (isset($_GET['provincia'])&& $_GET['provincia']!=""): ?>
-                        <h1 style="font-weight: 600;font-size: 18px;margin-bottom: -30px;padding: 0px;"> <?= count($datos).' Trabajos en '.utf8_decode($_GET['provincia']);?></h1> 
+                        <h1 style="font-weight: 600;font-size: 18px;margin-bottom: -30px;padding: 0px;"> <?= count($datos).' Trabajos en '.($_GET['provincia']);?></h1> 
                       <?php else: ?>
                         <h1 style="font-weight: 600;font-size: 18px;margin-bottom: -30px;padding: 0px;"> <?= count($datos).' Trabajos en Argentina';?></h1> 
-                      <?php endif ?>
-                      
-
-
-                     <button type="button" onclick="location.href='bolsa'" title="Limpiar filtros" class="btn btn-warning" style="margin-top: 0px;height: 49px;width: 50px;float: right;">
-                              <i class="fa fa-trash" style="font-size: 24px;"></i></button>
+                      <?php endif ?> 
                     </div>
                        <?php 
 
@@ -159,22 +157,23 @@ $mi_tokken=csrf_token();
                     <div class="col-lg-6">
                        <div class="job-listing wtabs ">
                           <div class="ofertas-externas">
-                             <div class="c-logo"> <a href="bolsa/<?= $key->amigable;?>" title=""><img style="width: 100px;height: 100px;margin-right: 15px;margin-top: 10px;" src="<?= utf8_decode($key->img)?>" alt=""></a> 
+                             <div class="c-logo"> <a href="bolsa/<?= utf8_decode($key->amigable);?>" title=""><img style="width: 100px;height: 100px;margin-right: 15px;margin-top: 10px;" src="<?= ($key->img)?>" alt=""></a> 
                              <div>
-                                <span style="font-weight: 600;font-size: 14px;"><?php echo substr(utf8_decode($key->empresa),0,13) ;?></span>
+                                <span style="font-weight: 600;font-size: 14px;"><?php echo substr(($key->empresa),0,13) ;?></span>
                               </div> 
                              </div>
-                             <h1 style="margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="bolsa/<?= $key->amigable;?>" title=""><?= utf8_decode($key->titulo);?></a></h1>
-                              <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= utf8_decode($key->provincia);?> > <?= utf8_decode($key->localidad);?></h3>       
+                             <h1 style="margin-bottom: 5px; font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><a href="bolsa/<?= utf8_decode($key->amigable);?>" title=""><?= ($key->titulo);?></a></h1>
+                              <h3 style="font-size: 12px;margin-bottom: 5px;font-weight: 500"><?= ($key->provincia);?> > <?= ($key->localidad);?></h3>       
                              <h2 style="font-size: 14px;">
                               <?php
-                              $descripcion= substr($key->descripcion,0,120);
-                              echo  strip_tags(utf8_decode($descripcion)) .'...';
+                              $limpio=strip_tags($key->descripcion);
+                              $descripcion= substr(str_replace('</br>','',str_replace('<br>','',$limpio))  ,0,200);
+                               echo $descripcion;
                               ?>                              
                              </h2>
 
                           <div class="job-style-bx" style="margin-top: 0px;">
-                             <button onclick="location.href='bolsa/<?= $key->amigable;?>'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
+                             <button onclick="location.href='bolsa/<?= utf8_decode($key->amigable);?>'" style="font-size: 14px; float: right;" class="btn btn-primary" type="button">Ver oferta</button> 
                           </div>
 
                           </div> 
@@ -304,6 +303,30 @@ $mi_tokken=csrf_token();
                             
                           </div>
 
+                    <div class="col-lg-12" style="background-color: #fff;padding: 5px;"> 
+
+                      
+                      <?php
+                      $lugar="Argentina";
+                      if(isset($_GET['provincia']) && $_GET['provincia']!="")
+                      {
+                        $lugar=$_GET['provincia'];
+                      }
+                      ?>
+                      <h2 style="font-size: 12px;color: #c6c6c6;float: left;margin: 0px;">&nbsp;trabajos en <?= $lugar;?> sin experiencia</h2>
+                      <h2 style="font-size: 12px;color: #c6c6c6;float: left;margin: 0px;">&nbsp;trabajos en <?= $lugar;?> sin secundario</h2>
+                      <h2 style="font-size: 12px;color: #c6c6c6;float: left;margin: 0px;">&nbsp;busco trabajo en <?= $lugar;?> urgente</h2>
+
+                      <h2 style="font-size: 12px;color: #c6c6c6;float: left;margin: 0px;">&nbsp;trabajo en <?= $lugar;?> para estudiantes</h2>
+                      <h2 style="font-size: 12px;color: #c6c6c6;float: left;margin: 0px;">&nbsp;busco trabajo en <?= $lugar;?> urgente </h2>
+                      <h2 style="font-size: 12px;color: #c6c6c6;float: left;margin: 0px;">&nbsp;bolsa de trabajo municipalidad de <?= $lugar;?></h2>
+                      <h2 style="font-size: 12px;color: #c6c6c6;float: left;margin: 0px;">&nbsp;empleos en <?= $lugar;?> capital </h2>
+
+                      <?php if (isset($_GET['buscar']) && $_GET['buscar']!=""): ?>
+                          <h2 style="font-size: 12px;color: #c6c6c6;float: left;margin: 0px;">&nbsp;empleos de <?= $_GET['buscar'];?></h2> 
+                      <?php endif ?>
+
+                    </div>
                     <div class="col-lg-12">
                       <div class="pagination">
                                   <ul>

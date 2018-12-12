@@ -15,6 +15,10 @@
 				 						<li>
 				 						<a href="<?= url('administracion/publicidad') ?>" title=""><i class="la la-gear"></i>Publicidad</a> 
 				 					</li> 
+				 					</li> 
+				 						<li>
+				 						<a href="<?= url('administracion/scrapping') ?>" title=""><i class="la la-gear"></i>Scrapping</a> 
+				 					</li> 
 				 					<!--
 										<li>
 				 						<a href="<?= url('administracion/empresas') ?>" title=""><i class="la la-industry"></i>Empresas</a> 
