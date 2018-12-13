@@ -23,11 +23,14 @@ Route::post('ws', 'con_ofertasv2@ws');
 Route::get('detalleoferta/{id}', 'con_ofertasv2@detalle_oferta');
 
 /*Scraping*/
-Route::get('bolsa', 'con_scrapping@index');
+Route::get('bolsa',  function () {return Redirect("ofertas-de-empleo");});
 //Route::get('bolsaespacios', 'con_scrapping@quitar_espacios');
 //Route::get('bolsa', function () {return Redirect('ofertas');});
 
-Route::get('bolsa/{url}', 'con_scrapping@detalle');
+Route::get('bolsa/{url}', function ($id) {return Redirect("ofertas-de-empleo/".$id);}); 
+
+Route::get('ofertas-de-empleo', 'con_scrapping@index');
+Route::get('ofertas-de-empleo/{url}', 'con_scrapping@detalle');
 
 
 Route::post('loguear', 'con_login@log');

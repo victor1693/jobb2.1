@@ -445,7 +445,7 @@ function select_options($habilidades_json){
                                                     <i class="icon-plus">
                                                     </i>
                                                    <span id="titulo_oferta"> Nueva Oferta </span>
-                                                   <span class="btn btn-xs btn-danger" style="float: right;height: 20px;padding: 0px;margin-top: 10px;display: none;" onClick="nueva()" id="btn_nueva">Ya no quiero editar</span>
+                                                  
                                                 </h4>
                                                 <div class="row">
                                                     <div class="col-md-4" > 
@@ -464,15 +464,7 @@ function select_options($habilidades_json){
                                                             <textarea id="titulo"  placeholder="Ejemplo: Se solicita secretaria" name="" style="height: 35px;resize: none;overflow-y: hidden;" class="form-control"></textarea>
                                                          </div>
                                                     </div>
-                                                    <div class="col-md-4" > 
-                                                      <?php if (session()->get('company_plan')=="Premium"): ?>
-                                                         <div class="form-group">
-                                                            <label id="titulo_cbn_plantilla">Mis plantillas</label>
-                                                            <select id="cbn_plantilla" onchange="oferta(this.value,1)" class="form-control "> 
-                                                            </select>
-                                                         </div>
-                                                      <?php endif ?> 
-                                                    </div>
+                                                    
                                                         </div> 
                                                      <div class="col-md-12" style="padding: 0px;"> 
                                                         <div class="form-group">   
@@ -681,10 +673,9 @@ function select_options($habilidades_json){
                                                  </div> 
                                                 <div class="row">
                                                     <div class="col-sm-12" style="text-align: right;">
-                                                      <?php if (session()->get('company_plan')=="Premium"): ?>
-                                                          <button style="margin-right: 15px;" type="button" onclick="" class="btn btn-warning" data-toggle="modal" data-target="#modal_plantilla">Crear plantilla</button>
-                                                      <?php endif ?> 
-                                                      
+                                                     
+                                                          <button onClick="nueva()" style="margin-right: 15px;display: none;" type="button" onclick="" class="btn btn-warning" id="btn_nueva">No editar</button>
+
                                                          <button id="titulo_boton" type="button" onclick="publicar()" class="btn btn-primary">Publicar</button>
                                                     </div>
                                                 </div>
@@ -768,7 +759,7 @@ function select_options($habilidades_json){
             $('#titulo_oferta').text('Estas editando...');
             $('#tipo_oferta').html('2');
             $('#publicacion').html(publicacion);
-            $('#titulo_boton').text('Listo');
+            $('#titulo_boton').text('Guardar cambios');
             $('#btn_nueva').show();
         }
 
@@ -781,8 +772,7 @@ function select_options($habilidades_json){
 
          
               if(plantilla==null)
-              { 
-            
+              {  
                 editar(publicacion);
               } 
               else
@@ -1116,13 +1106,13 @@ function select_options($habilidades_json){
                         else
                         {
 
-                        }
-                        
-                       
+                        } 
                         contador++;
                         if(plan!="Gratis")
                         {
                           editar='<span onclick="oferta('+dato.id+')" title="Editar" style="margin-left: 5px;" ><img style="height: 20px;cursor:pointer;" src="<?=$ruta?>/app-assets/images/icons/ofertas/editar.png" alt=""></span>'; 
+
+                          similar='<span onclick="oferta('+dato.id+',1)" title="Publicar similar" style="margin-left: 5px;" ><img style="height: 20px;cursor:pointer;" src="<?=$ruta?>/app-assets/images/icons/ofertas/similar.png" alt=""></span>'; 
                         
                           eliminar ='<a onclick="eliminar('+dato.id+')" title="Eliminar" style="margin-left: 5px;" href="#"><img style="height: 20px;" src="<?=$ruta?>/app-assets/images/icons/ofertas/eliminar.png" alt=""></a> ';
                         }
@@ -1144,7 +1134,7 @@ function select_options($habilidades_json){
                         
                          $("#select_ofertas").append('<option value="'+dato.id+'">'+alias+'</option>');
 
-                        contenido=contenido+'<tr class="sp"> <td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+alias+'</a></td><td class="text-truncate sp " style="padding:2px;"><a href="#" style="color:#282828; class=""">'+ucwords(titulo)+'</a></td><td class="text-truncate sp" style="padding:2px;"><span onclick="get_postulados('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;">'+dato.cantidad+'</span> </td><td class="valign-middle" style="padding:2px;"> '+dato.vistas+' </td><td class="text-truncate sp" style="padding:2px;">'+estatus+'</td><td class="text-truncate sp" style="padding:2px;">'+boton+' '+editar+' '+eliminar+'</td><td class="text-truncate sp" style="padding:2px;width:35px;text-align:center;"><span onclick="modal_social('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;"><i class="icon icon-share-alt"></i></span> </td></tr>';
+                        contenido=contenido+'<tr class="sp"> <td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+alias+'</a></td><td class="text-truncate sp " style="padding:2px;"><a href="#" style="color:#282828; class=""">'+ucwords(titulo)+'</a></td><td class="text-truncate sp" style="padding:2px;"><span onclick="get_postulados('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;">'+dato.cantidad+'</span> </td><td class="valign-middle" style="padding:2px;"> '+dato.vistas+' </td><td class="text-truncate sp" style="padding:2px;">'+estatus+'</td><td class="text-truncate sp" style="padding:2px;">'+boton+' '+editar+' '+eliminar+' '+similar+'</td><td class="text-truncate sp" style="padding:2px;width:35px;text-align:center;"><span onclick="modal_social('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;"><i class="icon icon-share-alt"></i></span> </td></tr>';
                     });
                      $("#total").text(contador);
                      $("#tabla-resumen").append(contenido);

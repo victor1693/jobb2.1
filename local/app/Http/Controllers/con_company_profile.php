@@ -47,6 +47,7 @@ class con_company_profile extends Controller
 		    	 cuit='".$this->injection($_POST['cuit'])."',
 		    	 soy='".$this->injection($_POST['soy'])."'
 		    	 WHERE id =".session()->get('company_id')."";
+                 session()->set('company_nombre',$_POST['nombre_empresa']);
 		    	 DB::update($sql);
 		    	 echo "1";
     		} catch (\Illuminate\Database\QueryException $ex) {     			 
@@ -140,10 +141,12 @@ class con_company_profile extends Controller
 		    	 img_profile='".$name."' 
 		    	 WHERE id =".session()->get('company_id')."";
 		    	 DB::update($sql);
+                 if(session()->get('company_img')!=""){
 		    	 if(file_exists($destinationPath.'/'.session()->get('company_img')))
 		    	 {
 		    	 	unlink($destinationPath.'/'.session()->get('company_img'));		    	 		
 		    	 }
+                 }
 		    	 session()->set('company_img',$name);  
 		    	 echo $name;
     		} catch (\Illuminate\Database\QueryException $ex) {     			 

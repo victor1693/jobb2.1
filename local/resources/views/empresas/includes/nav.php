@@ -45,7 +45,7 @@
                                     </i>
                                 </img>
                             </span>
-                            <span class="user-name">
+                            <span class="user-name" id="nombre_de_empresa">
                                <?php echo session()->get('company_nombre');?>
                             </span>
                         </a>

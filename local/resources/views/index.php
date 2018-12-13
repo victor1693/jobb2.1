@@ -287,7 +287,15 @@
 										<div class="col-lg-6">
 											<div class="job-listing wtabs">
 												<div class="job-title-sec">
-													<div class="c-logo"> <img style="width: 100px;height: 100px;margin-right: 15px;" src="uploads/min/<?=$key->img_profile?>" alt="" /> 
+													<div class="c-logo"> 
+														<?php if ($key->confidencial==0): ?>
+				                                          <img alt="" style="idth: 100px;height: 100px;margin-right: 15px;" class="img-fluid img-oferta" src="uploads/min/<?= $key->img_profile?>">
+				                                        </img>
+				                                        <?php else: ?>
+				                                            <img alt="" style="idth: 100px;height: 100px;margin-right: 15px;" class="img-fluid img-oferta" src="<?= Request::root()?>/local/resources/views/images/confidencial.png">
+				                                        </img>
+				                                      <?php endif ?>
+														 
 														 <?php echo  programa($key->plan_estado);?>
 													</div>
 													<h3><a href="detalleoferta/<?= $key->id;?>" title="" style="font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><?= ucfirst(mb_strtolower($key->titulo))?></a></h3>

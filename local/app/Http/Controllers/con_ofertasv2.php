@@ -79,7 +79,7 @@ class con_ofertasv2 extends Controller
     	$vista = View::make('ofertasv2');
     	$sql="SELECT  t1.*, t2.img_profile FROM tbl_company_ofertas t1
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa
-		 WHERE t1.estatus =1 ".$filtros." AND plantilla <> 'SI'
+		 WHERE t1.estatus = 1 ".$filtros." AND plantilla <> 'SI' 
 		 GROUP BY t1.id
          ORDER BY t1.tmp DESC
 		 ";
@@ -138,7 +138,7 @@ class con_ofertasv2 extends Controller
 		$datos= DB::select($sql);
 		$sql_ofertas="
 		SELECT * FROM tbl_company_ofertas 
-		WHERE id_empresa =".$datos[0]->id_empresa." AND id <> ".$id."";
+		WHERE id_empresa =".$datos[0]->id_empresa." AND id <> ".$id." AND confidencial =0";
          
 		 
 		$habilidades="";

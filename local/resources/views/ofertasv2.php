@@ -609,8 +609,13 @@ $mi_tokken=csrf_token();
                                         </div>
                                     </div>
                                     <div class="job-style-bx container-img-oferta desk">
-                                        <img alt="" style="height: 75px;width: 75px;" class="img-fluid img-oferta" src="uploads/min/<?= $key->img_profile?>">
+                                      <?php if ($key->confidencial==0): ?>
+                                          <img alt="" style="height: 75px;width: 75px;" class="img-fluid img-oferta" src="uploads/min/<?= $key->img_profile?>">
                                         </img>
+                                        <?php else: ?>
+                                            <img alt="" style="height: 75px;width: 75px;" class="img-fluid img-oferta" src="<?= Request::root()?>/local/resources/views/images/confidencial.png">
+                                        </img>
+                                      <?php endif ?> 
                                         <?php echo  programa($key->plan_estado);?>
                                     </div>
                                 </div>

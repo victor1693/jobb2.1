@@ -139,7 +139,7 @@ class con_company extends Controller
         ORDER BY id desc";
 
         $sql_ofertas="SELECT * ,DATEDIFF(CURDATE(),fecha_creacion) as dias FROM tbl_company_ofertas 
-        WHERE id_empresa =".$id." AND estatus = 1 AND plantilla <> 'SI'
+        WHERE id_empresa =".$id." AND estatus = 1 AND plantilla <> 'SI' AND confidencial = 0
         ORDER BY id desc
         ";
         $vista->datos =$datos;

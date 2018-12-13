@@ -575,7 +575,8 @@
                                      $.notify("Por favor complete los campos requeridos.","info"); 
                                 }else
                                 {
-                                     $.notify("Datos actualizados con éxito.","success");                                   
+                                     $.notify("Datos actualizados con éxito.","success");
+                                     $("#nombre_de_empresa").html($('#nombre_empresa').val());                                   
                                 }                               
                             },
                             error: function(error) {

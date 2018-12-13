@@ -7,8 +7,7 @@
         </title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <meta content="" name="description"/>
-        <meta content="" name="keywords"/>
-        <meta content="CreativeLayers" name="author"/>
+        <meta content="" name="keywords"/> 
         <!-- Styles -->
         <link href="../local/resources/views/css/bootstrap-grid.css" rel="stylesheet" type="text/css"/>
         <link href="../local/resources/views/css/icons.css" rel="stylesheet"/>
@@ -90,16 +89,24 @@
                         <div class="job-single-sec">
                             <div class="job-single-head degradado" style="border: 1px dashed #b2b2b2;padding: 4px;">
                                 <div class="job-thumb" style="padding-top: 35px;">
-                                	<?php if ($datos[0]->img_profile!=""): ?>
-                                		<img style="height: 101px;width: 107px;" alt="" src="../uploads/min/<?= $datos[0]->img_profile?>"/>
-                                		<?php else: ?>
-                                	 <img alt="" src="http://placehold.it/107x101"/>
-                                	<?php endif ?>
-                                    
+
+                                       <?php if ($datos[0]->confidencial==1): ?>
+                                            <img style="height: 100px;width: 100px;" alt="" src="<?= Request::root()?>/local/resources/views/images/confidencial.png"/>
+                                        <?php else: ?>
+                                            <?php if ($datos[0]->img_profile!=""): ?>
+                                        <img style="height: 101px;width: 107px;" alt="" src="../uploads/min/<?= $datos[0]->img_profile?>"/>
+                                        <?php else: ?>
+                                     <img alt="" src="http://placehold.it/107x101"/>
+                                    <?php endif ?>
+                                        <?php endif ?>   
                                 </div>
                                 <div class="job-head-info">
                                     <h4 style="margin-top: 15px;">
-                                        <?= ucfirst(mb_strtolower($datos[0]->nombre_empresa));?>
+                                        <?php if ($datos[0]->confidencial==1): ?>
+                                            Confidencial
+                                        <?php else: ?>
+                                            <?= ucfirst(mb_strtolower($datos[0]->nombre_empresa));?>
+                                        <?php endif ?>  
                                     </h4>
                                     
                                      <p style="margin-top: -5px; line-height: 20px; text-align: justify;padding: 5px;background-color: #fff;border: 1px solid #ddd;border-radius: 5px;margin-bottom: 5px;width: 100%;">
@@ -444,34 +451,36 @@
                         </button>
                         <?php endif ?>
                       </div> 
-                        <div class="recent-jobs" style="margin-top: 12px;max-height: 450px;overflow-y: scroll;">  
-                        	<?php 
-                        	$contador=0;
-                        	if (count($ofertas)!=0): ?> 
+                       
+                        	<?php if ($datos[0]->confidencial==0): ?>
+                                 <div class="recent-jobs" style="margin-top: 12px;max-height: 450px;overflow-y: scroll;">  
+                                <?php 
+                            $contador=0;
+                            if (count($ofertas)!=0): ?> 
                                 <div class="job-list-modern">  
                                     <div class="job-listings-sec no-border">  
                                         <div class="job-listing wtabs"> 
-                                        	<?php if ($contador==0): ?>
-                                        		 <div class="col-xs-12 " style="text-align: center;"> 
-	                                            	<?php if ($datos[0]->img_profile!=""): ?>
-				                                		<img  style=" border: 2px solid #ddd;border-radius: 8px; height: 101px;width: 107px;" alt="" src="../uploads/min/<?= $datos[0]->img_profile?>"/><br>
-				                                		<?php else: ?>
-				                                	 <img alt="" src="http://placehold.it/107x101"/><br>
-				                                	<?php endif ?>
-	                                                <span>
-	                                                    Ofertas de la empresa
-	                                                </span> 
-	                                            </div>
-	                                         <?php $contador++?>
-                                        	<?php endif ?>
+                                            <?php if ($contador==0): ?>
+                                                 <div class="col-xs-12 " style="text-align: center;"> 
+                                                    <?php if ($datos[0]->img_profile!=""): ?>
+                                                        <img  style=" border: 2px solid #ddd;border-radius: 8px; height: 101px;width: 107px;" alt="" src="../uploads/min/<?= $datos[0]->img_profile?>"/><br>
+                                                        <?php else: ?>
+                                                     <img alt="" src="http://placehold.it/107x101"/><br>
+                                                    <?php endif ?>
+                                                    <span>
+                                                        Ofertas de la empresa
+                                                    </span> 
+                                                </div>
+                                             <?php $contador++?>
+                                            <?php endif ?>
                                             <div class="col-xs-12" style="text-align: justify;padding: 8px;"> 
                                             <?php foreach ($ofertas as $key): ?> 
                                                 <p style="padding: 0px;margin: 0px;font-size: 13px;color: #0645AD;" >
                                                  <a style="padding: 0px;margin: 0px;font-size: 13px;" href="<?= $key->id;?>">
-                                                 	<?php
-                                                 		$new_titulo = explode("-", $key->titulo); 
-                                                 	?>
-                                                 	<?= ucfirst(mb_strtolower($new_titulo[0]));?></a>
+                                                    <?php
+                                                        $new_titulo = explode("-", $key->titulo); 
+                                                    ?>
+                                                    <?= ucfirst(mb_strtolower($new_titulo[0]));?></a>
                                                 </p> 
                                                 <span> 
                                                 </span> 
@@ -481,7 +490,8 @@
                                     </div>
                                 </div>
                                 <?php endif ?>
-                            </div>
+                         
+                            </div>   <?php endif ?>
                               <div class="emply-list box contendor_empresa" style="margin-top: 10px; padding-right: 5px;padding-left: 5px;">
                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <ins class="adsbygoogle"
