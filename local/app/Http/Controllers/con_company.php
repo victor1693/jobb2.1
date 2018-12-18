@@ -68,10 +68,12 @@ class con_company extends Controller
             WHERE correo="'.strtolower($_POST['correo']).'" 
             AND clave="'.md5(strtolower($_POST['clave'])).'"';
             $datos=DB::select($sql_emp);
+
             $request->session()->set('company_id',$datos[0]->id);
             $request->session()->set('company_img',$datos[0]->img_profile);
             $request->session()->set('company_nombre',$datos[0]->nombre); 
             $request->session()->set('tipo_usuario','1');
+            $request->session()->set('company_plan','Gratis');
              
     	} catch (\Illuminate\Database\QueryException $ex) {
     		 $this->auditar('registrar',str_replace("'", "",$ex->getMessage()),'');

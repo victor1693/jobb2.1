@@ -148,9 +148,9 @@ Route::post('postulados/info', 'con_postulados@getCalificacionMarcador');
 //********************************************************//
 //*           RUTAS PARA EL PROCESO DE PAGOS 			  *//
 //********************************************************//
-Route::post('pagos/requestMP', 'con_pagos@requestMP');
-Route::post('pagos/update', 'con_pagos@updatePlan');
-
+ 
+Route::post('pago', 'con_pagos@pago');
+Route::post('generar/pago', 'con_pagos@actualizar');
 
 //********************************************************//
 //*                RUTAS PARA LOS SOPORTISTAS            *//

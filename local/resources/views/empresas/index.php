@@ -58,7 +58,7 @@
         } 
     ?>
     <!-- Modal -->
-        <?php if ($bienvenida==0): ?> 
+        <?php if ($bienvenida==0 && session()->get('company_plan')=='Gratis'): ?> 
             <div id="modal_promo" class="modal fade" role="dialog">
               <div class="modal-dialog"> 
                 <!-- Modal content-->

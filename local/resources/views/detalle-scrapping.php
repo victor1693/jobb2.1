@@ -41,7 +41,7 @@ $mi_tokken=csrf_token();
                     <div class="job-listings-tabs">
                   <div class="row" style="padding-top: 50px;"> 
                     <div class="col-lg-12">
-                      <form action="../bolsa" method="get">
+                      <form action="../ofertas-de-empleo" method="get">
                         <h1 style="font-size: 28px;text-align: center;">Seguir Buscando 
                         </h1> 
                        <div class="row">

@@ -43,7 +43,7 @@ $mi_tokken=csrf_token();
                     <div class="job-listings-tabs">
                   <div class="row" style="padding-top: 50px;"> 
                     <div class="col-lg-12">
-                      <form id="formulario" method="GET" action="<?= Request::root()?>/bolsa">
+                      <form id="formulario" method="GET" action="<?= Request::root()?>/ofertas-de-empleo">
                          <input type="hidden" name="pagina" id="pagina">
                         <h1 style="font-size: 28px;text-align: center;">Bolsa de empleo Nacional
                           <br>

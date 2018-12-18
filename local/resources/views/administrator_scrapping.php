@@ -45,16 +45,16 @@
                <form target="_blank" id="formulario" method="get" action="<?= Request::root()?>/scrapping/bumeran">
                    <img src="https://imgbum.jobscdn.com/postulantes-assets/skins/bumeran/postulantes-desktop/img/logo.png" style="height: 50px;max-width: 300px;margin-top: 25px;">
                  <span class="pf-title">¿Desde qué página?</span>
-                 <div class="pf-field">
+                 <div class="pf-field" style="z-index: 1000;">
                     <input autocomplete="off" value="" name="pagina" id="pagina" type="text" placeholder="Página">
-                 </div>
-                 <button type="button" onclick="validar()">Ejecutar</button>
+                     <button style="z-index: 1000;" type="button" onclick="validar()">Ejecutar</button>
+                 </div> 
                </form>
               </div>
 
               <div class="col-sm-12 column"  style="text-align: center;">
                <form target="_blank" id="formulario_c" method="get" action="<?= Request::root()?>/scrapping/computrabajo">
-                   <img src="http://redarbor.net/i/general/logo-computrabajo-tr-v2.png" style="height: 50px;max-width: 300px;margin-top: 25px;margin-left: 140px;margin-top: 100px;">
+                   <img src="http://redarbor.net/i/general/logo-computrabajo-tr-v2.png" style="height: 50px;max-width: 300px;margin-top: 25px;margin-top: 0px;">
                  <span class="pf-title">¿Desde qué página?</span>
                  <div class="pf-field">
                     <input autocomplete="off" value="" name="pagina" id="pagina_c" type="text" placeholder="Página">
@@ -62,8 +62,7 @@
                  <button type="button" onclick="validar_computrabajo()">Ejecutar</button>
                </form>
               </div>
-             </div>
-				  
+             </div> 
 			</div>
 		</div>
 	</section>

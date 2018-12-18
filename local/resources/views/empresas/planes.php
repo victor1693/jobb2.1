@@ -19,8 +19,12 @@
         .rayar
         {
             text-decoration:line-through;
-        }
+        } 
     </style>
+
+      <script type="text/javascript">
+                (function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
+            </script>
 </html>
 <body class="vertical-layout vertical-menu 2-columns fixed-navbar" data-col="2-columns" data-menu="vertical-menu" data-open="click">
     <?php include('includes/nav.php')?>
@@ -73,13 +77,18 @@
                                                     <div class="col-md-4" style="padding-right: 0px; text-align: center;padding-top: 30px;background-image: url('../local/resources/views/empresas/app-assets/images/logo/bg-1.png')">
                                                          <div class="form-group" style="background-color: rgba(255,255,255,0.8);">
                                                              <img id="img-profile" style="height: 150px;width: auto;" src="http://www.transparentpng.com/download/award/3vi84B-award-background.png">
-                                                             <h3>Jobbers Gold</h3>
-                                                             <h3><span style="text-decoration: line-through;color: #a3a3a3;font-weight: 400;">60 USD</span> 30 USD</h3>
-                                                             <div class="form-actions"> 
-                                                                <button class="btn btn-primary" type="button" onclick="info_imagen()"> 
-                                                                    Comprar
-                                                                </button>
+                                                             <h3>Jobbers Premium</h3>
+                                                             <h3><span style="text-decoration: line-through;color: #a3a3a3;font-weight: 400;">$ 2.500</span> $ 1.250</h3>
+                                                             <?php if (session()->get('company_plan')=='Premium'): ?>
+                                                                 <div class="form-actions"> 
+                                                                    <button onclick="alert('Ya cuenta con el plan Premium')"  type="button" class="btn btn-primary" >Realizar Pago <i class="fa fa-money"></i></button>
+                                                                </div>
+                                                                <?php else: ?>
+                                                                <div class="form-actions"> 
+                                                                <button type="button" onclick="pagar()" class="btn btn-primary" id="payMP">Realizar Pago <i class="fa fa-money"></i></button>
                                                             </div>
+                                                             <?php endif ?>
+                                                             
                                                         </div>
                                                     </div>
                                                     <div class="col-md-8" style="border-left: 1px solid #dedede;margin-top: 10px;">
@@ -105,14 +114,10 @@
                                                  <div class="row" style="border: 1px solid #c5c5c5;margin-top: 35px;">
                                                     <div class="col-md-4" style="padding-right: 0px; text-align: center;padding-top: 30px;">
                                                          <div class="form-group" style="background-color: rgba(255,255,255,0.8);">
-                                                             <img id="img-profile" style="height: 150px;width: auto;" src="https://icon-icons.com/icons2/567/PNG/512/rocket_icon-icons.com_54375.png">
+                                                             <img id="img-profile" style="height: 150px;width: auto;" src="http://unsuppoetaulit.fr/wp-content/uploads/2018/07/cropped-rocket_icon-icons.com_54375-300x300.png">
                                                              <h3>Jobbers Inicio</h3>
-                                                             <h3><span style="text-decoration: line-through;color: #a3a3a3;font-weight: 400;">10 USD</span> Gratis</h3>
-                                                             <div class="form-actions"> 
-                                                                <button class="btn btn-primary" type="button" onclick="info_imagen()"> 
-                                                                    Comprar
-                                                                </button>
-                                                            </div>
+                                                             <h3><span style="text-decoration: line-through;color: #a3a3a3;font-weight: 400;">$ 299</span> Gratis</h3>
+                                                            
                                                         </div>
                                                     </div>
                                                     <div class="col-md-8" style="border-left: 1px solid #dedede;margin-top: 10px;">
@@ -147,5 +152,80 @@
         </div>
     </div>
    <?php include('includes/footer.php')?>
-   <?php include('local/resources/views/empresas/require/js.php');?> 
+   <?php include('local/resources/views/empresas/require/js.php');?>
+   <script>
+   function pagar()
+        { 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            }); 
+            $.ajax({
+                type: 'post',
+                url: '../pago',
+                data: {},
+                dataType: 'json',
+                success: function(data) { 
+                    $("#payMP").attr("data-v", data.data.response.init_point);
+                    //$("#payMP").attr("data-v", data.data.response.sandbox_init_point);  
+                        $MPC.openCheckout({
+                            url: $("#payMP").attr("data-v"),
+                            mode: "modal",
+                            onreturn: function(data) {
+                               //console.log(data);
+                                execute_my_onreturn(data);
+                            } 
+                    });
+                },
+                error: function(error) {
+                    console.log("Ha ocurrido un error inesperado, vuelva a intentarlo.", {
+                        className: "error",
+                        globalPosition: "bottom center"
+                    });
+                }
+            });
+        }    
+
+        function execute_my_onreturn(json) {
+            if (json.collection_status == 'approved') {   
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });  
+            $.ajax({
+                type: 'post',
+                url: '../generar/pago',
+                data: 'transaction=' + JSON.stringify(json),
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    window.location.reload();
+                }
+            }); 
+
+        } else if (json.collection_status == 'pending') {
+            console.log("El usuario no completó el proceso de pago, no se ha generado ningún pago.", {
+                className: "warning",
+                globalPosition: "bottom center"
+            });
+        } else if (json.collection_status == 'in_process') {
+            console.log("El pago está siendo revisado. Se le notificará cuando la transacción se complete.", {
+                className: "info",
+                globalPosition: "bottom center"
+            });
+        } else if (json.collection_status == 'rejected') {
+            console.log("El pago fué rechazado, el usuario puede intentar nuevamente el pago.", {
+                className: "error",
+                globalPosition: "bottom center"
+            });
+        } else if (json.collection_status == null) {
+            console.log("El usuario no completó el proceso de pago, no se ha generado ningún pago.", {
+                className: "warning",
+                globalPosition: "bottom center"
+            });
+        }
+    } 
+        </script>
 </body>

@@ -43,7 +43,7 @@
                 </a>
             </li>
            
-           <!--
+        
                  <li>
                     <a href="<?php echo Request::root();?>/empresas/planes">
                         <i class="icon-star-full">
@@ -53,7 +53,7 @@
                         </span>
                     </a>
                 </li>
-           -->
+          
             <li>
                 <a href="<?php echo Request::root();?>/empresas/configuracion">
                     <i class="icon-cog">

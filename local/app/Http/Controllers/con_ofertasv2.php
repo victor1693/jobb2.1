@@ -83,19 +83,17 @@ class con_ofertasv2 extends Controller
 		 GROUP BY t1.id
          ORDER BY t1.tmp DESC
 		 ";
-        $sql_publicidad="SELECT * FROM tbl_publicidad_empresa ORDER BY vistos ASC LIMIT 0,3";
+        $sql_publicidad="SELECT * FROM tbl_publicidad_empresa ORDER BY vistos ASC LIMIT 0,2";
         $publicidad=DB::select($sql_publicidad);
         
         
         foreach ($publicidad as $key) {
 
             DB::update('UPDATE tbl_publicidad_empresa SET vistos ='.($key->vistos + 1).' WHERE id = '.$key->id.'');
-        }
-
+        } 
     	$datos=DB::select($sql);
     	$vista->datos= $datos;
-        $vista->publicidad=$publicidad;
-    	//return array_count_values($datos);
+        $vista->publicidad=$publicidad; 
     	return $vista;
     }
 
@@ -129,7 +127,7 @@ class con_ofertasv2 extends Controller
     	concat(t2.pais,' - ',t2.provincia,' - ',t2.localidad) as emp_direccion 
     	FROM  tbl_company_ofertas t1 
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa 
-        WHERE t1.plantilla <> 'SI'
+        WHERE t1.estatus = 1 AND t1.plantilla <> 'SI'
 	    ORDER BY t1.tmp DESC 
 	    LIMIT 0,5
 		";
@@ -138,7 +136,7 @@ class con_ofertasv2 extends Controller
 		$datos= DB::select($sql);
 		$sql_ofertas="
 		SELECT * FROM tbl_company_ofertas 
-		WHERE id_empresa =".$datos[0]->id_empresa." AND id <> ".$id." AND confidencial =0";
+		WHERE estatus = 1 AND id_empresa =".$datos[0]->id_empresa." AND id <> ".$id."";
          
 		 
 		$habilidades="";
@@ -160,7 +158,7 @@ class con_ofertasv2 extends Controller
     	concat(t2.pais," - ",t2.provincia," - ",t2.localidad) as emp_direccion
 		FROM tbl_company_ofertas t1
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa 
-		WHERE  t1.id != '.$datos[0]->id.' AND t1.plantilla != "SI" AND t1.sector ="'.$datos[0]->sector.'" '.$habilidades.'  
+		WHERE t1.estatus = 1 AND  t1.id != '.$datos[0]->id.' AND t1.plantilla != "SI" AND t1.sector ="'.$datos[0]->sector.'" '.$habilidades.'  
 		GROUP BY t1.id
 		ORDER BY t1.tmp DESC
 		LIMIT 0,10
