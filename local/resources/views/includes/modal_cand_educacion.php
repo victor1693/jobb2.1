@@ -52,15 +52,21 @@
                 <div class="pf-field" style="">
                   <select id="area_estudio" name="area_estudio" data-placeholder="Ingreso" class="chosen">
                     <option value="">Seleccionar</option>
+                    <option value="146">Curso</option>
                     <?php foreach ($area_estudio as $key) {
-                      echo '<option value="'.$key->id.'">'.$key->nombre.'</option>';
+                      
+                      if($key->nombre!="Curso")
+                      {
+                        echo '<option value="'.$key->id.'">'.$key->nombre.'</option>';
+                      } 
+
                     }?>  
                   </select>
                 </div> 
               </div> 
                 
               <div class="col-lg-6" style="margin-top: -15px;">
-                <span class="pf-title">Título</span>
+                <span class="pf-title">Título / Descripción</span>
                 <div class="pf-field">
                    <input id="titulo_obtener" type="text" name="titulo_obtener">
                 </div>

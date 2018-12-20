@@ -1091,6 +1091,10 @@ function select_options($habilidades_json){
                     var plan=JSONArray.plan;
                     var c_plantillas="<option value=''>Seleccionar</option>";
                     var alias=""; 
+                    var similar=""; 
+
+                  
+
                     jQuery.each(JSONArray.plantillas, function(index, dato) 
                      {
                       c_plantillas=c_plantillas+"<option value='"+dato.id+"'>"+dato.plantilla_titulo+"</option>";
@@ -1098,6 +1102,9 @@ function select_options($habilidades_json){
                      $("#cbn_plantilla").html(c_plantillas);
                      jQuery.each(JSONArray.ofertas, function(index, dato) { 
                        var titulo = dato.mi_titulo;
+                        dato.amigable="'"+dato.amigable+"'";
+                         var compartir ='<span onclick="modal_social('+dato.amigable+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;"><i class="icon icon-share-alt"></i></span>';
+
                         if(titulo.length > 40)
                         {
                            var titulo = dato.mi_titulo.substr(0,40); 
@@ -1134,7 +1141,7 @@ function select_options($habilidades_json){
                         
                          $("#select_ofertas").append('<option value="'+dato.id+'">'+alias+'</option>');
 
-                        contenido=contenido+'<tr class="sp"> <td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+alias+'</a></td><td class="text-truncate sp " style="padding:2px;"><a href="#" style="color:#282828; class=""">'+ucwords(titulo)+'</a></td><td class="text-truncate sp" style="padding:2px;"><span onclick="get_postulados('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;">'+dato.cantidad+'</span> </td><td class="valign-middle" style="padding:2px;"> '+dato.vistas+' </td><td class="text-truncate sp" style="padding:2px;">'+estatus+'</td><td class="text-truncate sp" style="padding:2px;">'+boton+' '+editar+' '+eliminar+' '+similar+'</td><td class="text-truncate sp" style="padding:2px;width:35px;text-align:center;"><span onclick="modal_social('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;"><i class="icon icon-share-alt"></i></span> </td></tr>';
+                        contenido=contenido+'<tr class="sp"> <td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+alias+'</a></td><td class="text-truncate sp " style="padding:2px;"><a href="#" style="color:#282828; class=""">'+ucwords(titulo)+'</a></td><td class="text-truncate sp" style="padding:2px;"><span onclick="get_postulados('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;">'+dato.cantidad+'</span> </td><td class="valign-middle" style="padding:2px;"> '+dato.vistas+' </td><td class="text-truncate sp" style="padding:2px;">'+estatus+'</td><td class="text-truncate sp" style="padding:2px;">'+boton+' '+editar+' '+eliminar+' '+similar+'</td><td class="text-truncate sp" style="padding:2px;width:35px;text-align:center;">'+compartir+'</td></tr>';
                     });
                      $("#total").text(contador);
                      $("#tabla-resumen").append(contenido);
@@ -1284,7 +1291,8 @@ function select_options($habilidades_json){
 
       function modal_social(dato)
       {
-        $("#link_compartir").val('https://www.jobbersargentina.net/detalleoferta/'+dato);
+       
+        $("#link_compartir").val('https://www.jobbersargentina.net/ofertas-de-trabajo/'+dato);
         $("#modal_social").modal("show");
       }
 

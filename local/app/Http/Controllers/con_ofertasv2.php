@@ -77,7 +77,7 @@ class con_ofertasv2 extends Controller
     	}
 
     	$vista = View::make('ofertasv2');
-    	$sql="SELECT  t1.*, t2.img_profile FROM tbl_company_ofertas t1
+    	$sql="SELECT  t1.*,t1.amigable as id, t2.img_profile FROM tbl_company_ofertas t1
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa
 		 WHERE t1.estatus = 1 ".$filtros." AND plantilla <> 'SI' 
 		 GROUP BY t1.id
@@ -111,7 +111,7 @@ class con_ofertasv2 extends Controller
     	count(t1.id) as ofertas 
     	FROM  tbl_company_ofertas t1 
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa
-		WHERE t1.id=".$id."
+		WHERE t1.amigable='".$id."'
 		GROUP BY t1.id_empresa
 		";
 
@@ -120,6 +120,7 @@ class con_ofertasv2 extends Controller
     	SELECT
     	DATEDIFF(CURDATE(),t1.fecha_creacion) as dias,  
     	t1.*,
+        t1.amigable as id,
     	t2.img_profile,
     	t2.actividad_empresa,
     	t2.descripcion as emp_descripcion,
@@ -135,8 +136,8 @@ class con_ofertasv2 extends Controller
 
 		$datos= DB::select($sql);
 		$sql_ofertas="
-		SELECT * FROM tbl_company_ofertas 
-		WHERE estatus = 1 AND id_empresa =".$datos[0]->id_empresa." AND id <> ".$id."";
+		SELECT *,amigable as id FROM tbl_company_ofertas 
+		WHERE estatus = 1 AND id_empresa =".$datos[0]->id_empresa." AND amigable <> '".$id."'";
          
 		 
 		$habilidades="";
@@ -150,6 +151,7 @@ class con_ofertasv2 extends Controller
 		$sql_ofertas_similares='
 		SELECT 
 		t1.*, 
+        t1.amigable as id,
 		DATEDIFF(CURDATE(),t1.fecha_creacion) as dias, 
 		t2.img_profile,
     	t2.actividad_empresa,
@@ -171,7 +173,7 @@ class con_ofertasv2 extends Controller
     	$sql_postulado="
     	SELECT count(*) as cantidad 
     	FROM tbl_company_postulados 
-    	WHERE id_oferta =".$id." 
+    	WHERE id_oferta =".$datos[0]->id." 
     	AND id_usuario=".$candidato."";
 
     	$sql_up_vista="
@@ -185,7 +187,7 @@ class con_ofertasv2 extends Controller
     	$vista->ofertas=DB::select($sql_ofertas);
     	$vista->ofertas_recientes=DB::select($sql_ofertas_recientes); 
     	$vista->ofertas_similares=DB::select($sql_ofertas_similares);
-        $vista->id_oferta=$id;
+        $vista->id_oferta=$datos[0]->id;
     	return $vista;
     }
 }

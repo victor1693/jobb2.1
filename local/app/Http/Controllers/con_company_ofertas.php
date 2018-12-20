@@ -47,10 +47,11 @@ class con_company_ofertas extends Controller
     	$sql="
         SELECT t1.*,COUNT(t2.id) as cantidad,lower(t1.titulo) as mi_titulo FROM tbl_company_ofertas t1
         LEFT JOIN tbl_company_postulados t2 ON t2.id_oferta  = t1.id       
-        WHERE  t1.id_empresa= ".session()->get('company_id')." AND t1.plantilla !='SI'
+        WHERE  t1.id_empresa= ".session()->get('company_id')." 
         GROUP BY t1.id
         ORDER BY COUNT(t2.id) DESC
         ";
+        
     	try {
     		$datos=DB::select($sql); 
             $obj = (object) array('ofertas' => $datos,'plantillas' => $plantillas,'plan' => session()->get('company_plan'));
@@ -165,6 +166,7 @@ class con_company_ofertas extends Controller
     	 edad ="'.$_POST['edad'].'",
     	 habilidades ="'.$las_habilidades.'", 
     	 idiomas ="'.$this->arreglos($_POST['idiomas']).'",
+         amigable = "'.$this->url_amigable($_POST["titulo"]) .'"
          tmp="'.$hoy.'"
          ';
     	 $campos='
@@ -196,7 +198,8 @@ class con_company_ofertas extends Controller
     	 plantilla,
     	 plantilla_titulo,
     	 plantilla_descripcion, 
-    	 fecha_creacion
+    	 fecha_creacion,
+         amigable
     	 )';
 
     	  $valores="
@@ -228,7 +231,8 @@ class con_company_ofertas extends Controller
     	 '".$plantilla."',
     	 '".$_POST['theme_title']."',
     	 '',
-    	 '".Date('Y-m-d')."' 
+    	 '".Date('Y-m-d')."',
+         '".$this->url_amigable($_POST["titulo"]) ."' 
     	 )";
 
     	 $sql_editar="";
@@ -279,6 +283,17 @@ class con_company_ofertas extends Controller
     	
     }
 
+    public function crear_amigable()
+    {
+        $sql="SELECT * FROM tbl_company_ofertas";
+        $datos=DB::select($sql);
+        foreach ($datos as $key) {
+            $sql="UPDATE tbl_company_ofertas SET amigable ='".$this->url_amigable($key->titulo)."' WHERE id  = ".$key->id."";
+            DB::update($sql);
+        }
+    }
+
+
     public function arreglos($arreglo)
     {
     	if(count($arreglo)==0){return '';}
@@ -300,5 +315,51 @@ class con_company_ofertas extends Controller
     		return $result;
     	}
     	else {return $arreglo[0];} 
+    }
+
+
+    public function url_amigable($text)
+    {   
+        $text = $this->url_limpiarurl($text);
+
+        $fecha=date('dmy').round(microtime(true) * 1000);
+        $new=strtolower($this->url_limpiarurl($text)).'-'.$fecha; 
+        $limpio=str_replace('--','-',$new);
+        $contador=1;
+        while ($contador <= 10) {
+            $limpio=str_replace('--','-',$limpio);
+            $contador++;
+        }
+        return $limpio;
+    }
+     public function url_limpiarurl($valor)
+    {
+        
+        $valor = str_ireplace("?","",$valor);
+        $valor = str_ireplace("¿","",$valor); 
+        $valor = str_ireplace("^","",$valor);
+        $valor = str_ireplace("[","",$valor);
+        $valor = str_ireplace("]","",$valor); 
+        $valor = str_ireplace("!","",$valor);
+        $valor = str_ireplace("¡","",$valor); 
+        $valor = str_ireplace("=","",$valor);
+        $valor = str_ireplace("&","",$valor);
+        $valor = str_ireplace("á","a",$valor);
+        $valor = str_ireplace("é","e",$valor);
+        $valor = str_ireplace("í","i",$valor);
+        $valor = str_ireplace("ó","o",$valor);
+        $valor = str_ireplace("ú","u",$valor);
+        $valor = str_ireplace("Á","A",$valor);
+        $valor = str_ireplace("É","E",$valor);
+         $valor = str_ireplace(",","",$valor);
+        $valor = str_ireplace("Í","I",$valor);
+        $valor = str_ireplace("ñ","n",$valor);
+        $valor = str_ireplace("Ó","O",$valor);
+        $valor = str_ireplace("Ú","U",$valor);
+        $valor = str_ireplace(" ","-",$valor); 
+        $valor = str_ireplace("#","",$valor);
+        $valor = str_ireplace("/","",$valor);
+
+        return $valor;
     }
 }

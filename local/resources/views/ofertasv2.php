@@ -585,7 +585,7 @@ $mi_tokken=csrf_token();
                                         </div>
                                     </a>
                                     <div class="job-title-sec container-desc-oferta">
-                                        <a href="detalleoferta/<?= $key->id;?>">
+                                        <a href="ofertas-de-trabajo/<?= $key->id;?>">
                                             <h5 class="title-recom" style="font-size: 18px;">
                                                 <?= ucfirst(mb_strtolower($key->titulo))?>
                                             </h5>

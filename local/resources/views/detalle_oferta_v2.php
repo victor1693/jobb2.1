@@ -3,10 +3,10 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
         <title>
-            Jobbers Argentina
+             <?= strip_tags($datos[0]->titulo);?>
         </title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-        <meta content="" name="description"/>
+        <meta content="<?php echo strip_tags($datos[0]->descripcion);?>" name="description"/>
         <meta content="" name="keywords"/> 
         <!-- Styles -->
         <link href="../local/resources/views/css/bootstrap-grid.css" rel="stylesheet" type="text/css"/>
@@ -145,9 +145,9 @@
                           </div>
                             <!-- Job Head -->
                             <div class="job-details" style="text-align: justify;">
-                            	 <h3 style="font-size: 24px;">
+                            	 <h1 style="font-size: 24px;">
                                     <?php echo ucfirst(mb_strtolower($datos[0]->titulo));?>
-                                </h3>
+                                </h1>
                                  <div>
                                  	 
                                  </div>
@@ -260,15 +260,15 @@
                                 <span>
                                     Compartir
                                 </span>
-                                <a class="share-fb" href="https://www.facebook.com/sharer.php?s=100&p[url]=http%3A%2F%2Fjobbersargentina.net%2Fjobbersv2%2Fdetalleoferta%2F<?php echo $datos[0]->id;?>" title=""  target="_blank">
+                                <a class="share-fb" href="https://www.facebook.com/sharer.php?s=100&p[url]=http%3A%2F%2Fjobbersargentina.net%2Fjobbersv2%2Fofertas-de-trabajo%2F<?php echo $datos[0]->id;?>" title=""  target="_blank">
                                     <i class="fa fa-facebook">
                                     </i>
                                 </a>
-                                <a class="share-linkedin" href="http://www.linkedin.com/shareArticle?url=http%3A%2F%2Fjobbersargentina.net%2Fjobbersv2%2Fdetalleoferta%2F<?php echo $datos[0]->id;?>" title=""  target="_blank">
+                                <a class="share-linkedin" href="http://www.linkedin.com/shareArticle?url=http%3A%2F%2Fjobbersargentina.net%2Fjobbersv2%2Fofertas-de-trabajo%2F<?php echo $datos[0]->id;?>" title=""  target="_blank">
                                     <i class="fa fa-linkedin">
                                     </i>
                                 </a>
-                                <a class="share-twitter" href="https://twitter.com/share?url=http%3A%2F%2Fjobbersargentina.net%2Fjobbersv2%2Fdetalleoferta%2F<?php echo $datos[0]->id;?>" title="" target="_blank">
+                                <a class="share-twitter" href="https://twitter.com/share?url=http%3A%2F%2Fjobbersargentina.net%2Fjobbersv2%2Fofertas-de-trabajo%2F<?php echo $datos[0]->id;?>" title="" target="_blank">
                                     <i class="fa fa-twitter">
                                     </i>
                                 </a>

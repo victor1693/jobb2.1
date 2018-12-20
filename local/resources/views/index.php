@@ -298,13 +298,13 @@
 														 
 														 <?php echo  programa($key->plan_estado);?>
 													</div>
-													<h3><a href="detalleoferta/<?= $key->id;?>" title="" style="font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><?= ucfirst(mb_strtolower($key->titulo))?></a></h3>
+													<h3><a href="ofertas-de-trabajo/<?= $key->id;?>" title="" style="font-size: 16px;font-weight: 600; text-decoration: underline !important; color: #0099ff;"><?= ucfirst(mb_strtolower($key->titulo))?></a></h3>
 													 
 													<div class="job-lctn"><a class="success" href="#"><?= ucfirst(mb_strtolower($key->nombre))?></a></div><br>
 													<div class="job-lctn"><?= ucfirst(mb_strtolower($key->vistas))?> visitas</div>
 												</div>
 												<div class="job-style-bx" style="margin-top: 0px;">
-													<button onclick="location.href='detalleoferta/<?= $key->id;?>'" style="font-size: 14px; float: none" class="btn btn-primary" type="button">Ver oferta</button> 
+													<button onclick="location.href='ofertas-de-trabajo/<?= $key->id;?>'" style="font-size: 14px; float: none" class="btn btn-primary" type="button">Ver oferta</button> 
 												</div>
 											</div><!-- Job --> 
 										</div> 

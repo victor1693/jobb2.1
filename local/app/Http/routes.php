@@ -18,10 +18,13 @@ Route::get('fag', 'con_administrator_faq@detalle_preguntas');
 
 Route::post('ofertas', 'con_ofertas@index');
 //Route::get('detalleoferta/{id}', 'con_ofertas@detalle');
-Route::get('ofertas', 'con_ofertasv2@index');
-Route::post('ws', 'con_ofertasv2@ws');
-Route::get('detalleoferta/{id}', 'con_ofertasv2@detalle_oferta');
+//
+Route::get('ofertas', function () {return Redirect("ofertas-de-trabajo");});
+Route::get('ofertas-de-trabajo', 'con_ofertasv2@index');
 
+Route::post('ws', 'con_ofertasv2@ws');
+Route::get('detalleoferta/{id}',  function ($id) {return Redirect("ofertas-de-trabajo/".$id);}); 
+Route::get('ofertas-de-trabajo/{id}', 'con_ofertasv2@detalle_oferta');
 /*Scraping*/
 Route::get('bolsa',  function () {return Redirect("ofertas-de-empleo");});
 //Route::get('bolsaespacios', 'con_scrapping@quitar_espacios');
@@ -69,7 +72,7 @@ Route::post('evaluacion', 'con_candidatos@evaluacionJobbers');
 Route::get('company/detalle/{id}',   'con_company_publicidad@index');
 Route::post('company/recomendar',   'con_company_publicidad@recomendar');
 Route::post('company/valorar',   'con_company_publicidad@valorar');
-
+Route::get('crearamigable',   'con_company_ofertas@crear_amigable');
 
 //********************************************************//
 //*                RUTAS NUEVAS EMPRESAS                 *//

@@ -21,6 +21,8 @@ $mi_tokken=csrf_token();
         <link <link="" href="../local/resources/views/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="../local/resources/views/css/responsive.css" rel="stylesheet" type="text/css"/>
         <link href="../local/resources/views/css/colors/colors.css" rel="stylesheet" type="text/css"/> 
+        <link rel="canonical" href="https://jobbersargentina.net/ofertas-de-empleo/<?= $datos[0]->amigable;?>" />
+        
         <?php include('local/resources/views/includes/google_analitycs.php');?>
         <style>
           .ofertas-externas

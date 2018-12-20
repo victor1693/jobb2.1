@@ -12,7 +12,7 @@ class con_candidato_postulaciones extends Controller
     {
         $vista = View::make("candidatos_postulaciones");
         $sql   = "
-            SELECT t1.id_oferta as id,count(t1.id_oferta) as cantidad,t2.titulo,t3.nombre FROM tbl_company_postulados t1
+            SELECT t2.amigable as id,count(t1.id_oferta) as cantidad,t2.titulo,t3.nombre FROM tbl_company_postulados t1
             INNER JOIN tbl_company_ofertas t2 ON t2.id = t1.id_oferta
             INNER JOIN tbl_company t3 ON t3.id = t2.id_empresa 
             WHERE t1.id_oferta IN (SELECT id_oferta FROM tbl_company_postulados WHERE id_usuario=".session()->get('cand_id').")

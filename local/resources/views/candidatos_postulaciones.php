@@ -45,7 +45,7 @@
 													echo'<tr>
 														<td style="max-width: 250px;">
 																<div class="table-list-title">
-																		<h3><a href="detalleoferta/'.$key->id.'" title="">'.$key->titulo.'</a></h3> 
+																		<h3><a href="ofertas-de-trabajo/'.$key->id.'" title="">'.$key->titulo.'</a></h3> 
 																</div>
 														</td>
 														
@@ -57,7 +57,7 @@
 														</td>
 														<td>
 																<ul class="action_job">
-																		<li><span>Ver publiación</span><a href="detalleoferta/'.$key->id.'" title=""><i class="la la-eye"></i></a></li>
+																		<li><span>Ver publiación</span><a href="ofertas-de-trabajo/'.$key->id.'" title=""><i class="la la-eye"></i></a></li>
 																</ul>
 														</td>
 												</tr> ';
