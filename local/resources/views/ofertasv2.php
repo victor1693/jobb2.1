@@ -328,7 +328,7 @@ $mi_tokken=csrf_token();
                                         <input <?= $tilde?> onclick="document.getElementById('form_filter').submit();" id="nivel_estudio_<?= $key;?>" name="nivel_estudio" type="radio" value="<?= $key?>">
                                             <label for="nivel_estudio_<?= $key;?>" id="label_nivel_estudio_<?= $key;?>">
                                                 <?php if ($key=='Cualquiera'): ?>
-                                                  Sin Definir 
+                                                  Sin especificar 
                                                  <?php else: ?>
                                                   <?= $key?>
                                                  <?php endif ?>  
@@ -355,7 +355,7 @@ $mi_tokken=csrf_token();
                                         <input <?= $tilde?> onclick="document.getElementById('form_filter').submit();" id="plan_estado_<?= $key;?>" name="plan_estado" type="radio" value="<?= $key?>">
                                             <label for="plan_estado_<?= $key;?>" id="label_plan_estado_<?= $key;?>">
                                                 <?php if ($key==""): ?>
-                                                  Sin definir
+                                                  Sin especificar
                                                   <?php else: ?>
                                                     <?= $key?>
                                                 <?php endif ?> 
@@ -389,10 +389,15 @@ $mi_tokken=csrf_token();
                                         <input <?= $tilde?> onclick="document.getElementById('form_filter').submit();" id="turno_<?= $key;?>" name="turno" type="radio" value="<?= $key?>">
                                             <label for="turno_<?= $key;?>" id="label_turno_<?= $key;?>">
                                                 <?php if ($key == 'Sin Defini'): ?>
-                                                  Sin definir
+                                                  Sin especificar
                                                 <?php endif ?>
                                             </label>
-                                            (<?= $value?>)
+                                            <?php if ($key!="Sin Defini"): ?>
+                                              <?= $key.' ';?>(<?= $value?>)
+                                              <?php else: ?>
+                                                  (<?= $value?>)
+                                            <?php endif ?>
+                                            
                                         </input>
                                     </p>
                                     <br> 
@@ -403,7 +408,7 @@ $mi_tokken=csrf_token();
                               <?php 
                             $bandera_discapacidad=0;
                             foreach ($datos as $key): ?>
-                              <?php if ($key->discapacidad!="Sin Definir"): ?>
+                              <?php if ($key->discapacidad!="Sin definir"): ?>
                                 <?php $bandera_turno=1;?>
                               <?php endif ?>
                             <?php endforeach ?>
@@ -423,7 +428,7 @@ $mi_tokken=csrf_token();
                                         <input <?= $tilde?> onclick="document.getElementById('form_filter').submit();" id="discapacidad_<?= $key;?>" name="discapacidad" type="radio" value="<?= $key?>">
                                             <label for="discapacidad_<?= $key;?>" id="label_discapacidad_<?= $key;?>">
                                                 <?php if ($key == '0'): ?>
-                                                  Sin definir
+                                                  Sin especificar
                                                 <?php endif ?>
                                             </label>
                                             (<?= $value?>)

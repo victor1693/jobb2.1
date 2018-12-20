@@ -294,9 +294,9 @@ $mi_tokken = csrf_token();
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
-                                                <span class="pf-title">¿Cómo te describes?</span>
+                                                <span class="pf-title">¿Cómo te describes?  <span id="contador_descripcion" style="font-weight: 600;">300</span></span>
                                                 <div class="pf-field">
-                                                    <textarea maxlength="150" id="datos_per_descripcion" name="sobremi"><?php echo trim($up_desc);?></textarea>
+                                                    <textarea onkeyup="contar()" maxlength="300" id="datos_per_descripcion" name="sobremi"><?php echo trim($up_desc);?></textarea>
                                                 </div>
                                             </div>
                                             
@@ -697,7 +697,7 @@ $mi_tokken = csrf_token();
                                  
                                 <div class="padding-left" style="margin-top: -50px;">
                                     <div class="manage-jobs-sec">
-                                        <div class="border-title"><h3>Educación</h3>
+                                        <div class="border-title"><h3>Educación - Cursos</h3>
                                                 <a href="#" title="" data-toggle="modal" data-target="#modal_educ_cand" onClick="limpiar_mod_educ()">
                                                 <i class="la la-plus"></i> Agregar estudios</a></div>
                                                 <?php foreach ($educacion as $key): ?>
@@ -1169,6 +1169,10 @@ $mi_tokken = csrf_token();
         }
    } 
 
+   function contar()
+   {
+    $("#contador_descripcion").html(300 - $("#datos_per_descripcion").val().length);
+   }
    function redes_validar()
    {
      var band = true;
@@ -1361,11 +1365,12 @@ $mi_tokken = csrf_token();
                 $("#localidad_contac").trigger('chosen:updated'); 
                 });
             }).fail(function(xhr, status, error) {
-                notificar('error', xhr.responseText);
+                
             })
 
     $(document).ready(function(){ 
-        $('#bar1').barfiller();   
+       
+         $("#contador_descripcion").html(300 - ($("#datos_per_descripcion").val().length));  
     });
     }
     select_provincia($("#provincia_contac").val());

@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg" role="document" style="width: 70%;height: 95%;margin: 0 auto;margin-top: 5%;">
     <div class="modal-content" style="height: 80%;">
       <div class="modal-header">
-        <h5 class="modal-title" id="modal_educ_candLabel">Educación</h5>
+        <h5 class="modal-title" id="modal_educ_candLabel">Educación - Cursos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -16,7 +16,7 @@
                                             <input type="hidden" id="identificador" name="identificador" value="" />
             <div class="row" style="margin-top: -20px;">
               <div class="col-lg-6">
-                <span class="pf-title">Nivel</span>
+                <span class="pf-title">Tipo de estudio</span>
                 <div class="pf-field">
                   <select id="nivel"  name="nivel" data-placeholder="Nivel" class="chosen">
                     <option value="">Seleccionar</option>

@@ -23,7 +23,7 @@ class con_pagos extends Controller
         $total = 0;
         $servicios = array();
         $plan ='Premium';
-        $total =50;
+        $total =10;
         
         $suttotal = $total * floatval($iva);
         try {

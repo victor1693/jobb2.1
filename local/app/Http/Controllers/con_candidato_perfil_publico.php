@@ -148,8 +148,8 @@ class con_candidato_perfil_publico extends Controller
         $sql_discapacidad="SELECT * FROM tbl_discapacidad"; 
         $sql_salarios="SELECT * FROM tbl_rango_salarios";
         $sql_disponibilidad="SELECT * FROM tbl_disponibilidad";
-        $sql_niveles="SELECT * FROM tbl_nivel_estudio";
-        $sql_area_estudios="SELECT * FROM tbl_areas_estudio";
+        $sql_niveles="SELECT * FROM tbl_nivel_estudio order by id desc";
+        $sql_area_estudios="SELECT * FROM tbl_areas_estudio order by nombre asc";
         $sql_area_sector="SELECT * FROM  tbl_actividades_empresa"; 
         $sql_cargos="SELECT * FROM tbl_cargos";
         $sql_habilidades="SELECT * FROM tbl_habilidades";  
@@ -161,11 +161,15 @@ class con_candidato_perfil_publico extends Controller
         LEFT JOIN tbl_archivos t2 ON t2.id = t1.id_foto WHERE t1.id_usuario=" . session()->get("cand_id") . ""; 
         $sql_redes   = "SELECT *  FROM tbl_redes WHERE id_usuario=" . session()->get("cand_id") . "
         AND tipo_usuario=2";
+
+
         $sql_educacion="SELECT t1.id_area_estudio,t1.id_nivel_estudio,t1.id_pais, t1.id,t1.id_usuario, t1.titulo,t1.nombre_institucion,t1.desde,t1.hasta,t1.tmp,t2.descripcion as nivel,t3.nombre as estudios,t4.descripcion FROM tbl_candidatos_educacion t1
             LEFT JOIN tbl_nivel_estudio t2 ON t1.id_nivel_estudio = t2.id
             LEFT JOIN tbl_areas_estudio t3 ON t1.id_area_estudio = t3.id
             LEFT JOIN tbl_paises t4 ON t1.id_pais = t4.id
             WHERE t1.id_usuario=".session()->get("cand_id")."";
+
+
         $sql_experiencias="SELECT t1.*,t2.nombre as sector FROM `tbl_candidato_experiencia_laboral` t1
         LEFT JOIN tbl_actividades_empresa t2 ON t1.id_actividad_empresa = t2.id
         WHERE t1.id_usuario=".session()->get("cand_id")."";
@@ -657,7 +661,7 @@ class con_candidato_perfil_publico extends Controller
         $sql="UPDATE tbl_candidatos_educacion SET
         id_nivel_estudio=".$_POST['nivel'].",
         titulo='".$_POST['titulo_obtener']."',
-        id_area_estudio=".$_POST['nivel'].",
+        id_area_estudio=".$_POST['area_estudio'].",
         nombre_institucion='".$_POST['universidad']."',
         id_pais=".$_POST['uni_pais'].",
         desde='".$_POST['desde']."',

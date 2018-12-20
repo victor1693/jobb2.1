@@ -79,6 +79,7 @@
                                                              <img id="img-profile" style="height: 150px;width: auto;" src="http://www.transparentpng.com/download/award/3vi84B-award-background.png">
                                                              <h3>Jobbers Premium</h3>
                                                              <h3><span style="text-decoration: line-through;color: #a3a3a3;font-weight: 400;">$ 2.500</span> $ 1.250</h3>
+                                                             <h5 style="text-align: center;">(30 días)</h5>
                                                              <?php if (session()->get('company_plan')=='Premium'): ?>
                                                                  <div class="form-actions"> 
                                                                     <button onclick="alert('Ya cuenta con el plan Premium')"  type="button" class="btn btn-primary" >Realizar Pago <i class="fa fa-money"></i></button>
@@ -98,13 +99,13 @@
                                                                  <li>Ofertas ilimitadas</li>
                                                                  <li>Tiempo ilimitado</li>
                                                                  <li>Ver todos los postulados</li>
-                                                                 <li class="rayar">Publicidad</li>
-                                                                 <li>Recomendación Jobbers</li> 
+                                                                 <li class="rayar">Se muestra publicidad</li>
+                                                                 <li>Recomendación de CV por Jobbers </li> 
                                                                  <li>Listado de candidatos con filtros <span class="tag tag-warning">Proximamente</span></li>
                                                                  <li>Acceso a CV descargable de los candidatos</li>
-                                                                 <li>Marcador de cantidatos: <span style="font-size: 11px;"><strong>(Visto, Finalista, Contactado, Entrevistado, Descartado, Contratado)</strong></span></li>
+                                                                 <li>Marcador de candidatos: <span style="font-size: 11px;"><strong>(Contactado, Citado, Entrevistado, Descartado)</strong></span></li>
                                                                  <li>Video de YouTube</li>
-                                                                 <li>Plantillas de publicación</li>
+                                                                 <li>Publicación de ofertas similares</li>
                                                                  <li>Editar Ofertas</li> 
                                                              </ul>
                                                          </div>
@@ -115,8 +116,7 @@
                                                     <div class="col-md-4" style="padding-right: 0px; text-align: center;padding-top: 30px;">
                                                          <div class="form-group" style="background-color: rgba(255,255,255,0.8);">
                                                              <img id="img-profile" style="height: 150px;width: auto;" src="http://unsuppoetaulit.fr/wp-content/uploads/2018/07/cropped-rocket_icon-icons.com_54375-300x300.png">
-                                                             <h3>Jobbers Inicio</h3>
-                                                             <h3><span style="text-decoration: line-through;color: #a3a3a3;font-weight: 400;">$ 299</span> Gratis</h3>
+                                                             <h3>Jobbers Gratis</h3> 
                                                             
                                                         </div>
                                                     </div>
@@ -125,16 +125,15 @@
                                                              <ul style="list-style: none;">
                                                                  <li class="rayar">Gestión de entrevistas <span class="tag tag-warning">Proximamente</span></li>
                                                                  <li>5 Ofertas</li>
-                                                                 <li>30 días</li>
+                                                                 <li>Visualización de la oferta 30 días</li>
                                                                  <li>Ver los primeros 25 postulados</li>
-                                                                 <li>Publicidad</li>
-                                                                 <li  class="rayar">Recomendación Jobbers</li>
-                                                                 <li  class="rayar">Evaluación de candidatos por Jobbers</li>
+                                                                 <li>Se muestra publicidad</li>
+                                                                 <li  class="rayar">Recomendación de CV por Jobbers </li> 
                                                                  <li  class="rayar">Listado de candidatos con filtros <span class="tag tag-warning">Proximamente</span></li>
                                                                  <li>Acceso a CV descargable de los candidatos</li>
-                                                                 <li>Marcador de cantidatos: <span style="font-size: 11px;"><strong>(Visto, Finalista, Contactado, Entrevistado, Descartado, Contratado)</strong></span></li>
+                                                                 <li>Marcador de candidatos: <span style="font-size: 11px;"><strong>(Contactado, Citado, Entrevistado, Descartado)</strong></span></li>
                                                                  <li>Video de YouTube</li>
-                                                                 <li  class="rayar">Plantillas de publicación</li>
+                                                                 <li  class="rayar">Publicación de ofertas similares</li>
                                                                  <li class="rayar">Editar Ofertas</li> 
                                                              </ul>
                                                          </div>
