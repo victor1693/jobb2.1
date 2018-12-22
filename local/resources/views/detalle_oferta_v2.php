@@ -5,6 +5,7 @@
         <title>
              <?= strip_tags($datos[0]->titulo);?>
         </title>
+        
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <meta content="<?php echo strip_tags($datos[0]->descripcion);?>" name="description"/>
         <meta content="" name="keywords"/> 

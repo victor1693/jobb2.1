@@ -7,7 +7,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Jobbers Argentina</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		 
+		  <meta content="Jobbers realiza una amplia busqueda en internet para proporcionarte los empleos del momento. Más de 14000 ofertas de empleo estan a tu disposición cada día. Nuestro único objetivo es que encuentres el trabajo que mereces." name="description"/>
+		  
 		<link rel="stylesheet" type="text/css" href="../local/resources/views/css/bootstrap-grid.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../local/resources/views/css/icons.css">

@@ -6,8 +6,10 @@ $mi_tokken=csrf_token();
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
         <title>
-            Jobbers Argentina
+             <?= strip_tags($datos[0]->titulo);?>
         </title>
+         <meta content="<?php echo strip_tags($datos[0]->descripcion);?>" name="description"/>
+         
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <meta content="" name="description"/>
         <meta content="" name="keywords"/>

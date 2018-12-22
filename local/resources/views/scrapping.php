@@ -7,12 +7,12 @@ $mi_tokken=csrf_token();
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
         <title>
-            Jobbers Argentina
+            Jobbers Argentina - Ofertas de empleo
         </title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-        <meta content="" name="description"/>
+        <meta content="Jobbers realiza una amplia busqueda en internet para proporcionarte los empleos del momento. Más de 14000 ofertas de empleo estan a tu disposición cada día. Nuestro único objetivo es que encuentres el trabajo que mereces." name="description"/>
         <meta content="" name="keywords"/>
-        <meta content="CreativeLayers" name="author"/>
+        <meta content="Jobbers Argentina" name="author"/>
         <meta content="<?php echo $mi_tokken;?>" name="csrf-token"/> 
          <link rel="stylesheet" type="text/css" href="local/resources/views/css/chosen.css" />
         <link href="local/resources/views/css/bootstrap-grid.css" rel="stylesheet" type="text/css"/>
