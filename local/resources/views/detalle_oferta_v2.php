@@ -558,10 +558,19 @@
                 dataType:'json',
                 data: {id:publicacion},
                 success: function(response) { 
+                  
                 if(response=="session")
                 {
                     $.notify("Debe iniciar sessión","info");
                 } 
+                else if(response=='2')
+                {
+                    $.notify("Debe completar sus datos personales","info");
+                }
+                else if(response=='3')
+                {
+                    $.notify("Debe colocar una foto de perfil","info");
+                }
                 else if(response=='1')
                 {
                     $(".btn-postular").addClass(' postulado');

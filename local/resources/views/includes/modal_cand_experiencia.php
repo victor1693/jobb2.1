@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modal_educ_expe" tabindex="-1" role="dialog" aria-labelledby="modal_educ_expeLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document" style="width: 70%;height: 95%;margin: 0 auto;margin-top: 5%;">
-    <div class="modal-content" style="height: 80%;">
+  <div class="modal-dialog modal-lg" role="document" style="width: 70%;height: 100%;margin: 0 auto;margin-top: 0%;">
+    <div class="modal-content" style="height: 100%;">
       <div class="modal-header">
         <h5 class="modal-title" id="modal_educ_expeLabel">Experiencia laboral</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -71,9 +71,13 @@
               </div> 
                 
               <div class="col-lg-12" style="margin-top: -15px;">
-                <span class="pf-title">¿Qué hizo en esta empresa?</span>
+                <span class="pf-title">Descripción y referencia laboral. <span id="contador_descripcion_experiencia" style="font-weight: 600;">400</span></span></span>
                 <div class="pf-field">
-                    <textarea  id="expe_descripcion" name="descripcion" maxlength="150"></textarea> 
+                    <textarea onkeyup="contar()" style="padding: 5px;line-height: 15px;"  id="expe_descripcion" name="descripcion" maxlength="400">Descripción laboral:
+Yo en la empresa Jobbers realicé las siguientes actividades.
+
+Referencia profesional:
+Victor Fernández - correo@hotmail.com</textarea> 
                 </div>
               </div> 
             </div>

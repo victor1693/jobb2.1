@@ -13,10 +13,14 @@ class con_administrator_candidatos extends Controller
         $sql_candidatos=""; 
         if(isset($_GET['filtrar']) && $_GET['filtrar']!="")
         {  
-             $sql_candidatos="SELECT t3.correo,t1.id_estatus,concat(t2.nombres,' ',t2.apellidos) as nombre,t1.tmp,t1.id FROM tbl_usuarios t1
+             $sql_candidatos="SELECT t1.correo,t1.id_estatus,concat(t2.nombres,' ',t2.apellidos) as nombre,t1.tmp,t1.id FROM tbl_usuarios t1
             LEFT JOIN tbl_candidato_datos_personales t2 ON t2.id_usuario =t1.id
             LEFT JOIN tbl_candidato_info_contacto t3 ON t3.id_usuario =t1.id
-            WHERE tipo_usuario = 2 and (concat(t2.nombres,' ',t2.apellidos,' ',t3.correo) like '%".$_GET['filtrar']."%') 
+            WHERE tipo_usuario = 2 and t1.id_estatus  = 1 and
+            (
+                t1.correo like '%".$_GET['filtrar']."%'
+            ) 
+            group by t1.id
             LIMIT 0,100";
         }
         else

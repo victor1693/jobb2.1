@@ -30,7 +30,7 @@ class con_candidato_postulaciones extends Controller
     public function postular()
     {
         if(session()->get('cand_id')!="")
-        {
+        { $id=session()->get('cand_id');
             $sql_validar="
             SELECT count(*) AS cantidad FROM tbl_company_postulados
             WHERE id_usuario =".session()->get('cand_id')."
@@ -42,10 +42,32 @@ class con_candidato_postulaciones extends Controller
                 } 
                 else
                 {
-                    $sql="INSERT INTO tbl_company_postulados (id_usuario,id_oferta)
-                    VALUES (".session()->get('cand_id').",".$_POST['id'].")";
-                    DB::insert($sql);
-                    echo '1';
+                    $sql_datos_personales="SELECT * FROM tbl_candidato_datos_personales WHERE id_usuario = ".$id."";
+                  
+                    $datos_per=DB::select($sql_datos_personales);
+
+                    if($datos_per[0]->nombres !="" && $datos_per[0]->apellidos !="" && $datos_per[0]->n_identificacion !="" && $datos_per[0]->fecha_nac !="")
+                    {
+                        $sql="SELECT count(*) as cantidad FROM tbl_usuarios_foto_perfil WHERE id_usuario  = ".$id."";
+                        $foto=DB::select($sql);
+                        if($foto[0]->cantidad > 0)
+                        {
+                             $sql="INSERT INTO tbl_company_postulados (id_usuario,id_oferta) 
+                            VALUES (".session()->get('cand_id').",".$_POST['id'].")";
+                            DB::insert($sql);
+                            echo '1';
+                        }
+                        else
+                        {
+                            echo '3';
+                        }
+                           
+                    } 
+                    else
+                    {
+                        echo '2';
+                    }
+                        
                 } 
         }
         else

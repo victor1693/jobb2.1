@@ -744,7 +744,7 @@ $mi_tokken = csrf_token();
                                                     </div> <?php endif ?> 
                                                  </div>
                                             </div>
-                                            <div class="border-title"><h3>Experiencia laboral</h3><a href="#" title=""  data-toggle="modal" data-target="#modal_educ_expe"><i class="la la-plus"></i> Agregar experiencia</a></div>
+                                            <div onclick="contar()" class="border-title"><h3>Experiencia laboral</h3><a href="#" title=""  data-toggle="modal" data-target="#modal_educ_expe"><i class="la la-plus"></i> Agregar experiencia</a></div>
                                             <div class="edu-history-sec">
                                                 <?php foreach ($experiencias as $key): 
                                                     if($key->hasta==""){$key->hasta="Trabajando actualmente";}
@@ -1172,6 +1172,7 @@ $mi_tokken = csrf_token();
    function contar()
    {
     $("#contador_descripcion").html(300 - $("#datos_per_descripcion").val().length);
+     $("#contador_descripcion_experiencia").html(400 - $("#expe_descripcion").val().length);
    }
    function redes_validar()
    {

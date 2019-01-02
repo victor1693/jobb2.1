@@ -46,14 +46,14 @@ class con_company_ofertas extends Controller
         $plantillas=DB::select($sql_plantillas);
     	$sql="
         SELECT t1.*,COUNT(t1.id) as cantidad,lower(t1.titulo) as mi_titulo FROM tbl_company_ofertas t1
-        INNER JOIN tbl_company_postulados t2 ON t2.id_oferta  = t1.id 
-        INNER JOIN tbl_candidato_datos_personales t3 ON t3.id_usuario = t2.id_usuario
-        INNER JOIN tbl_archivos t4 ON t4.id_usuario = t2.id_usuario      
+        LEFT JOIN tbl_company_postulados t2 ON t2.id_oferta  = t1.id 
+        LEFT JOIN tbl_candidato_datos_personales t3 ON t3.id_usuario = t2.id_usuario
+        LEFT JOIN tbl_archivos t4 ON t4.id_usuario = t2.id_usuario      
         WHERE  t1.id_empresa= ".session()->get('company_id')." 
         GROUP BY t1.id
         ORDER BY COUNT(t2.id) DESC
         ";
-        
+      
     	try {
     		$datos=DB::select($sql); 
             $obj = (object) array('ofertas' => $datos,'plantillas' => $plantillas,'plan' => session()->get('company_plan'));

@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modal_educ_cand" tabindex="-1" role="dialog" aria-labelledby="modal_educ_candLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document" style="width: 70%;height: 95%;margin: 0 auto;margin-top: 5%;">
-    <div class="modal-content" style="height: 80%;">
+  <div class="modal-dialog modal-lg" role="document" style="width: 70%;height: 95%;margin: 0 auto;margin-top: 0%;">
+    <div class="modal-content" style="height: 100%;">
       <div class="modal-header">
         <h5 class="modal-title" id="modal_educ_candLabel">Educación - Cursos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
