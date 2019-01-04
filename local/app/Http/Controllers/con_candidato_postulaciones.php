@@ -42,11 +42,12 @@ class con_candidato_postulaciones extends Controller
                 } 
                 else
                 {
-                    $sql_datos_personales="SELECT * FROM tbl_candidato_datos_personales WHERE id_usuario = ".$id."";
+                    $sql_datos_personales="SELECT *,count(id) as cantidad FROM tbl_candidato_datos_personales WHERE id_usuario = ".$id."";
                   
                     $datos_per=DB::select($sql_datos_personales);
-
-                    if($datos_per[0]->nombres !="" && $datos_per[0]->apellidos !="" && $datos_per[0]->n_identificacion !="" && $datos_per[0]->fecha_nac !="")
+                    if($datos_per[0]->cantidad>0)
+                    {
+                        if($datos_per[0]->nombres !="" && $datos_per[0]->apellidos !="" && $datos_per[0]->n_identificacion !="" && $datos_per[0]->fecha_nac !="")
                     {
                         $sql="SELECT count(*) as cantidad FROM tbl_usuarios_foto_perfil WHERE id_usuario  = ".$id."";
                         $foto=DB::select($sql);
@@ -67,6 +68,12 @@ class con_candidato_postulaciones extends Controller
                     {
                         echo '2';
                     }
+                    }
+                    else
+                    {
+                        echo '4';
+                    }
+                    
                         
                 } 
         }

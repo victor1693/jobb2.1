@@ -23,25 +23,17 @@ class con_company_login extends Controller
                     FROM tbl_company_promociones 
                     WHERE id_empresa = ".$datos[0]->id." AND id_promocion = 1";
                     $datos_promo=DB::select($sql);
-                    if($datos_promo[0]->cantidad>0)
-                    {
-                        
-                        if(date('Y-m-d')>$datos_promo[0]->fecha_ven)
+                     
+                        if(date('Y-m-d')>$datos[0]->venc_plan)
                         {
-                            $sql="UPDATE tbl_company SET plan='Gratis' WHERE id=".$datos[0]->id."";
+                            $sql="UPDATE tbl_company SET venc_plan='Gratis' WHERE id=".$datos[0]->id."";
                             DB::update($sql);
                             $request->session()->set('company_plan','Gratis');
                         } 
                         else
                         {
                             $request->session()->set('company_plan',$datos[0]->plan);
-                        }
-                    }
-                    else
-                    {
-                        $request->session()->set('company_plan',$datos[0]->plan);
-                    }
-
+                        }                   
 	    			$request->session()->set('company_id',$datos[0]->id);
 	    			$request->session()->set('company_img',$datos[0]->img_profile);
 	    			$request->session()->set('company_nombre',$datos[0]->nombre); 

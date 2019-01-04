@@ -76,17 +76,21 @@ function select_options($habilidades_json){
             }
 
             ::-webkit-scrollbar {
-                width: 3px;
+                width: 10px;
                 height: 30px; 
+                
             }
             ::-webkit-scrollbar-button {
-                background: #ccc
+                background: #b2b2b2;
+                 
             }
             ::-webkit-scrollbar-track-piece {
-                background: #ededed
+                background: #fff
             }
             ::-webkit-scrollbar-thumb {
-                background: #bababa
+                background: #0090ce;
+                height: 50px;
+
             }​
 
        </style>
@@ -1140,8 +1144,12 @@ function select_options($habilidades_json){
                             boton='<a title="Reanudar" onclick="status('+dato.id+',1)" style="margin-left: 5px;" href="#"><img style="height: 20px;" src="<?=$ruta?>/app-assets/images/icons/ofertas/reanudar.png" alt=""></a>';}
                         
                          $("#select_ofertas").append('<option value="'+dato.id+'">'+alias+'</option>');
-
-                        contenido=contenido+'<tr class="sp"> <td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+alias+'</a></td><td class="text-truncate sp " style="padding:2px;"><a href="#" style="color:#282828; class=""">'+ucwords(titulo)+'</a></td><td class="text-truncate sp" style="padding:2px;"><span onclick="get_postulados('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;">'+dato.cantidad+'</span> </td><td class="valign-middle" style="padding:2px;"> '+dato.vistas+' </td><td class="text-truncate sp" style="padding:2px;">'+estatus+'</td><td class="text-truncate sp" style="padding:2px;">'+boton+' '+editar+' '+eliminar+' '+similar+'</td><td class="text-truncate sp" style="padding:2px;width:35px;text-align:center;">'+compartir+'</td></tr>';
+                         cantidad="";
+                         if(dato.cantidad > 0)
+                         {
+                          cantidad = '<span onclick="get_postulados('+dato.id+')" style="cursor:pointer;color:#0645AD;text-decoration:underline;">'+dato.cantidad+'</span>';
+                         }
+                        contenido=contenido+'<tr class="sp"> <td class="text-truncate sp" style="padding:2px;"><a href="#" style="color:#282828;">'+alias+'</a></td><td class="text-truncate sp " style="padding:2px;"><a href="#" style="color:#282828; class=""">'+ucwords(titulo)+'</a></td><td class="text-truncate sp" style="padding:2px;">'+ cantidad +'</td><td class="valign-middle" style="padding:2px;"> '+dato.vistas+' </td><td class="text-truncate sp" style="padding:2px;">'+estatus+'</td><td class="text-truncate sp" style="padding:2px;">'+boton+' '+editar+' '+eliminar+' '+similar+'</td><td class="text-truncate sp" style="padding:2px;width:35px;text-align:center;">'+compartir+'</td></tr>';
                     });
                      $("#total").text(contador);
                      $("#tabla-resumen").append(contenido);

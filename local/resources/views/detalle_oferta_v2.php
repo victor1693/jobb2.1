@@ -282,28 +282,28 @@
                                 {
                                   if($parametro=='PPPA-Cambio empresa')
                                   {
-                                   $imagen="local/resources/views/images/programas/ppp.png";
+                                   $imagen=Request::root()."/local/resources/views/images/programas/ppp.png";
                                   }
                                   else if($parametro=='PPP-Cambio empresa')
                                   {
-                                     $imagen="local/resources/views/images/programas/pppp.png";
+                                     $imagen=Request::root()."/local/resources/views/images/programas/pppp.png";
                                   }
                                   else if($parametro=='MAS Y MEJOR TRABAJO')
                                   {
-                                     $imagen="local/resources/views/images/programas/jovenes.png";
+                                     $imagen=Request::root()."/local/resources/views/images/programas/jovenes.png";
                                   }
 
                                   else if($parametro=='PILA-Cambio empresa')
                                   {
-                                     $imagen="local/resources/views/images/programas/pila.png";
+                                     $imagen=Request::root()."/local/resources/views/images/programas/pila.png";
                                   }
                                   else if($parametro=='XMI')
                                   {
-                                     $imagen="local/resources/views/images/programas/xmi.png";
+                                     $imagen=Request::root()."/local/resources/views/images/programas/xmi.png";
                                   }
                                   else if($parametro=='PIP-Cambio empresa')
                                   {
-                                     $imagen="local/resources/views/images/programas/pip.png";
+                                     $imagen=Request::root()."/local/resources/views/images/programas/pip.png";
                                   }
                                    return '<div><img style="height:30px;width:auto;" alt="" class="img-fluid img-oferta" src="'.$imagen.'">
                                         </img></div>'; 
@@ -536,13 +536,7 @@
 <script src="../local/resources/views/js/wow.min.js" type="text/javascript">
 </script>
 <script src="../local/resources/views/js/slick.min.js" type="text/javascript">
-</script>
-<script src="../local/resources/views/js/parallax.js" type="text/javascript">
-</script>
-<script src="../local/resources/views/js/select-chosen.js" type="text/javascript">
-</script>
-<script src="../local/resources/views/js/jquery.scrollbar.min.js" type="text/javascript">
-</script>
+</script> 
 <script src="../local/resources/views/empresas/assets/js/notify.min.js" type="text/javascript"></script>
 <script type="text/javascript">
       function aplicar(publicacion)
@@ -570,6 +564,10 @@
                 else if(response=='3')
                 {
                     $.notify("Debe colocar una foto de perfil","info");
+                }
+                 else if(response=='4')
+                {
+                    $.notify("Debe completar sus datos personales","info");
                 }
                 else if(response=='1')
                 {

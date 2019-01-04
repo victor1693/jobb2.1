@@ -11,6 +11,7 @@ class con_company_ofertas extends Controller
 {
     public function index()
     {
+        
     	$vista=View::make("empresas.ofertas");
     	$sql_provincias="SELECT * FROM tbl_provincias";
     	$sql_disponibilidad="SELECT * FROM tbl_disponibilidad";
@@ -45,7 +46,7 @@ class con_company_ofertas extends Controller
         $sql_plantillas ="SELECT * FROM tbl_company_ofertas WHERE plantilla ='SI' AND  id_empresa=".session()->get('company_id')."";
         $plantillas=DB::select($sql_plantillas);
     	$sql="
-        SELECT t1.*,COUNT(t1.id) as cantidad,lower(t1.titulo) as mi_titulo FROM tbl_company_ofertas t1
+        SELECT t1.*,COUNT(t2.id) as cantidad,lower(t1.titulo) as mi_titulo FROM tbl_company_ofertas t1
         LEFT JOIN tbl_company_postulados t2 ON t2.id_oferta  = t1.id 
         LEFT JOIN tbl_candidato_datos_personales t3 ON t3.id_usuario = t2.id_usuario
         LEFT JOIN tbl_archivos t4 ON t4.id_usuario = t2.id_usuario      
@@ -168,7 +169,7 @@ class con_company_ofertas extends Controller
     	 edad ="'.$_POST['edad'].'",
     	 habilidades ="'.$las_habilidades.'", 
     	 idiomas ="'.$this->arreglos($_POST['idiomas']).'",
-         amigable = "'.$this->url_amigable($_POST["titulo"]) .'"
+         amigable = "'.$this->url_amigable($_POST["titulo"]) .'",
          tmp="'.$hoy.'"
          ';
     	 $campos='
@@ -271,6 +272,7 @@ class con_company_ofertas extends Controller
 	    	 	{   if(session()->get('company_plan')=='Premium'){
 	    	 		 $sql="UPDATE tbl_company_ofertas SET ".$campos_editar." WHERE id_empresa =".session()->get('company_id')." AND id =".$_POST['publicacion']."";
                     
+                   
 	    	 		 DB::update($sql);
     	 			   $sql="UPDATE tbl_company_ofertas SET descripcion = '".$_POST['descripcion']."' WHERE id_empresa =".session()->get('company_id')." AND id =".$_POST['publicacion']."";
     	 			   DB::update($sql);

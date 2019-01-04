@@ -10,13 +10,34 @@ class con_administrator_empresas extends Controller
 {
     public function index()
     {   
+
+        if(isset($_GET['actualizar']) && $_GET['actualizar']=="si")
+        {
+            $sql="";
+            if($_GET['action']=="upgrade")
+            {
+                $fecha = date('Y-m-d');
+                $nuevafecha = strtotime ( '+31 day' , strtotime ( $fecha ) ) ;
+                $nuevafecha = date ( 'Y-m-d' , $nuevafecha );
+                $sql="UPDATE tbl_company SET plan='Premium', venc_plan='".$nuevafecha."' WHERE correo = '".$_GET['empresa']."'";
+            }
+            else  if($_GET['action']=="degrade")
+            {
+                $fecha = date('Y-m-d');
+                $nuevafecha = strtotime ( '-1 day' , strtotime ( $fecha ) ) ;
+                $nuevafecha = date ( 'Y-m-d' , $nuevafecha );
+                $sql="UPDATE tbl_company SET plan='Gratis', venc_plan='".$nuevafecha."' WHERE correo = '".$_GET['empresa']."'";
+            }
+            DB::update($sql);
+            return Redirect('administracion/empresas');
+        }
         $buscar="";
         if(isset($_GET['buscador']) && $_GET['buscador']!="")
         {
-            $buscar=$buscar." AND nombre like '%".$_GET['buscador']."%'";
+            $buscar=$buscar." AND correo like '%".$_GET['buscador']."%'";
         }
         $vista=View::make("administrator_empresas");
-        $sql="SELECT * FROM tbl_company WHERE estatus = 1 ".$buscar." GROUP BY id ORDER BY nombre ASC";
+        $sql="SELECT * FROM tbl_company WHERE estatus = 1 ".$buscar." GROUP BY id ORDER BY fecha_registro DESC";
        
         $vista->datos=DB::select($sql);
         return $vista;

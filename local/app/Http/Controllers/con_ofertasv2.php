@@ -77,9 +77,9 @@ class con_ofertasv2 extends Controller
     	}
 
     	$vista = View::make('ofertasv2');
-    	$sql="SELECT  t1.*,t1.amigable as id, t2.img_profile FROM tbl_company_ofertas t1
+    	$sql="SELECT  t1.*,t1.amigable as id, t2.img_profile, DATE_FORMAT(t1.tmp, '%d-%m-%Y %H:%i:%s') as tmp FROM tbl_company_ofertas t1
 		LEFT JOIN tbl_company t2 ON t2.id = t1.id_empresa
-		 WHERE t1.estatus = 1 ".$filtros." AND plantilla <> 'SI' 
+		 WHERE t1.estatus = 1 ".$filtros."
 		 GROUP BY t1.id
          ORDER BY t1.tmp DESC
 		 ";

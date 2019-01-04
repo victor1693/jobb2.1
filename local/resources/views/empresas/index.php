@@ -42,51 +42,7 @@
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <!--Aside-->
         <?php include('includes/aside.php')?>
-    </div>
-    <?php
-    //Variables de promociones
-    $bienvenida=0;
-
-    if(count($promos)>0)
-            {
-               foreach ($promos as $key) {
-                if($key->id_promocion==1)
-                {
-                    $bienvenida=1;
-                }
-            } 
-        } 
-    ?>
-    <!-- Modal -->
-        <?php if ($bienvenida==0 && session()->get('company_plan')=='Gratis'): ?> 
-            <div id="modal_promo" class="modal fade" role="dialog">
-              <div class="modal-dialog"> 
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Promoción de Bienvenida</h4>
-                  </div>
-                  <div class="modal-body">
-                   <div class="row">
-                        <img style="height: 162px; width: auto;" src="../local/resources/views/empresas/app-assets/images/icons/promociones/promo_bienvenida.jpg" alt="">
-                    <div class="col-sm-12" style="text-align: center;">
-                        <p>Te damos la bienvenida a la nueva plataforma de <strong>Jobbers</strong>. Queremos que pruebes nuestro <strong>Plan Premium</strong> completamente gratis por 15 días. Así podrás utilizar todas las nuevas funciones que que estarán a tu disposición para ayudarte a encontrar el mejor personal de una manera óptima y fácil.</p>
-                       <form action="../empresas/bienvenida" method="post">
-                       <input type="hidden" name="_token" value="<?= csrf_token();?>"> 
-                           <button class="btn btn-info" type="submit" style="background-color: #2f3292;border:0px;">Activar plan ahora</button>
-                       </form>
-                    </div>
-                   </div>
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-                  </div>
-                </div> 
-              </div>
-            </div>
-             <?php endif ?>
+    </div> 
              <?php  
              if ($empresa[0]->venc_plan!="0000-00-00" && $empresa[0]->venc_plan < $empresa[0]->hoy && $empresa[0]->modal==0): ?>
                     <div id="modal_plan_gratis" class="modal fade" role="dialog">
@@ -102,11 +58,9 @@
                     <img src="<?= $ruta?>/app-assets/images/logo/robust-logo-light.png" style="margin-right:25px;">
                        <h4 style="font-weight: 400;padding: 10px;text-align: center;">Le informamos que su plan ha vencido. Para seguir difrutando de los beneficios que jobbers le ofrece lo invitamos a que adquiera el Plan Premium de Jobbers</h4>
                     <div class="col-sm-12" style="text-align: center;">
+                        
+                           <a class="btn btn-info" href="planes" style="background-color: #2f3292;border:0px;">Comprar plan</a>
                        
-                       <form action="../empresas/bienvenida" method="post">
-                       <input type="hidden" name="_token" value="<?= csrf_token();?>"> 
-                           <button class="btn btn-info" type="submit" style="background-color: #2f3292;border:0px;">Comprar plan</button>
-                       </form>
                     </div>
                    </div>
 
@@ -237,7 +191,7 @@
               
              
                  <div class="row">
-                     <div class="col-xl-3 col-lg-6 col-xs-12">
+                     <div class="col-xl-4 col-lg-6 col-xs-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-block">
@@ -262,7 +216,7 @@
                         </div>
                      </div>
 
-                     <div class="col-xl-3 col-lg-6 col-xs-12">
+                     <div class="col-xl-4 col-lg-6 col-xs-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-block">
@@ -287,33 +241,9 @@
                         </div>
                      </div>
 
-                     <div class="col-xl-3 col-lg-6 col-xs-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-block">
-                                    <div class="media">
-                                        <div class="media-left media-middle">
-                                            <i class="icon-copy cyan font-large-2 float-xs-left"></i>
-                                        </div>
-                                        <div class="media-body text-xs-right">
-                                            <h3 class="cyan">
+                      
 
-                                                  <?php if (count($oferta_plantillas)>0): ?>
-
-                                                    <?= $oferta_plantillas[0]->cantidad?>
-                                                    <?php else: ?>
-                                                        0
-                                                <?php endif ?>   
-                                                </h3>
-                                            <span>Mis Plantillas</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-
-                     <div class="col-xl-3 col-lg-6 col-xs-12">
+                     <div class="col-xl-4 col-lg-6 col-xs-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-block">
@@ -346,7 +276,7 @@
    <script type="text/javascript">
        $(document).ready(function()
         {   $("#modal_plan_gratis").modal('show');
-            $("#modal_promo").modal('show');
+            
         });
    </script>
 

@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="../local/resources/views/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="../local/resources/views/css/responsive.css" /> 
 	<link rel="stylesheet" type="text/css" href="../local/resources/views/css/colors/colors.css" /> 
-	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 <body  style="background-image: url('https://cdn5.f-cdn.com/contestentries/1108779/15284413/5994ef1193f43_thumb900.jpg');"> 
 	<!--Header responsive-->
@@ -50,7 +50,7 @@
 						 			<thead>
 						 				<tr>
 						 					<td>Nombre</td>   
-						 					<td>Plan</td>   
+						 					<td >Plan</td>   
 						 					<td>Email</td>   
 						 					<td>Fecha de registro</td>   
 						 					<td>Opciones</td>
@@ -58,8 +58,7 @@
 						 			</thead>
 						 			
 						 			<tbody>
-						 				 <?php foreach ($datos as $key): ?>
-						 				 	
+						 				 <?php foreach ($datos as $key): ?> 
 						 				
 						 				<tr>
 						 					<td>
@@ -67,9 +66,17 @@
 						 							<h3><a href=" " title="" target="_blank"><?= $key->nombre?></a></h3> 
 						 						</div>
 						 					</td> 
-						 					<td  style="padding-right: 10px;">
-						 						<div class="table-list-title">
-						 							<h3><?= $key->plan?></h3>
+						 					<td  style="padding-right: 10px;text-align: center;">
+						 						<div class=" " style="text-align: center;font-size: 14px;">
+						 							<?php if ($key->plan=="Premium"): ?>
+						 									<a style="color: #cc2302;" href="empresas?actualizar=si&empresa=<?= $key->correo?>&action=degrade" title="Cambiar a Premium"><i class="fas fa-arrow-down" ></i></a>
+						 									<?php else: ?>
+															<a style="color: #009110;" href="empresas?actualizar=si&empresa=<?= $key->correo?>&action=upgrade" title="Cambiar a Premium"><i class="fas fa-arrow-up" ></i></a>
+
+						 								<?php endif ?>
+						 							<h3 style="text-align: center;font-size: 15px;font-weight: 500;margin-top: 4px;"> 
+						 								<?= $key->plan?>  
+						 							</h3>
 						 						</div>
 						 					</td> 
 						 					<td>

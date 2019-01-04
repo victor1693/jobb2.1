@@ -27,7 +27,13 @@ class con_company extends Controller
     public function registrar(Request $request)
     { 	
     	date_default_timezone_set('America/Argentina/Cordoba');
-    	$fecha=date('Y-m-d'); 
+    	$fecha=date('Y-m-d');
+
+        
+         $premi = strtotime ( '+15 day' , strtotime ( $fecha ) ) ;
+         $premi = date ( 'Y-m-d' , $premi );
+
+
     	if($_POST['representante']=='' || 
     	 strtolower($_POST['correo'])=='' || 
     	 strtolower($_POST['clave'])=='' || 
@@ -50,7 +56,7 @@ class con_company extends Controller
     		}
 
     	}
-        $sql="INSERT INTO tbl_company (representante,correo,clave,provincia,localidad,direccion,nombre,fecha_registro,plan) 
+        $sql="INSERT INTO tbl_company (representante,correo,clave,provincia,localidad,direccion,nombre,fecha_registro,plan,venc_plan) 
     	VALUES(
     	'".$_POST['representante']."',
     	'".strtolower($_POST['correo']). "',
@@ -60,7 +66,8 @@ class con_company extends Controller
     	'".$_POST['direccion']."',
     	'".$_POST['empresa']."',
     	'".$fecha."',
-        'Gratis'
+        'Premium',
+        '".$premi."'
     	)";
     	try {
     		DB::insert($sql);
@@ -73,7 +80,7 @@ class con_company extends Controller
             $request->session()->set('company_img',$datos[0]->img_profile);
             $request->session()->set('company_nombre',$datos[0]->nombre); 
             $request->session()->set('tipo_usuario','1');
-            $request->session()->set('company_plan','Gratis');
+            $request->session()->set('company_plan',$datos[0]->plan);
              
     	} catch (\Illuminate\Database\QueryException $ex) {
     		 $this->auditar('registrar',str_replace("'", "",$ex->getMessage()),'');
