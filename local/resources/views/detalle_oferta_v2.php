@@ -175,7 +175,14 @@
                                         Sector: <span><?= $datos[0]->sector;?></span>
                                     </li>
                                     <li>
-                                        Nivel estudio:  <span><?= $datos[0]->nivel_estudio;?></span>
+                                        Nivel estudio:  <span>
+                                             <?php if ($datos[0]->nivel_estudio=="Cualquiera"): ?>
+                                                 Sin definir
+                                             <?php else: ?>
+                                               <?= $datos[0]->nivel_estudio;?>
+                                             <?php endif ?>
+                                             
+                                         </span>
                                     </li>
 
                                     <li>
@@ -194,10 +201,18 @@
                                         </span>
                                     </li>
                                     <li>
-                                        Género:  <span><?= $datos[0]->genero;?></span>
+                                        Género:  <span> <?php if ($datos[0]->genero=="Cualquiera"): ?>
+                                                 Sin definir
+                                             <?php else: ?>
+                                               <?= $datos[0]->genero;?>
+                                             <?php endif ?></span>
                                     </li>
                                     <li>
-                                        Edad: <span><?= $datos[0]->edad;?></span>
+                                        Edad: <span> <?php if ($datos[0]->edad=="Cualquiera"): ?>
+                                                 Sin definir
+                                             <?php else: ?>
+                                               <?= $datos[0]->edad;?>
+                                             <?php endif ?></span>
                                     </li>
                                     <li>
                                     	Habilidades:
@@ -359,7 +374,8 @@
                                                         Ayer
                                                     <?php endif ?>
                                                    <?php if($key->dias>1): ?>
-                                                        Publicado el día <?= fecha($key->fecha_creacion);?>
+                                                    <?php   $fecha_trabajada = explode(" ",$key->tmp); ?>
+                                                     Publicado: <?= fecha($fecha_trabajada[0])." ".$fecha_trabajada[1];?> 
                                                     <?php endif ?>
                                                 </i>
                                             </div>
@@ -419,7 +435,8 @@
                                                     	Ayer
                                                     <?php endif ?>
                                                    <?php if($key->dias>1): ?>
-                                                    	Publicado el día <?= fecha($key->fecha_creacion);?>
+                                                     <?php   $fecha_trabajada = explode(" ",$key->tmp); ?>
+                                                     Publicado: <?= fecha($fecha_trabajada[0])." ".$fecha_trabajada[1];?> 
                                                     <?php endif ?>
                                                 </i>
                                             </div>

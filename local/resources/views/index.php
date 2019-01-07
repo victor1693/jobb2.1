@@ -4,9 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Jobbers Argentina</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="CreativeLayers"> 
+	 <meta content="Encuentra las mejores ofertas de empleo en toda Argentina. Jobbers, siendo un sitio web relativamente nuevo ha crecido exponencialmente ofreciendo la mayor cantidad de empleos en córdoba y toda Argentina. Si buscas empleo somos tu solucion" name="description"/>
+        
+     <meta content="Jobbers Argentina" name="author"/>
 	<link rel="stylesheet" type="text/css" href="local/resources/views/css/bootstrap-grid.css" />
 	<link rel="stylesheet" href="local/resources/views/css/icons.css">
 	<link rel="stylesheet" href="local/resources/views/css/animate.min.css">
@@ -35,7 +35,7 @@
 					<div class="col-lg-12">
 						<div class="main-featured-sec style3">
 							<ul class="main-slider-sec style3 text-arrows">
-								<li><img src="local/resources/views//images/fondo_home.jpg" alt="" /></li> 
+								<li><img src="local/resources/views/images/fondo_home_new.jpg" alt="" /></li> 
 							</ul>
 							<div class="job-search-sec style3">
 								<div class="job-search style2">

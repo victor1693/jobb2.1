@@ -26,8 +26,10 @@ class con_index extends Controller
         count(t1.id) as cantidad 
         FROM tbl_company_ofertas t1
         INNER JOIN tbl_company t2 ON t2.id = t1.id_empresa
+        WHERE t1.estatus = 1
         GROUP BY t1.id_empresa 
         ORDER by count(t1.id) desc LIMIT 0,50";
+
         $sql_ultimas_ofertas= "
         SELECT t1.vistas,t1.amigable as id,t1.titulo,t1.descripcion,t1.sector,t2.nombre,t2.img_profile,t1.plan_estado,t1.confidencial
         FROM 

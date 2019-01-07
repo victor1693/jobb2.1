@@ -10,7 +10,7 @@ $mi_tokken=csrf_token();
         </title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <meta content="Encuentra las mejores ofertas de empleo en toda Argentina. Jobbers, siendo un sitio web relativamente nuevo ha crecido exponencialmente ofreciendo la mayor cantidad de empleos en córdoba y toda Argentina. Si buscas empleo somos tu solucion" name="description"/>
-        <meta content="" name="keywords"/>
+        
         <meta content="Jobbers Argentina" name="author"/>
         <meta content="<?php echo $mi_tokken;?>" name="csrf-token"/>
         <!-- Styles -->
@@ -108,7 +108,7 @@ $mi_tokken=csrf_token();
                 </div>
                   
                     <aside class="col-lg-3 column border-right" id="side-offers" style="padding-left: 0px;padding-right: 15px;">
-                        
+                        <a href="ofertas-de-empleo"  class="btn btn-success form-control" style="padding: 12px;height: 49px;margin-top: 25px;">+ Más ofertas de empleo</a>
                         <form action="" id="form_filter" method="get">
                            <input type="hidden" name="pagina" id="pagina">
                   <input type="hidden" name="buscar" id="buscar" value="<?php if(isset($_GET['buscar'])){echo $_GET['buscar'];}?>">
@@ -480,10 +480,7 @@ $mi_tokken=csrf_token();
                                 </div>
                                </form>
                             </div>
-                        </div> -->
-                        <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;">
-                         <a href="bolsa" title=""> <img src="local/resources/views/images/bolsa_1.jpg" style="height: auto;width: 100%;">
-</a>                        </div>
+                        </div> --> 
                          <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12" style="background-color: #fff;margin-bottom: 15px;padding: 0px;padding: 5px;padding-top: 12px; ">
 
                                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

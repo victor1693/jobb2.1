@@ -23,7 +23,13 @@ class con_administrator_login extends Controller
                 ->first();
 
         if ($log) {
-            $request->session()->set('admin', $log->usuario);
+
+            $fecha_actual = date("d-m-Y");
+            $nueva_fecha= date("d-m-Y",strtotime($fecha_actual."- 31 days"));
+         
+            $sql="UPDATE tbl_company_ofertas SET estatus=0 WHERE tmp <= '".$nueva_fecha." 00:00:00'";
+             DB::update($sql);
+             $request->session()->set('admin', $log->usuario);
             return redirect('administracion/panel');
         }
 

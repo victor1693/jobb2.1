@@ -186,7 +186,7 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
-                                    <strong>Hola Jobbers!</strong> Esperamos que te guste tu nuevo panel. Recuerda completar la información de tu empresa para poder ofrecerte un mejor servicio. <br> <a href="perfil" class="alert-link">Ver mi informacion</a>.
+                                    <strong>Hola Jobbers!</strong> Esperamos que te guste tu nuevo panel. Recuerda completar la información de tu empresa para poder ofrecerte un mejor servicio. <br> <a href="perfil" class="alert-link">Ver mi información</a>.
                    </div>
               
              

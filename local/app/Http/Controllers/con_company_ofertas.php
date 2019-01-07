@@ -23,7 +23,7 @@ class con_company_ofertas extends Controller
     	$sql_genero="SELECT * FROM tbl_generos";
     	$sql_turno="SELECT * FROM tbl_turnos";
         $sql_salarios="SELECT * FROM tbl_rango_salarios";
-    	$sql_plantillas ="SELECT * FROM tbl_company_ofertas WHERE plantilla ='SI' AND  id_empresa=".session()->get('company_id')."";
+    	$sql_plantillas ="SELECT count(*) as cantidad FROM tbl_company_ofertas WHERE id_empresa=".session()->get('company_id')."";
 
         $vista->plantillas=DB::select($sql_plantillas);
         $vista->salarios=DB::select($sql_salarios);
@@ -245,9 +245,9 @@ class con_company_ofertas extends Controller
                          $sql_ofertas_total="
                          SELECT count(id) AS cantidad
                          FROM tbl_company_ofertas 
-                         WHERE id_empresa = ".session()->get('company_id')." AND plantilla !='SI'";
+                         WHERE id_empresa = ".session()->get('company_id')."";
                          $mis_ofertas=DB::select($sql_ofertas_total);
-                         if($mis_ofertas[0]->cantidad>=3)
+                         if($mis_ofertas[0]->cantidad>=5)
                          {
                             echo 'Ha alcanzado el límite de publicaciones';
                             die();

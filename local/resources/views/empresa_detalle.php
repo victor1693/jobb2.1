@@ -195,7 +195,8 @@
                                                         Ayer
                                                     <?php endif ?>
                                                    <?php if($key->dias>1): ?>
-                                                        Publicado el día <?= fecha($key->fecha_creacion);?>
+                                                         <?php   $fecha_trabajada = explode(" ",$key->tmp); ?>
+                                                     Publicado: <?= fecha($fecha_trabajada[0])." ".$fecha_trabajada[1];?> 
                                                     <?php endif ?>
                                                     </i>
                                                 </div>

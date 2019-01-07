@@ -279,11 +279,11 @@ function select_options($habilidades_json){
                                                           <div class="col-sm-12">
                                                           <select style="margin-bottom: 15px;" onChange="get_postulados(this.value)" id="select_ofertas" class="form-control"> 
                                                           </select>
+                                                          <p style="text-align: right;margin-top: -5px;margin-bottom: 0px;border-bottom: 1px solid #ddd;">Mostrando <strong id="nummero-total">0</strong></p>
                                                         </div>
                                                         
                                                         </div> 
-                                                          <ul id="candidatos_list" style="list-style: none;margin: 0px;padding: 0px;height: 500px;overflow-x:hidden;">
-                                                             
+                                                          <ul id="candidatos_list" style="list-style: none;margin: 0px;padding: 0px;height: 500px;overflow-x:hidden;"> 
                                                           </ul>
                                                        </div>
                                                        <div id="cv_list_home" class="col-sm-9 sp" style="background-image: url(<?= $ruta;?>app-assets/images/logo/bg-3.png);overflow-x: hidden;padding-bottom: 50px;padding-top: 100px;text-align: center;">
@@ -439,7 +439,17 @@ function select_options($habilidades_json){
                                 </div>
                             </div>
                         </div> 
-                         <div class="col-md-12">
+                        <?php if ($plantillas[0]->cantidad >=5 && session()->get('company_plan')=="Gratis"): ?>
+                           <div class="col-md-12">
+                             <div class="alert alert-warning mb-2" role="alert">
+                  <strong>Importante!</strong> Le informamos que ha llegado al límite de publicaciones de ofertas de trabajo, para continuar disfrutando del servicio de <u>Jobebers</u> le invitamos a que adquiera nuestro <a href="plane"><u>Plan premium
+                     
+                  </u></a>.
+                </div>
+                           </div>
+                        <?php else: ?>
+
+                          <div class="col-md-12">
                             <div class="card"> 
                                 <div class="card-body collapse in">
                                     <div class="card-block"  style="padding-top: 0px;"> 
@@ -491,9 +501,11 @@ function select_options($habilidades_json){
                                                             <label id="titulo_provincia">Provincia</label> 
                                                             <select  id="provincia"  class="form-control">
 
-                                                                <option value="">Seleccionar</option>
+                                                                <option value="Córdoba">Córdoba</option>
                                                                 <?php foreach ($provincias as $key): ?>
-                                                                    <option value="<?= $key->provincia?>"><?= $key->provincia?></option>
+                                                                    <?php if ($key->provincia!="Córdoba"): ?>
+                                                                       <option value="<?= $key->provincia?>"><?= $key->provincia?></option>
+                                                                    <?php endif ?> 
                                                                 <?php endforeach ?> 
                                                             </select>
                                                         </div>
@@ -502,7 +514,7 @@ function select_options($habilidades_json){
                                                         <div class="form-group">
                                                             <label id="titulo_localidad">Localidad</label>
                                                             <select id="localidad"  class="form-control">
-                                                                <option value="">Seleccionar</option>
+                                                                <option value="Córdoba Capital">Córdoba Capital</option>
                                                             </select>
                                                         </div>
                                                     </div> 
@@ -691,6 +703,8 @@ function select_options($habilidades_json){
                                 </div>
                             </div>
                         </div>
+                        <?php endif ?>
+                         
                     </div>
                 </section>
                 <!-- // Basic form layout section end -->
@@ -892,7 +906,9 @@ function select_options($habilidades_json){
                    $("#btn_filtros").html(boton);
 
                   var candidato=""; 
+                  var contador=0;
                   jQuery.each(JSONArray, function(index, dato) {
+
                       var visto="";
                       var marcador = "";
                        if(dato.marcador==1)
@@ -913,11 +929,13 @@ function select_options($habilidades_json){
                       } 
 
                       candidato=candidato+'<li  id="candidato_menu_list_'+dato.id+'" onClick="get_cv('+dato.id+','+dato.id_oferta+')" class="listado-postulados '+marcador+'"><img style="width: 35px;height: 35px;border-radius:50%;" src="../uploads/min/'+dato.archivo+'" alt=""/><span>'+dato.nombre+'</span><span id="visto_'+dato.id+'"></span> '+visto+'</li>';
+                      contador++;
                       
                    });
                   $("#candidatos_list").append(candidato);
                   $("#contenedor_postulados").removeClass(' in');
                   $("#contenedor_postulados").addClass(' in');
+                  $("#nummero-total").html(contador);
                 },
                 error: function(error) {
                     $.notify("Ocurrió un error al procesar la solicitud.");
@@ -1143,7 +1161,7 @@ function select_options($habilidades_json){
                         }else{estatus=pausada;
                             boton='<a title="Reanudar" onclick="status('+dato.id+',1)" style="margin-left: 5px;" href="#"><img style="height: 20px;" src="<?=$ruta?>/app-assets/images/icons/ofertas/reanudar.png" alt=""></a>';}
                         
-                         $("#select_ofertas").append('<option value="'+dato.id+'">'+alias+'</option>');
+                         $("#select_ofertas").append('<option value="'+dato.id+'">'+titulo+'</option>');
                          cantidad="";
                          if(dato.cantidad > 0)
                          {
@@ -1153,6 +1171,7 @@ function select_options($habilidades_json){
                     });
                      $("#total").text(contador);
                      $("#tabla-resumen").append(contenido);
+                     
                       
                 },
                 error: function(error) {
@@ -1276,9 +1295,7 @@ function select_options($habilidades_json){
                             url: 'publicar',
                             type: 'POST',
                             data:datos,  
-                            success: function(response) { 
-
-                                    
+                            success: function(response) {   
                                      $.notify(response,"success");
                                      $("select, input, textarea").val('');
                                      $("#pais").val('Argentina');
@@ -1286,6 +1303,8 @@ function select_options($habilidades_json){
                                      texto_ejemplo();
                                      listar();
                                      nueva();
+                                     $("label").removeClass('marcar-error');
+                                    $("input, textarea").addClass('marcar-error');
                             },
                             error: function(error) {
                                 $.notify("Ocurrió un error al procesar la solicitud.");

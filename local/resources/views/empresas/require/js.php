@@ -4,7 +4,7 @@
 		if($("#"+par).val()=="")
 		{
 			$.notify("Debe completar el campo", "info");
-             $("label").removeClass('marcar-error');
+            $("label").removeClass('marcar-error');
 			$("#titulo_"+par).addClass('marcar-error');
 
             $("#"+par).focus();
